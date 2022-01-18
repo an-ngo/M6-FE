@@ -1,0 +1,63 @@
+<div class="div__">
+  <section class="ftco-section " style="background-color: #f3f6e1">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center mb-5">
+          <h2 class="heading-section">List All Orders</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-responsive-xl">
+            <thead>
+            <tr>
+              <th>&nbsp;</th>
+              <th>User</th>
+              <th>Provider</th>
+              <th>Status</th>
+              <th><a class="list_order"  routerLink="/admin">List Users</a></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="alert" role="alert" *ngFor="let order of orders; index as i" (click)="navigateToOrder(order.id)" >
+              <td>
+                <label class="checkbox-wrap checkbox-primary">
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="d-flex align-items-center">
+                <a routerLink="/user/{{order.user.id}}" ><img src="{{order.user.avatar}}" alt="" class="img"></a>
+                <div class="pl-3 email">
+                  <span>{{order.user.username}}</span>
+                  <span>Email: {{order.user.email}}</span>
+                </div>
+              </td>
+              <td *ngIf="order.statusOrder=='COMPLETE'" class="status"><span class="active">COMPLETE</span></td>
+              <td *ngIf="order.statusOrder=='RECEIVED'" class="status"><span class="waiting">RECEIVED</span></td>
+              <td *ngIf="order.statusOrder=='PENDING'" class="status"><span class="disable_">PENDING</span></td>
+              <td class="d-flex align-items-center">
+                <a routerLink="/user/{{order.userProvider.id}}" ><img src="{{order.userProvider.avatar}}" alt="" class="img"></a>
+                <div class="pl-3 email">
+                  <span>{{order.userProvider.username}}</span>
+                  <span>Email: {{order.userProvider.email}}</span>
+                </div>
+              </td>
+
+
+              <td>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span ><i class="fa fa-close"></i></span>
+                </button>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+          <button class="button" *ngIf="page > 0 && action ==''" (click)="nextPage(false)">previous</button>
+          <button class="button" *ngIf="page < totalPage-1 && action == ''" (click)="nextPage(true)">next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

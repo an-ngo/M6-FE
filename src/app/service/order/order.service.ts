@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
+
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +37,12 @@ export class OrderService {
   public deleteOrder(id: any): Observable<any>{
     return this.httpClient.delete(`${this.url}/orders/${id}`);
   }
+
+  public findAll(page: any) : Observable<any>{
+    return  this.httpClient.get(`${this.url}/orders/all?page=${page}`);
+
+  }
+
 }
 
 

@@ -1,5 +1,5 @@
-<div id="body_container">
-  <div id="container_1"><span class="logo"><a href="#"><img src="assets/images/logo.gif" alt="" /></a></span>
+<div id="body_1_container_1">
+  <div id="container_1_1"><span class="logo"><a href="#"><img src="assets/images/logo.gif" alt="" /></a></span>
     <div class="dating_tips">
       <h2>Dating Tips</h2>
       <ul>
@@ -11,7 +11,7 @@
       </ul>
     </div>
   </div>
-  <div id="container_2">
+  <div id="container_1_2">
     <div class="welcome">
       <h2>Welcome</h2>
       <p><strong>In nec tellus congue libero ultricies molestie.</strong> Duis et diam. Suspendisse interdum velit eget pede. Vivamus tellus lorem, elementum vestibulum, tempor sagittis, venenatis eget, lacus. Sed eu massa. Duis facilisis dignissim urna. Proin eu velit. Donec blandit, orci id dapibus pretium, metus ante pulvinar nunc, ac vestibulum nisi metus nec nisl. Sed non libero ac dolor eleifend varius. Maecenas mollis, metus eu porta sodales, metus metus sodales augue, id iaculis risus velit eu lectus. Vestibulum in neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in orci ac pede cursus hendrerit. </p>
@@ -27,10 +27,10 @@
       <p><strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</strong> Duis cursus tortor. Nunc consectetuer diam ac odio. Pellentesque vel mauris sit amet urna malesuada ornare. Curabitur venenatis est eget arcu. Donec vestibulum. Proin rutrum. Morbi commodo fringilla orci. Ut vel tortor. Vestibulum in neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
     </div>
   </div>
-  <div id="container_3">
+  <div id="container_1_3">
     <div class="partner_search">
       <div class="inner_border">
-        <div class="form_container">
+        <div class="form_container_1">
           <h3>Partner Search</h3>
           <form #searchForm="ngForm" (ngSubmit)="searchProvider(searchForm)">
             <fieldset>
@@ -257,6 +257,7 @@
     </div>
     <div class="recently_added">
       <h2 id="title_top">{{title_top}}</h2>
+
       <div class="profile_box" *ngFor="let provider of providers">
         <div class="top_curve">
           <div class="profile_content">
@@ -265,19 +266,19 @@
               <div class="pro_detail_box">
                 <div class="pro_top_curve">
                   <div class="pro_detail_content">
-                    <div class="row">
+                    <div class="row_1">
                       <p class="left">Name :</p>
                       <p class="right">{{provider.name}}</p>
                     </div>
-                    <div class="row">
+                    <div class="row_1">
                       <p class="left">Year of Birth :</p>
                       <p class="right">{{provider.yearOfBirth}}</p>
                     </div>
-                    <div class="row">
+                    <div class="row_1">
                       <p class="left">Location :</p>
                       <p class="right">{{provider.city}}</p>
                     </div>
-                    <div class="row">
+                    <div class="row_1">
                       <p class="left">View :</p>
                       <p class="right">{{provider.viewCount}}</p>
                     </div>
