@@ -5,7 +5,7 @@ import {ProviderComponent} from "./provider/provider.component";
 
 const routes: Routes = [
   {
-    path: '', component: UserComponent
+    path: ':id', component: UserComponent
   },
   {
     path: 'provider/:id', component: ProviderComponent
