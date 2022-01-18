@@ -1,0 +1,135 @@
+<div id="body_container">
+  <div id="container_1"><span class="logo"><a href="#"><img src="assets/images/logo.gif" alt="" /></a></span>
+    <div class="dating_tips">
+      <h2>Dating Tips</h2>
+      <ul>
+        <li class="a"><input type="radio"  name="radio"  value="top6ProviderHot" (click)="checkBox($event)">Top 6 Provider Hot</li>
+        <li class="b"><input type="radio"  name="radio"  value="top12CountTime" (click)="checkBox($event)">Top 12 Order</li>
+        <li class="c"><input type="radio"  name="radio"  value="top12JoinDate" (click)="checkBox($event)">Top 12 New Provider</li>
+        <li class="d"><input type="radio"  name="radio"  value="top6ViewPage" (click)="checkBox($event)">Top 6 View Page</li>
+        <li class="d"><input type="radio"  name="radio"  value="" (click)="checkBox($event)">All Provider</li>
+      </ul>
+    </div>
+  </div>
+  <div id="container_2">
+    <div class="welcome">
+      <h2>Welcome</h2>
+      <p><strong>In nec tellus congue libero ultricies molestie.</strong> Duis et diam. Suspendisse interdum velit eget pede. Vivamus tellus lorem, elementum vestibulum, tempor sagittis, venenatis eget, lacus. Sed eu massa. Duis facilisis dignissim urna. Proin eu velit. Donec blandit, orci id dapibus pretium, metus ante pulvinar nunc, ac vestibulum nisi metus nec nisl. Sed non libero ac dolor eleifend varius. Maecenas mollis, metus eu porta sodales, metus metus sodales augue, id iaculis risus velit eu lectus. Vestibulum in neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in orci ac pede cursus hendrerit. </p>
+      <p><strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</strong> Duis cursus tortor. Nunc consectetuer diam ac odio. Pellentesque vel mauris sit amet urna malesuada ornare. Curabitur venenatis est eget arcu. Donec vestibulum. Proin rutrum. Morbi commodo fringilla orci. Ut vel tortor. In ut velit. </p>
+    </div>
+    <div class="join">
+      <h2>Why should I join?</h2>
+      <ul>
+        <li><img src="assets/images/bullet.gif" alt="" />Half a millions members worldwide.</li>
+        <li><img src="assets/images/bullet.gif" alt="" />Signup is FREE &amp; Easy.</li>
+        <li><img src="assets/images/bullet.gif" alt="" />FREE to Search Profile, Photos etc.</li>
+      </ul>
+      <p><strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</strong> Duis cursus tortor. Nunc consectetuer diam ac odio. Pellentesque vel mauris sit amet urna malesuada ornare. Curabitur venenatis est eget arcu. Donec vestibulum. Proin rutrum. Morbi commodo fringilla orci. Ut vel tortor. Vestibulum in neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
+    </div>
+  </div>
+  <div id="container_3">
+    <div class="partner_search">
+      <div class="inner_border">
+        <div class="form_container">
+          <h3>Partner Search</h3>
+          <form action="#" method="get">
+            <fieldset>
+              <div class="search_row">
+                <div class="search_column_1">
+                  <label>I am a</label>
+                </div>
+                <div class="search_column_2">
+                  <select class="gender">
+                    <option>Male</option>
+                  </select>
+                  <label>Seeking a</label>
+                  <select class="gender">
+                    <option>Female</option>
+                  </select>
+                </div>
+              </div>
+              <div class="search_row">
+                <div class="search_column_1">
+                  <label>Looking for a</label>
+                </div>
+                <div class="search_column_2">
+                  <select class="date">
+                    <option>Date</option>
+                  </select>
+                </div>
+              </div>
+              <div class="search_row">
+                <div class="search_column_1">
+                  <label>I was born</label>
+                </div>
+                <div class="search_column_2">
+                  <select class="dob">
+                    <option>Month</option>
+                  </select>
+                  <select class="dob">
+                    <option>Date</option>
+                  </select>
+                  <select class="dob">
+                    <option>Year</option>
+                  </select>
+                </div>
+              </div>
+              <div class="search_row">
+                <div class="search_column_1">
+                  <label>By Profile ID</label>
+                </div>
+                <div class="search_column_2">
+                  <input type="text" name="" value="" />
+                  <label class="check">With Photo</label>
+                  <input type="checkbox" name="" value="" class="checkbox"/>
+                </div>
+              </div>
+              <div class="search_row last">
+                <div class="search_column_1">&nbsp;</div>
+                <div class="search_column_2">
+                  <input type="image" src="assets/images/search_btn.gif" class="search_btn"/>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="recently_added">
+      <h2>Recently added Profiles</h2>
+      <div class="profile_box" *ngFor="let provider of providers">
+        <div class="top_curve">
+          <div class="profile_content">
+            <div class="pro_photo"><a routerLink="/user/provider/{{provider.id}}"><img width="84" height="89" [src]="provider.avatar" alt="" /></a></div>
+            <div class="outer">
+              <div class="pro_detail_box">
+                <div class="pro_top_curve">
+                  <div class="pro_detail_content">
+                    <div class="row">
+                      <p class="left">Name :</p>
+                      <p class="right">{{provider.name}}</p>
+                    </div>
+                    <div class="row">
+                      <p class="left">Year of Birth :</p>
+                      <p class="right">{{provider.yearOfBirth}}</p>
+                    </div>
+                    <div class="row">
+                      <p class="left">Location :</p>
+                      <p class="right">{{provider.city}}</p>
+                    </div>
+                    <div class="row">
+                      <p class="left">View :</p>
+                      <p class="right">{{provider.viewCount}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="button" *ngIf="page > 0 && action ==''" (click)="nextPage(false)">previous</button>
+      <button class="button" *ngIf="page < totalPage-1 && action == ''" (click)="nextPage(true)">next</button>
+    </div>
+  </div>
+</div>

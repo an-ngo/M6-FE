@@ -1,0 +1,20 @@
+<div id="menu">
+  <ul>
+    <li class="first"><a class="current" routerLink="">home</a></li>
+    <p *ngIf="name == null; then falseBlock else trueBlock"></p>
+    <ng-template #falseBlock>
+      <li><a routerLink="/app/register">register</a></li>
+      <li><a routerLink="/app/login">login</a></li>
+    </ng-template>
+    <ng-template #trueBlock>
+      <li ><a href="about_us.html">about us</a></li>
+      <li ><a href="privacy.html">privacy</a></li>
+      <li ><a href="projects.html">projects</a></li>
+      <li ><a href="services.html">services</a></li>
+      <li><a routerLink="/user">{{name}}</a></li>
+      <a routerLink="/user"><img [src]="avatar" alt=""></a>
+      <li><a routerLink="/home" (click)="logout()">Logout</a></li>
+    </ng-template>
+  </ul>
+</div>
+
