@@ -16,31 +16,34 @@ export class OrderService {
       Authorization: 'Bearer ' + window.sessionStorage.getItem('token')
     })
   };
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   public getOrder(id: any):Observable<any>{
-    return this.httpClient.get(`${this.url}/user-book`)
+    return this.http.get(`${this.url}/user-book`)
   }
 
   public findById(id: any): Observable<any>{
-    return this.httpClient.get(`${this.url}/orders/${id}`);
+    return this.http.get(`${this.url}/orders/${id}`);
   }
 
   public confirmOrder(id: any): Observable<any>{
-    return this.httpClient.put(`${this.url}/orders/received/${id}`, this.httpOptions);
+    return this.http.put(`${this.url}/orders/received/${id}`, this.httpOptions);
   }
 
   public completeOrder(id: any): Observable<any>{
-    return this.httpClient.put(`${this.url}/orders/complete/${id}`, this.httpOptions);
+    return this.http.put(`${this.url}/orders/complete/${id}`, this.httpOptions);
   }
 
   public deleteOrder(id: any): Observable<any>{
-    return this.httpClient.delete(`${this.url}/orders/${id}`);
+    return this.http.delete(`${this.url}/orders/${id}`);
   }
 
   public findAll(page: any) : Observable<any>{
-    return  this.httpClient.get(`${this.url}/orders/all?page=${page}`);
+    return  this.http.get(`${this.url}/orders/all?page=${page}`);
 
+  }
+  public createOrder(formOrder: any): Observable<any>{
+    return this.http.post(`${this.url}/orders`, formOrder, this.httpOptions);
   }
 
 }
