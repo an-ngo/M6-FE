@@ -11,5 +11,7 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  public order(orderForm: any){
 
+  }
 }
