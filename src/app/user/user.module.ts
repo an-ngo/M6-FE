@@ -7,7 +7,6 @@ import { ProviderComponent } from './provider/provider.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RegisterComponent} from "./register/register.component";
 
-
 @NgModule({
   declarations: [
     UserComponent,
@@ -18,7 +17,7 @@ import {RegisterComponent} from "./register/register.component";
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class UserModule { }
