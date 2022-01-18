@@ -11,31 +11,64 @@
     <h3 *ngIf="message != ''">{{message}}</h3>
     <h6>Register Form:</h6>
     <br/>
-    <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+    <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" novalidate>
       <table width="80%">
+
         <tr>
-          <td width="145" align="left" valign="top" class="body" ><strong>name</strong></td>
-          <td width="280" align="left" valign="top"><input ngModel name="name" type="text" size="40"/></td>
+          <td width="145" align="left" valign="top" class="body"><strong>name</strong></td>
+          <td width="280" align="left" valign="top"><input ngModel name="name" type="text" size="40" #name="ngModel"
+                                                           minlength="3" maxlength="15" required></td>
         </tr>
         <tr>
-          <td align="left" valign="top" class="body" ><strong>username</strong></td>
-          <td align="left" valign="top"><input ngModel name="username" type="text" size="40"/></td>
+          <td></td>
+          <td><p *ngIf="!name.valid && (name.dirty || name.touched)" style="color: red">Name need to be more than 3
+            characters</p></td>
+        </tr>
+
+        <tr>
+          <td align="left" valign="top" class="body"><strong>username</strong></td>
+          <td width="280" align="left" valign="top"><input ngModel name="username" type="text" size="40" #name="ngModel"
+                                                           minlength="3" maxlength="15" required></td>
         </tr>
         <tr>
-          <td align="left" valign="top" class="body" ><strong>email</strong></td>
-          <td align="left" valign="top"><input ngModel name="email" type="text" size="40"/></td>
+          <td></td>
+          <td><p *ngIf="!name.valid && (name.dirty || name.touched)" style="color: red">Username need to be more than 3
+            characters</p></td>
+        </tr>
+
+        <tr>
+          <td align="left" valign="top" class="body"><strong>email</strong></td>
+          <td align="left" valign="top"><input type="email" ngModel
+                                               name="email" size="40" email="true" #email="ngModel" minlength="6" maxlength="15" required></td>
         </tr>
         <tr>
-          <td align="left" valign="top" class="body" ><strong>phone</strong></td>
-          <td align="left" valign="top"><input ngModel name="phone" type="text" size="40"/></td>
+          <td></td>
+          <td><p *ngIf="!email.valid && (email.dirty || email.touched)" style="color: red">Email Invalidate!
+          </p></td>
         </tr>
         <tr>
-          <td align="left" valign="top" class="body" ><strong>password</strong></td>
-          <td align="left" valign="top"><input ngModel name="password" type="password" size="40"/></td>
+          <td align="left" valign="top" class="body"><strong>phone</strong></td>
+          <td align="left" valign="top"><input ngModel name="phone" type="text" size="40" #phone="ngModel"
+                                               minlength="10"/></td>
         </tr>
         <tr>
-          <td align="left" valign="top" class="body" ><strong>avatar</strong></td>
-          <td align="left" valign="top"><input type="file" size="40" (change)="selectFile($event)" /></td>
+          <td></td>
+          <td><p *ngIf="!phone.valid && (phone.dirty || phone.touched)" style="color: red">Phone need to be more than 10
+            characters and is numbers
+          </p></td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" class="body"><strong>password</strong></td>
+          <td align="left" valign="top"><input ngModel name="password" type="password" size="40" #password="ngModel" minlength="6" maxlength="10"/></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><p *ngIf="!password.valid && (password.dirty || password.touched)" style="color: red">Password need to br more than 6 characters!!
+          </p></td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" class="body"><strong>avatar</strong></td>
+          <td align="left" valign="top"><input type="file" size="40" (change)="selectFile($event)"/></td>
         </tr>
         <tr>
           <td></td>
@@ -43,11 +76,61 @@
         </tr>
         <tr>
           <td></td>
-          <td><input type="submit" name="submit" class="button" value="Login"/></td>
+          <td><input type="submit" [disabled]="!registerForm.valid" name="submit" class="button" value="Login"/></td>
         </tr>
       </table>
     </form>
   </div>
+
+  <!--  <div class="container">-->
+  <!--    <div class="row">-->
+  <!--      <div class="col-12" style="margin-top: 20px">-->
+  <!--        <mat-card style="margin: 50px 0">-->
+  <!--          <form class="form-register" #f="ngForm" (ngSubmit)="f.form.valid && register(f)" novalidate>-->
+  <!--            <mat-error class="alert alert-primary">{{status}}</mat-error>-->
+  <!--            &lt;!&ndash;NAME &ndash;&gt;-->
+  <!--            &lt;!&ndash;                    <mat-form-field style="width: 350px" appearance="outline">&ndash;&gt;-->
+  <!--            &lt;!&ndash;                        <mat-label>Name</mat-label>&ndash;&gt;-->
+  <!--            &lt;!&ndash;                        <input matInput placeholder="Name .." name="name" [(ngModel)]="form.name" #name="ngModel" minlength="3" maxlength="50" required>&ndash;&gt;-->
+  <!--            &lt;!&ndash;                        <mat-icon color="accent" matSuffix>account_circle</mat-icon>&ndash;&gt;-->
+  <!--            &lt;!&ndash;                        <mat-error *ngIf="name.hasError('required')">The name is required!</mat-error>&ndash;&gt;-->
+  <!--            &lt;!&ndash;                        <mat-error *ngIf="name.hasError('minlength')">The name must more than 3 character!</mat-error>&ndash;&gt;-->
+  <!--            &lt;!&ndash;                    </mat-form-field><br>&ndash;&gt;-->
+  <!--            &lt;!&ndash;USERNAME &ndash;&gt;-->
+  <!--            <mat-form-field style="width: 350px" appearance="outline">-->
+  <!--              <mat-label>Username: </mat-label>-->
+  <!--              <input matInput placeholder="Username ..." name="username" [(ngModel)]="form.username" #username="ngModel" minlength="3" maxlength="50" required>-->
+  <!--              <mat-icon color="accent" matSuffix>account_circle</mat-icon>-->
+  <!--              <mat-error *ngIf="username.hasError('required')">The username is required!</mat-error>-->
+  <!--              <mat-error *ngIf="username.hasError('minlength')">The username must more than 3 character!</mat-error>-->
+  <!--            </mat-form-field><br>-->
+  <!--            &lt;!&ndash;EMAIL -&ndash;&gt;-->
+  <!--            <mat-form-field style="width: 350px" appearance="outline">-->
+  <!--              <mat-label>Email: </mat-label>-->
+  <!--              <input matInput placeholder="Email ..." name="email" [(ngModel)]="form.email" [formControl]="emailFormControl" required>-->
+  <!--              <mat-icon color="accent" matSuffix>email</mat-icon>-->
+  <!--              <mat-error *ngIf="emailFormControl.hasError('required')">The username is required!</mat-error>-->
+  <!--              <mat-error *ngIf="emailFormControl.hasError('email')">The email invalid! Please try -> Ex: dinhbede@gmail.com</mat-error>-->
+  <!--            </mat-form-field><br>-->
+  <!--            <mat-form-field style="width: 350px" appearance="outline">-->
+  <!--              <mat-label>Enter your password</mat-label>-->
+  <!--              <input name="password" [(ngModel)]="form.password" minlength="6" maxlength="10" #password="ngModel" matInput [type]="hide ? 'password' : 'text'" required>-->
+  <!--              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">-->
+  <!--                <mat-icon color="accent">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+  <!--              </button>-->
+  <!--              <mat-error *ngIf="password.hasError('required')">The username is required!</mat-error>-->
+  <!--              <mat-error *ngIf="password.hasError('minlength')">The username must more than 6 character!</mat-error>-->
+  <!--            </mat-form-field><br>-->
+  <!--            <button mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-primary">Register-->
+  <!--              <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon>-->
+  <!--            </button>-->
+  <!--          </form>-->
+
+  <!--        </mat-card>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+
   <div><br/>
     <h6>Contact Information: </h6>
     <img src="assets/images/photo-contact.jpg" alt="" width="152" height="100" class="project-img"/><br/>
