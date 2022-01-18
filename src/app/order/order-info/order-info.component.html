@@ -1,75 +1,83 @@
-<h1>Chi tiết Order của khách hàng {{order.user.name}}</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 30px;text-align: center">
+      <card style="margin: 50px">
+        <h1>Chi tiết Order của khách hàng {{order.user.name}}</h1>
 
-<table>
-  <h2>Thông tin khách hàng</h2>
-  <tr>
-    <th>Tên</th>
-    <td>{{order.user.name}}</td>
-  </tr>
-  <tr>
-    <th>Năm sinh</th>
-    <td>{{order.user.yearOfBirth}}</td>
-  </tr>
-  <tr>
-    <th>Giới tính</th>
-    <td>{{order.user.gender}}</td>
-  </tr>
-  <tr>
-    <th>Mặt tiền</th>
-    <th><img width="100" height="100" src="{{order.user.avatar}}" alt=""></th>
-  </tr>
-</table>
+        <table>
+          <h2>Thông tin khách hàng</h2>
+          <tr>
+            <th>Tên</th>
+            <td>{{order.user.name}}</td>
+          </tr>
+          <tr>
+            <th>Năm sinh</th>
+            <td>{{order.user.yearOfBirth}}</td>
+          </tr>
+          <tr>
+            <th>Giới tính</th>
+            <td>{{order.user.gender}}</td>
+          </tr>
+          <tr>
+            <th>Mặt tiền</th>
+            <th><img width="100" height="100" src="{{order.user.avatar}}" alt=""></th>
+          </tr>
+        </table>
 
-<table>
-  <h2>Thông tin order</h2>
-  <tr>
-    <th>Ngày book</th>
-    <td>{{order.date}}</td>
-  </tr>
-  <tr>
-    <th>Số giờ book</th>
-    <td>{{order.duration}}</td>
-  </tr>
+        <table>
+          <h2>Thông tin order</h2>
+          <tr>
+            <th>Ngày book</th>
+            <td>{{order.date}}</td>
+          </tr>
+          <tr>
+            <th>Số giờ book</th>
+            <td>{{order.duration}}</td>
+          </tr>
 
-  <tr>
-    <th>Trạng thái order</th>
-    <th>{{order.statusOrder}}</th>
-  </tr>
-  <tr>
-    <th>Baby</th>
-    <td>{{order.userProvider.name}}</td>
-  </tr>
-  <tr>
-    <th>Nơi hẹn</th>
-    <td>{{order.place}}</td>
-  </tr>
-  <tr *ngIf="order.startTime != null">
-    <th>Đã xác nhận lúc</th>
-    <td>{{order.startTime}}</td>
-  </tr>
-  <tr>
-    <th>Các dịch vụ</th>
-    <td *ngFor="let service of order.serviceByProviderList">{{service.name}}</td>
-  </tr>
-  <tr>
-    <th>Tổng số tiền</th>
-    <td>{{order.money}}</td>
-  </tr>
-  <tr>
-    <th>Comment hệ thống</th>
-    <td>{{order.comment}}</td>
-  </tr>
-  <tr *ngIf="order.userProvider.username == username && order.statusOrder == 'PENDING'">
-    <td>
-      <button (click)="confirm(true)">Xác Nhận</button>
-    </td>
-    <td>
-      <button (click)="confirm(false)">Hủy</button>
-    </td>
-  </tr>
-  <tr *ngIf="order.userProvider.username == username && order.statusOrder == 'RECEIVED'">
-    <td>
-      <button (click)="complete()">Order đã hoàn thành</button>
-    </td>
-  </tr>
-</table>
+          <tr>
+            <th>Trạng thái order</th>
+            <th>{{order.statusOrder}}</th>
+          </tr>
+          <tr>
+            <th>Baby</th>
+            <td>{{order.userProvider.name}}</td>
+          </tr>
+          <tr>
+            <th>Nơi hẹn</th>
+            <td>{{order.place}}</td>
+          </tr>
+          <tr *ngIf="order.startTime != null">
+            <th>Đã xác nhận lúc</th>
+            <td>{{order.startTime}}</td>
+          </tr>
+          <tr>
+            <th>Các dịch vụ</th>
+            <td *ngFor="let service of order.serviceByProviderList">{{service.name}}</td>
+          </tr>
+          <tr>
+            <th>Tổng số tiền</th>
+            <td>{{order.money}}</td>
+          </tr>
+          <tr>
+            <th>Comment hệ thống</th>
+            <td>{{order.comment}}</td>
+          </tr>
+          <tr *ngIf="order.userProvider.username == username && order.statusOrder == 'PENDING'">
+            <td>
+              <button (click)="confirm(true)">Xác Nhận</button>
+            </td>
+            <td>
+              <button (click)="confirm(false)">Hủy</button>
+            </td>
+          </tr>
+          <tr *ngIf="order.userProvider.username == username && order.statusOrder == 'RECEIVED'">
+            <td>
+              <button (click)="complete()">Order đã hoàn thành</button>
+            </td>
+          </tr>
+        </table>
+      </card>
+    </div>
+  </div>
+</div>
