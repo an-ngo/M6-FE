@@ -7,7 +7,7 @@
         <li class="b"><input type="radio"  name="radio"  value="top12CountTime" (click)="checkBox($event)">Top 12 Order</li>
         <li class="c"><input type="radio"  name="radio"  value="top12JoinDate" (click)="checkBox($event)">Top 12 New Provider</li>
         <li class="d"><input type="radio"  name="radio"  value="top6ViewPage" (click)="checkBox($event)">Top 6 View Page</li>
-        <li class="d"><input type="radio"  name="radio"  value="" (click)="checkBox($event)">All Provider</li>
+        <li class="e"><input type="radio"  name="radio"  value="" (click)="checkBox($event)">All Provider</li>
       </ul>
     </div>
   </div>
@@ -96,7 +96,7 @@
       </div>
     </div>
     <div class="recently_added">
-      <h2>Recently added Profiles</h2>
+      <h2 id="title_top">{{title_top}}</h2>
       <div class="profile_box" *ngFor="let provider of providers">
         <div class="top_curve">
           <div class="profile_content">
@@ -128,8 +128,8 @@
           </div>
         </div>
       </div>
-      <button class="button" *ngIf="page > 0 && action ==''" (click)="nextPage(false)">previous</button>
-      <button class="button" *ngIf="page < totalPage-1 && action == ''" (click)="nextPage(true)">next</button>
+      <button class="button button_n" *ngIf="page > 0 && action ==''" (click)="nextPage(false)">previous</button>
+      <button class="button button_n" *ngIf="page < totalPage-1 && action == ''" (click)="nextPage(true)">next</button>
     </div>
   </div>
 </div>

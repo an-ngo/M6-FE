@@ -7,7 +7,7 @@ import {HomeService} from "../../service/home/home.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  title_top: string = 'Recently added Profile';
   providers: any[] = [];
   totalPage: any;
   page = 0;
@@ -27,21 +27,26 @@ export class HomeComponent implements OnInit {
     this.homeService.getTop6ProviderHot().subscribe((data) => {
       this.providers = data;
     });
+    this.title_top = 'Top Provider Hot'
+
   }
   public getTop12CountTime(): void {
     this.homeService.getTop12CountTime().subscribe((data) => {
       this.providers = data;
     });
+    this.title_top = 'Top Provider Count Time'
   }
   public getTop12JoinDate(): void {
     this.homeService.getTop12JoinDate().subscribe((data) => {
       this.providers = data;
     });
+    this.title_top = 'Recently Added Provider'
   }
   public getTop6ViewPage(): void {
     this.homeService.getTop6ViewPage().subscribe((data) => {
       this.providers = data;
     });
+    this.title_top = 'Most View Provider'
   }
   public nextPage(checkPage: any){
     if (checkPage){
