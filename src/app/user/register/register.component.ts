@@ -16,6 +16,9 @@ export class RegisterComponent implements OnInit {
   hobbiesSelect: any[] = [];
   urlImages: string[] = [];
   ref: any;
+  lat = 0;
+  lon = 0;
+
 
   constructor(private hobbyService: HobbyService, private storage: AngularFireStorage, private userService: UserService, private router: Router) {
     this.showInfos();
@@ -82,10 +85,11 @@ export class RegisterComponent implements OnInit {
   }
 
   public successHandler(position: any)  {
-    position.coords.latitude;
-    // console.log(this.lat);
-    position.coords.longitude;
-    // console.log(this.lon);
+    console.log(position);
+    this.lat = position.coords.latitude;
+    console.log(this.lat);
+    this.lon = position.coords.longitude;
+    console.log(this.lon);
   }
 
   public errorHandler(positionError: any)  {
@@ -99,6 +103,11 @@ export class RegisterComponent implements OnInit {
   }
 
   public showInfos()  {
-    navigator.geolocation.getCurrentPosition(this.successHandler, this.errorHandler);
+    let options = {
+      enableHighAccuracy: true,
+      timeout: 10000,
+      maximumAge: 0
+    };
+    navigator.geolocation.getCurrentPosition(this.successHandler, this.errorHandler, options);
   }
 }

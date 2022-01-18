@@ -1,15 +1,16 @@
-<div id="body_container">
-  <div id="container_1"><span class="logo"><a href="#"><img src="assets/images/logo.gif" alt=""/></a></span>
+<div id="body_1_container_1">
+  <div id="container_1_1"><span class="logo"><a href="#"><img src="assets/images/logo.gif" alt=""/></a></span>
     <div class="dating_tips">
       <img src="assets/images/fake-love.jpg" alt="">
     </div>
   </div>
-  <div id="right_container">
+  <div id="right_container_1">
     <div class="partner_box">
       <img src="assets/images/true-love-la-gi-1.jpg" alt="">
     </div>
+    <br>
     <h3 *ngIf="message != ''">{{message}}</h3>
-    <h6>Register Form:</h6>
+    <h6 class="clear mt-5">Register</h6>
     <br/>
     <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" novalidate>
       <table width="80%">
@@ -81,74 +82,27 @@
       </table>
     </form>
   </div>
-
-  <!--  <div class="container">-->
-  <!--    <div class="row">-->
-  <!--      <div class="col-12" style="margin-top: 20px">-->
-  <!--        <mat-card style="margin: 50px 0">-->
-  <!--          <form class="form-register" #f="ngForm" (ngSubmit)="f.form.valid && register(f)" novalidate>-->
-  <!--            <mat-error class="alert alert-primary">{{status}}</mat-error>-->
-  <!--            &lt;!&ndash;NAME &ndash;&gt;-->
-  <!--            &lt;!&ndash;                    <mat-form-field style="width: 350px" appearance="outline">&ndash;&gt;-->
-  <!--            &lt;!&ndash;                        <mat-label>Name</mat-label>&ndash;&gt;-->
-  <!--            &lt;!&ndash;                        <input matInput placeholder="Name .." name="name" [(ngModel)]="form.name" #name="ngModel" minlength="3" maxlength="50" required>&ndash;&gt;-->
-  <!--            &lt;!&ndash;                        <mat-icon color="accent" matSuffix>account_circle</mat-icon>&ndash;&gt;-->
-  <!--            &lt;!&ndash;                        <mat-error *ngIf="name.hasError('required')">The name is required!</mat-error>&ndash;&gt;-->
-  <!--            &lt;!&ndash;                        <mat-error *ngIf="name.hasError('minlength')">The name must more than 3 character!</mat-error>&ndash;&gt;-->
-  <!--            &lt;!&ndash;                    </mat-form-field><br>&ndash;&gt;-->
-  <!--            &lt;!&ndash;USERNAME &ndash;&gt;-->
-  <!--            <mat-form-field style="width: 350px" appearance="outline">-->
-  <!--              <mat-label>Username: </mat-label>-->
-  <!--              <input matInput placeholder="Username ..." name="username" [(ngModel)]="form.username" #username="ngModel" minlength="3" maxlength="50" required>-->
-  <!--              <mat-icon color="accent" matSuffix>account_circle</mat-icon>-->
-  <!--              <mat-error *ngIf="username.hasError('required')">The username is required!</mat-error>-->
-  <!--              <mat-error *ngIf="username.hasError('minlength')">The username must more than 3 character!</mat-error>-->
-  <!--            </mat-form-field><br>-->
-  <!--            &lt;!&ndash;EMAIL -&ndash;&gt;-->
-  <!--            <mat-form-field style="width: 350px" appearance="outline">-->
-  <!--              <mat-label>Email: </mat-label>-->
-  <!--              <input matInput placeholder="Email ..." name="email" [(ngModel)]="form.email" [formControl]="emailFormControl" required>-->
-  <!--              <mat-icon color="accent" matSuffix>email</mat-icon>-->
-  <!--              <mat-error *ngIf="emailFormControl.hasError('required')">The username is required!</mat-error>-->
-  <!--              <mat-error *ngIf="emailFormControl.hasError('email')">The email invalid! Please try -> Ex: dinhbede@gmail.com</mat-error>-->
-  <!--            </mat-form-field><br>-->
-  <!--            <mat-form-field style="width: 350px" appearance="outline">-->
-  <!--              <mat-label>Enter your password</mat-label>-->
-  <!--              <input name="password" [(ngModel)]="form.password" minlength="6" maxlength="10" #password="ngModel" matInput [type]="hide ? 'password' : 'text'" required>-->
-  <!--              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">-->
-  <!--                <mat-icon color="accent">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
-  <!--              </button>-->
-  <!--              <mat-error *ngIf="password.hasError('required')">The username is required!</mat-error>-->
-  <!--              <mat-error *ngIf="password.hasError('minlength')">The username must more than 6 character!</mat-error>-->
-  <!--            </mat-form-field><br>-->
-  <!--            <button mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-primary">Register-->
-  <!--              <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon>-->
-  <!--            </button>-->
-  <!--          </form>-->
-
-  <!--        </mat-card>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
-
   <div><br/>
-    <h6>Contact Information: </h6>
-    <img src="assets/images/photo-contact.jpg" alt="" width="152" height="100" class="project-img"/><br/>
-    <br/>
-    <br/>
-    100 Lorem Ipsum Dolor Sit<br/>
-    88-99 Sit Amet, Lorem<br/>
-    USA<br/>
-    <br/>
-    <p><span><img src="assets/images/ico-phone.png" alt="" width="20" height="16" hspace="2"/> Phone:</span> (888) 123
-      456 789<br/>
-      <span><img src="assets/images/ico-fax.png" alt="" width="20" height="16" hspace="2"/> Fax:</span> (888) 987 654
-      321<br/>
-      <span><img src="assets/images/ico-website.png" alt="" width="20" height="16" hspace="2"/> Website:</span> <a
-        href="#">www.mycompany.com</a><br/>
-      <span><img src="assets/images/ico-email.png" alt="" width="20" height="16" hspace="2"/> Email:</span> <a href="#">info@mycompany.com</a><br/>
-      <span><img src="assets/images/ico-twitter.png" alt="" width="20" height="16" hspace="3"/> <a href="#">Follow</a> on Twitter</span><br/>
-    </p>
+  <div class="clear row"><br/>
+    <div class="col-3 offset-2 mt-4">
+      <h6>Contact Information: </h6>
+      100 Lorem Ipsum Dolor Sit<br/>
+      88-99 Sit Amet, Lorem<br/>
+      USA<br/>
+      <br/>
+      <p><span><img src="assets/images/ico-phone.png" alt="" width="20" height="16" hspace="2"/> Phone:</span> (888) 123
+        456 789<br/>
+        <span><img src="assets/images/ico-fax.png" alt="" width="20" height="16" hspace="2"/> Fax:</span> (888) 987 654
+        321<br/>
+        <span><img src="assets/images/ico-website.png" alt="" width="20" height="16" hspace="2"/> Website:</span> <a
+          href="#">www.mycompany.com</a><br/>
+        <span><img src="assets/images/ico-email.png" alt="" width="20" height="16" hspace="2"/> Email:</span> <a href="#">info@mycompany.com</a><br/>
+        <span><img src="assets/images/ico-twitter.png" alt="" width="20" height="16" hspace="3"/> <a href="#">Follow</a> on Twitter</span><br/>
+      </p>
+    </div>
+    <div class="col-2 offset-4">
+      <img src="assets/images/photo-contact.jpg" alt="" width="152" height="100" class="project-img"/>
+    </div>
   </div>
 </div>
-<div class="clear"></div>
+</div>

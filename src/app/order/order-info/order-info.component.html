@@ -1,10 +1,11 @@
-<div class="container">
+<div class="container order_info__">
   <div class="row">
-    <div class="col-12" style="margin-top: 30px;text-align: center">
-      <div style="margin: 50px">
-        <h1>Chi tiết Order của khách hàng {{order.user.name}}</h1>
 
-        <table>
+    <div class="col-12" style="margin-top: 30px; align-items: center">
+      <div style="margin: 50px;" class="">
+        <h1 class="text-center">Chi tiết Order của khách hàng {{order.user.name}}</h1>
+
+        <table  style="margin-left:  130px">
           <h2>Thông tin khách hàng</h2>
           <tr>
             <th>Tên</th>
@@ -19,12 +20,12 @@
             <td>{{order.user.gender}}</td>
           </tr>
           <tr>
-            <th>Mặt tiền</th>
+            <th>Avatar</th>
             <th><img width="100" height="100" src="{{order.user.avatar}}" alt=""></th>
           </tr>
         </table>
 
-        <table>
+        <table style="margin-left:  130px">
           <h2>Thông tin order</h2>
           <tr>
             <th>Ngày book</th>
@@ -40,7 +41,7 @@
             <th>{{order.statusOrder}}</th>
           </tr>
           <tr>
-            <th>Baby</th>
+            <th>Name</th>
             <td>{{order.userProvider.name}}</td>
           </tr>
           <tr>

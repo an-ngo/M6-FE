@@ -23,4 +23,7 @@ export class UserService {
   public register(registerForm: any): Observable<any>{
     return this.http.post(`${this.url}/signup`, registerForm);
   }
+  public findUserById(id: any): Observable<any>{
+    return this.http.get(`${this.url}/users/${id}`);
+  }
 }
