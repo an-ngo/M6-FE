@@ -1,1 +1,247 @@
-<h1>Register Provider</h1>
+<div id="body_container">
+  <div id="container_1"><span class="logo"><a href="#"><img src="assets/images/logo.gif" alt=""/></a></span>
+    <div class="dating_tips">
+      <img src="assets/images/fake-love.jpg" alt="">
+    </div>
+  </div>
+  <div id="right_container">
+    <div class="partner_box">
+      <img src="assets/images/true-love-la-gi-1.jpg" alt="">
+    </div>
+    <h6>Login Form:</h6>
+    <br/>
+    <form #createProviderForm="ngForm">
+      <table width="80%">
+        <tr>
+          <td width="145" align="left" valign="top" class="body"><strong>year of birth</strong></td>
+          <td width="280" align="left" valign="top">
+            <div class="search_column_2">
+              <select class="date" ngModel name="yearOfBirth">
+                <option value="">-Năm sinh-</option>
+                <option value="2004">2004</option>
+                <option value="2003">2003</option>
+                <option value="2002">2002</option>
+                <option value="2001">2001</option>
+                <option value="2000">2000</option>
+                <option value="1999">1999</option>
+                <option value="1998">1998</option>
+                <option value="1997">1997</option>
+                <option value="1996">1996</option>
+                <option
+                  value="1995"
+                  selected="selected"
+                >
+                  1995
+                </option>
+                <option value="1994">1994</option>
+                <option value="1993">1993</option>
+                <option value="1992">1992</option>
+                <option value="1991">1991</option>
+                <option value="1990">1990</option>
+                <option value="1989">1989</option>
+                <option value="1988">1988</option>
+                <option value="1987">1987</option>
+                <option value="1986">1986</option>
+                <option value="1985">1985</option>
+                <option value="1984">1984</option>
+                <option value="1983">1983</option>
+                <option value="1982">1982</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" class="body"><strong>city</strong></td>
+          <td align="left" valign="top">
+            <div class="search_column_2">
+              <select class="date" ngModel name="city">
+                <option value="">- Tất cả -</option>
+                <option value="Ha Noi">Hà Nội</option>
+                <option value="HCM" selected="selected">
+                  Tp Hồ Chí Minh
+                </option>
+                <option value="Da Nang">Đà Nẵng</option>
+                <option value="Hue">Huế</option>
+                <option value="An Giang">An Giang</option>
+                <option value="Ba Ria">Bà Rịa</option>
+                <option value="Ba Ria Vung Tau">Bà Rịa - Vũng Tàu</option>
+                <option value="Bac Giang">Bắc Giang</option>
+                <option value="Bac Kan">Bắc Kạn</option>
+                <option value="Bac Lieu">Bạc Liêu</option>
+                <option value="Bac Ninh">Bắc Ninh</option>
+                <option value="Ben Tre">Bến Tre</option>
+                <option value="Bien Hoa">Biên Hòa</option>
+                <option value="Binh Duong">Bình Dương</option>
+                <option value="Binh Phuoc">Bình Phước</option>
+                <option value="Binh Thuan">Bình Thuận</option>
+                <option value="Binh Dinh">Bình Định</option>
+                <option value="Buon Ma Thuat">Buôn Ma Thuột</option>
+                <option value="Ca Mau">Cà Mau</option>
+                <option value="Can Tho">Cần Thơ</option>
+                <option value="Cao Bang">Cao Bằng</option>
+                <option value="Cao Lanh">Cao Lãnh</option>
+                <option value="Gia Lai">Gia Lai</option>
+                <option value="Gia Nghia">Gia Nghĩa</option>
+                <option value="Ha Giang">Hà Giang</option>
+                <option value="Ha Long">Hạ Long</option>
+                <option value="Ha Nam">Hà Nam</option>
+                <option value="Ha Tinh">Hà Tĩnh</option>
+                <option value="Hai Duong">Hải Dương</option>
+                <option value="Hai Phong">Hải Phòng</option>
+                <option value="Hau Giang">Hậu Giang</option>
+                <option value="Hoa Binh">Hòa Bình</option>
+                <option value="Hung Yen">Hưng Yên</option>
+                <option value="Khanh Hoa">Khánh Hòa</option>
+                <option value="Kien Giang">Kiên Giang</option>
+                <option value="Kon Tum">Kon Tum</option>
+                <option value="Lai Chau">Lai Châu</option>
+                <option value="Lam Dong">Lâm Đồng</option>
+                <option value="Lang Son">Lạng Sơn</option>
+                <option value="Lao Cai">Lào Cai</option>
+                <option value="Long An">Long An</option>
+                <option value="Long Xuyen">Long Xuyên</option>
+                <option value="My Tho">Mỹ Tho</option>
+                <option value="Nam Dinh">Nam Định</option>
+                <option value="Nghe An">Nghệ An</option>
+                <option value="Nha Trang">Nha Trang</option>
+                <option value="Ninh Binh">Ninh Bình</option>
+                <option value="Ninh Thuan">Ninh Thuận</option>
+                <option value="Phan Rang">
+                  Phan Rang - Tháp Chàm
+                </option>
+                <option value="Phan Thiet">Phan Thiết</option>
+                <option value="Phu Ly">Phủ Lý</option>
+                <option value="Phu Tho">Phú Thọ</option>
+                <option value="Phu Yen">Phú Yên</option>
+                <option value="Pleiku">Pleiku</option>
+                <option value="Quang Binh">Quảng Bình</option>
+                <option value="Quang Nam">Quảng Nam</option>
+                <option value="Quang Ngai">Quảng Ngãi</option>
+                <option value="Quang Ninh">Quảng Ninh</option>
+                <option value="Quang Tri">Quảng Trị</option>
+                <option value="Quy Nhon">Quy Nhơn</option>
+                <option value="Rach Gia">Rạch Giá</option>
+                <option value="Soc trang">Sóc Trăng</option>
+                <option value="Son La">Sơn La</option>
+                <option value="Tam Ky">Tam Kỳ</option>
+                <option value="Tan An">Tân An</option>
+                <option value="Tay Ninh">Tây Ninh</option>
+                <option value="Thai Binh">Thái Bình</option>
+                <option value="Thai Nguyen">Thái Nguyên</option>
+                <option value="Thanh Hoa">Thanh Hóa</option>
+                <option value="Thu Dau">Thủ Dầu Một</option>
+                <option value="Hue">Thừa Thiên Huế</option>
+                <option value="Tien Giang">Tiền Giang</option>
+                <option value="Tra Vinh">Trà Vinh</option>
+                <option value="Tuy hoa">Tuy Hòa</option>
+                <option value="Tuyen Quang">Tuyên Quang</option>
+                <option value="Vi Thanh">Vị Thanh</option>
+                <option value="Viet Tri">Việt Trì</option>
+                <option value="Vinh">Vinh</option>
+                <option value="Vinh Long">Vĩnh Long</option>
+                <option value="Vinh Phuc">Vĩnh Phúc</option>
+                <option value="Vinh Yen">Vĩnh Yên</option>
+                <option value="Yen Bai">Yên Bái</option>
+                <option value="Da Lat">Đà Lạt</option>
+                <option value="Dak Lak">Đắk Lắk</option>
+                <option value="Dak Nong">Đắk Nông</option>
+                <option value="Dien Bien">Điện Biên</option>
+                <option value="Dien bien phu">Điện Biên Phủ</option>
+                <option value="Ha Dong">Hà Đông</option>
+                <option value="Dong Hoi">Đồng Hới</option>
+                <option value="Dong Nai">Đồng Nai</option>
+                <option value="Dong Thap">Đồng Tháp</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" class="body"><strong>country</strong></td>
+          <td align="left" valign="top">
+            <div class="search_column_2">
+              <select class="date" ngModel name="country">
+                <option value="">- Tất cả -</option>
+                <option value="American Tho">American Tho</option>
+                <option value="Viet Nam" selected="selected">
+                  Viet Nam
+                </option>
+              </select>
+            </div>
+          </td>
+        </tr>
+        <tr *ngFor="let service of services">
+          <td></td>
+          <td>{{service}}</td>
+        </tr>
+        <tr>
+          <td width="145" align="left" valign="top" class="body" id="Company"><strong>services</strong></td>
+          <td width="280" align="left" valign="top"><input type="text" size="40" #service></td>
+          <td>
+            <button (click)="addService(service.value)">add</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td width="145" align="left" valign="top" class="body"><strong>height</strong></td>
+          <td width="280" align="left" valign="top"><input type="text" size="40" ngModel name="height"></td>
+        </tr>
+        <tr>
+          <td width="145" align="left" valign="top" class="body"><strong>weight</strong></td>
+          <td width="280" align="left" valign="top"><input type="text" size="40" ngModel name="weight"></td>
+        </tr>
+        <tr>
+          <td width="145" align="left" valign="top" class="body"><strong>hobby</strong></td>
+          <td width="280" align="left" valign="top">
+            <div *ngFor="let hobby of hobbies">
+              <input type="checkbox" (click)="selectHobby(hobby.id)"> {{hobby.name}}
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td width="145" align="left" valign="top" class="body"><strong>description</strong></td>
+          <td width="280" align="left" valign="top"><input type="text" size="40" ngModel name="description"></td>
+        </tr>
+        <tr>
+          <td width="145" align="left" valign="top" class="body"><strong>conditions</strong></td>
+          <td width="280" align="left" valign="top"><input type="text" size="40" ngModel name="conditions"></td>
+        </tr>
+        <tr>
+          <td width="145" align="left" valign="top" class="body"><strong>link_facebook</strong></td>
+          <td width="280" align="left" valign="top"><input type="text" size="40" ngModel name="link_facebook"></td>
+        </tr>
+        <tr>
+          <td width="145" align="left" valign="top" class="body"><strong>images</strong></td>
+          <td width="280" align="left" valign="top"><input type="file" size="40" multiple (change)="getImages($event)"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td *ngIf="urlImages.length > 0"><img  *ngFor="let image of urlImages" src="{{image}}" width="50px" height="50px" alt=""></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input (click)="createProvider(createProviderForm)" type="submit" name="submit" class="button" value="Save"/></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div><br/>
+    <h6>Contact Information: </h6>
+    <img src="assets/images/photo-contact.jpg" alt="" width="152" height="100" class="project-img"/><br/>
+    <br/>
+    <br/>
+    100 Lorem Ipsum Dolor Sit<br/>
+    88-99 Sit Amet, Lorem<br/>
+    USA<br/>
+    <br/>
+    <p><span><img src="assets/images/ico-phone.png" alt="" width="20" height="16" hspace="2"/> Phone:</span> (888) 123
+      456 789<br/>
+      <span><img src="assets/images/ico-fax.png" alt="" width="20" height="16" hspace="2"/> Fax:</span> (888) 987 654
+      321<br/>
+      <span><img src="assets/images/ico-website.png" alt="" width="20" height="16" hspace="2"/> Website:</span> <a
+        href="#">www.mycompany.com</a><br/>
+      <span><img src="assets/images/ico-email.png" alt="" width="20" height="16" hspace="2"/> Email:</span> <a href="#">info@mycompany.com</a><br/>
+      <span><img src="assets/images/ico-twitter.png" alt="" width="20" height="16" hspace="3"/> <a href="#">Follow</a> on Twitter</span><br/>
+    </p>
+  </div>
+</div>
+<div class="clear"></div>

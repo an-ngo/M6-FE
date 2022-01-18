@@ -72,6 +72,7 @@ img{border:none}
 .form_container select.dob{float:left; width:55px; font-size:10px; margin:0 3px 0 0}
 
 .recently_added{float:left; width:290px; padding-top:25px}
+.recently_added div{font:9px "Tahoma", Arial, Helvetica, sans-serif; color:#010000;}
 .recently_added h2{float:left; width:275px; font:bold 15px/17px "ZurichBT", Arial, Helvetica, sans-serif; color:#352e33; padding:0 0 20px 10px ; margin:0; background:url(../images/recent_border.gif) no-repeat 200px 7px}
 .recently_added .profile_box{float:left; width:280px; background:url(../images/middle_border.gif) repeat-y 0 0; margin-bottom:17px}
 .recently_added .profile_box.last{margin:0}

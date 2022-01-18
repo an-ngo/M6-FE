@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 export class NavbarComponent implements OnInit {
   avatar = window.sessionStorage.getItem('avatar');
   name = window.sessionStorage.getItem('name');
+  role = window.sessionStorage.getItem('role');
   constructor(private router: Router) { }
 
   ngOnInit(): void {

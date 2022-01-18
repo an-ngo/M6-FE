@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import {UserComponent} from "./user/user.component";
 import { ProviderComponent } from './provider/provider.component';
-import { RegisterComponent } from './register/register.component';
-
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RegisterComponent} from "./register/register.component";
 
 @NgModule({
   declarations: [
@@ -15,7 +15,9 @@ import { RegisterComponent } from './register/register.component';
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
   ]
 })
 export class UserModule { }
