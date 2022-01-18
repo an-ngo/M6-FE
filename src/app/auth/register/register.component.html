@@ -14,7 +14,6 @@
     <br/>
     <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" novalidate>
       <table width="80%">
-
         <tr>
           <td width="145" align="left" valign="top" class="body"><strong>name</strong></td>
           <td width="280" align="left" valign="top"><input ngModel name="name" type="text" size="40" #name="ngModel"
@@ -22,25 +21,28 @@
         </tr>
         <tr>
           <td></td>
-          <td><p *ngIf="!name.valid && (name.dirty || name.touched)" style="color: red">Name need to be more than 3
+          <td><p *ngIf="!name.valid && (!name.dirty || name.touched)" style="color: red">Name need to be more than 3
             characters</p></td>
         </tr>
 
         <tr>
           <td align="left" valign="top" class="body"><strong>username</strong></td>
-          <td width="280" align="left" valign="top"><input ngModel name="username" type="text" size="40" #name="ngModel"
+          <td width="280" align="left" valign="top"><input ngModel name="username" type="text" size="40"
+                                                           #username="ngModel"
                                                            minlength="3" maxlength="15" required></td>
         </tr>
         <tr>
           <td></td>
-          <td><p *ngIf="!name.valid && (name.dirty || name.touched)" style="color: red">Username need to be more than 3
+          <td><p *ngIf="!username.valid && (!username.dirty || username.touched)" style="color: red">Username need to be
+            more than 3
             characters</p></td>
         </tr>
 
         <tr>
           <td align="left" valign="top" class="body"><strong>email</strong></td>
           <td align="left" valign="top"><input type="email" ngModel
-                                               name="email" size="40" email="true" #email="ngModel" minlength="6" maxlength="15" required></td>
+                                               name="email" size="40" email="true" #email="ngModel" minlength="6"
+                                               maxlength="30" required></td>
         </tr>
         <tr>
           <td></td>
@@ -60,11 +62,13 @@
         </tr>
         <tr>
           <td align="left" valign="top" class="body"><strong>password</strong></td>
-          <td align="left" valign="top"><input ngModel name="password" type="password" size="40" #password="ngModel" minlength="6" maxlength="10"/></td>
+          <td align="left" valign="top"><input ngModel name="password" type="password" size="40" #password="ngModel"
+                                               minlength="6" maxlength="10"/></td>
         </tr>
         <tr>
           <td></td>
-          <td><p *ngIf="!password.valid && (password.dirty || password.touched)" style="color: red">Password need to br more than 6 characters!!
+          <td><p *ngIf="!password.valid && (password.dirty || password.touched)" style="color: red">Password need to br
+            more than 6 characters!!
           </p></td>
         </tr>
         <tr>
@@ -83,26 +87,30 @@
     </form>
   </div>
   <div><br/>
-  <div class="clear row"><br/>
-    <div class="col-3 offset-2 mt-4">
-      <h6>Contact Information: </h6>
-      100 Lorem Ipsum Dolor Sit<br/>
-      88-99 Sit Amet, Lorem<br/>
-      USA<br/>
-      <br/>
-      <p><span><img src="assets/images/ico-phone.png" alt="" width="20" height="16" hspace="2"/> Phone:</span> (888) 123
-        456 789<br/>
-        <span><img src="assets/images/ico-fax.png" alt="" width="20" height="16" hspace="2"/> Fax:</span> (888) 987 654
-        321<br/>
-        <span><img src="assets/images/ico-website.png" alt="" width="20" height="16" hspace="2"/> Website:</span> <a
-          href="#">www.mycompany.com</a><br/>
-        <span><img src="assets/images/ico-email.png" alt="" width="20" height="16" hspace="2"/> Email:</span> <a href="#">info@mycompany.com</a><br/>
-        <span><img src="assets/images/ico-twitter.png" alt="" width="20" height="16" hspace="3"/> <a href="#">Follow</a> on Twitter</span><br/>
-      </p>
-    </div>
-    <div class="col-2 offset-4">
-      <img src="assets/images/photo-contact.jpg" alt="" width="152" height="100" class="project-img"/>
+    <div class="clear row"><br/>
+      <div class="col-3 offset-2 mt-4">
+        <h6>Contact Information: </h6>
+        100 Lorem Ipsum Dolor Sit<br/>
+        88-99 Sit Amet, Lorem<br/>
+        USA<br/>
+        <br/>
+        <p><span><img src="assets/images/ico-phone.png" alt="" width="20" height="16" hspace="2"/> Phone:</span> (888)
+          123
+          456 789<br/>
+          <span><img src="assets/images/ico-fax.png" alt="" width="20" height="16" hspace="2"/> Fax:</span> (888) 987
+          654
+          321<br/>
+          <span><img src="assets/images/ico-website.png" alt="" width="20" height="16" hspace="2"/> Website:</span> <a
+            href="#">www.mycompany.com</a><br/>
+          <span><img src="assets/images/ico-email.png" alt="" width="20" height="16" hspace="2"/> Email:</span> <a
+            href="#">info@mycompany.com</a><br/>
+          <span><img src="assets/images/ico-twitter.png" alt="" width="20" height="16" hspace="3"/> <a
+            href="#">Follow</a> on Twitter</span><br/>
+        </p>
+      </div>
+      <div class="col-2 offset-4">
+        <img src="assets/images/photo-contact.jpg" alt="" width="152" height="100" class="project-img"/>
+      </div>
     </div>
   </div>
-</div>
 </div>
