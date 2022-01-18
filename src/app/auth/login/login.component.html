@@ -10,22 +10,17 @@
     </div>
 
     <div style="padding:20px 15px 30px 15px;">
-      <h1>Contact Us</h1>
-      <div> <strong> <br />
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius, risus neque venenatis arcu, a semper massa mi eget ipsum. </strong><br />
-        <br />
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius, risus neque venenatis arcu, a semper massa mi eget ipsum. </div>
-      <div> <br />
-        <h6>Login Form:</h6>
+
+      <div>
         <br />
         <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
           <table width="80%">
             <tr>
-              <td width="145" align="left" valign="top" class="body" id="Company"><strong>Company:</strong></td>
+              <td width="145" align="left" valign="top" class="body" id="Company"><strong>Username:</strong></td>
               <td width="280" align="left" valign="top"><input ngModel name="username" type="text" size="40" /></td>
             </tr>
             <tr>
-              <td align="left" valign="top" class="body" id="Contact"><strong>Full Name:</strong></td>
+              <td align="left" valign="top" class="body" id="Contact"><strong>Password:</strong></td>
               <td align="left" valign="top"><input ngModel name="password" type="password" size="40" /></td>
             </tr>
             <tr>
@@ -36,7 +31,6 @@
         </form>
       </div>
       <div> <br />
-        <h6>Contact Information: </h6>
         <img src="assets/images/photo-contact.jpg" alt="" width="152" height="100" class="project-img" /><br />
         <br />
         <br />
