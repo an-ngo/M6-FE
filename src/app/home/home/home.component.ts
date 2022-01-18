@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   totalPage: any;
   page = 0;
   action: any = '';
+  searchForm: any;
   constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
@@ -50,7 +51,10 @@ export class HomeComponent implements OnInit {
     else {
       this.page--;
     }
-      this.findAllProvider(this.page);
+    switch (this.action){
+      case "search": this.getSearch(this.searchForm, this.page); break;
+      default: this.findAllProvider(this.page);
+    }
   }
   public checkBox(event: any): void {
     this.action = event.target.value;
@@ -61,5 +65,18 @@ export class HomeComponent implements OnInit {
       case "top6ViewPage" : this.getTop6ViewPage(); break;
       default : this.page = 0; this.findAllProvider(this.page); break;
     }
+  }
+  public searchProvider(searchForm: any): void {
+    this.action = "search";
+    this.searchForm = searchForm.value;
+    this.page = 0;
+    this.getSearch(this.searchForm, this.page);
+  }
+  public getSearch(searchForm: any, page: any): void {
+    this.homeService.search(searchForm, page).subscribe((data) => {
+      this.providers = data.content;
+      this.totalPage = data.totalPages;
+      console.log(this.providers);
+    })
   }
 }
