@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class HomeService {
-  private url = environment.URL_API;
+    private url = environment.URL_API;
   constructor(private http: HttpClient) { }
 
   public findAllProviders(page: any): Observable<any>{

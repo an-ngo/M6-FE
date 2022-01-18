@@ -6,50 +6,53 @@
         <div class="card-body little-profile text-center">
           <div><img class="pro-img" src="{{provider.avatar}}}" alt="user"></div>
           <h3 class="m-b-0">{{provider.name}}</h3>
-          <p>{{provider.description}}</p> <a href="javascript:void(0)"
-                                             class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded"
-                                             data-abc="true">Book ngay</a>
+          <p>{{provider.description}}</p>
+          <a href="javascript:void(0)" routerLink="/order/{{provider.id}}"
+             class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded"
+             data-abc="true">Book ngay</a>
           <div class="row text-center m-t-20">
             <div class="col-lg-4 col-md-4 m-t-20">
-              <h3 style="color: deeppink" class="m-b-0 font-light">Tổng lượt xem trang</h3><h2>{{provider.viewCount}}</h2>
+              <h3 style="color: deeppink" class="m-b-0 font-light">Tổng lượt xem trang</h3>
+              <h4>{{provider.viewCount}}</h4>
             </div>
             <div class="col-lg-4 col-md-4 m-t-20">
-              <h3 style="color: deeppink" class="m-b-0 font-light">Giới tính</h3><h2>{{provider.gender}}</h2>
+              <h3 style="color: deeppink" class="m-b-0 font-light">Giới tính</h3><h4>{{provider.gender}}</h4>
             </div>
             <div class="col-lg-4 col-md-4 m-t-20">
-              <h3 style="color: deeppink" class="m-b-0 font-light">Năm Sinh</h3><h2>{{provider.yearOfBirth}}</h2>
+              <h3 style="color: deeppink" class="m-b-0 font-light">Năm Sinh</h3><h4>{{provider.yearOfBirth}}</h4>
             </div>
             <div class="col-lg-4 col-md-4 m-t-20">
-              <h3 style="color: deeppink" class="m-b-0 font-light">Email</h3><h2>{{provider.email}}</h2>
+              <h3 style="color: deeppink" class="m-b-0 font-light">Email</h3><h4>{{provider.email}}</h4>
             </div>
             <div class="col-lg-4 col-md-4 m-t-20">
-              <h3 style="color: deeppink" class="m-b-0 font-light">Thành phố</h3><h2>{{provider.city}}</h2>
+              <h3 style="color: deeppink" class="m-b-0 font-light">Thành phố</h3><h4>{{provider.city}}</h4>
             </div>
 
             <div class="col-lg-4 col-md-4 m-t-20">
-              <h3 style="color: deeppink" class="m-b-0 font-light">Ngày tham gia</h3><h2>{{provider.joinDate}}</h2>
+              <h3 style="color: deeppink" class="m-b-0 font-light">Ngày tham gia</h3><h4>{{provider.joinDate}}</h4>
             </div>
             <div class="col-lg-4 col-md-4 m-t-20">
-              <h3 style="color: deeppink" class="m-b-0 font-light">Chiều cao</h3><h2>{{provider.height}}</h2>
+              <h3 style="color: deeppink" class="m-b-0 font-light">Chiều cao</h3><h4>{{provider.height}}</h4>
             </div>
             <div class="col-lg-4 col-md-4 m-t-20">
-              <h3 style="color: deeppink" class="m-b-0 font-light">Sở thích</h3><h2
-              *ngFor="let hobby of provider.hobbyList">{{hobby.name}}</h2>
+              <h3 style="color: deeppink" class="m-b-0 font-light">Sở thích</h3><h4
+              *ngFor="let hobby of provider.hobbyList">{{hobby.name}}</h4>
             </div>
             <div class="col-lg-4 col-md-4 m-t-20">
-              <h3 style="color: deeppink" class="m-b-0 font-light">Trạng thái</h3><h2>{{provider.isStatusProvider}}</h2>
+              <h3 style="color: deeppink" class="m-b-0 font-light">Trạng thái</h3><h4>{{provider.isStatusProvider}}</h4>
             </div>
             <div class="col-lg-4 col-md-4 m-t-20">
-              <h3 style="color: deeppink" class="m-b-0 font-light">Online</h3><h2>{{provider.online}}</h2>
+              <h3 style="color: deeppink" class="m-b-0 font-light">Online</h3><h4>{{provider.online}}</h4>
             </div>
             <div class="col-lg-4 col-md-4 m-t-20">
-              <h3 style="color: deeppink" class="m-b-0 font-light">Các dịch vụ cung cấp</h3><h2
+              <h3 style="color: deeppink" class="m-b-0 font-light">Các dịch vụ cung cấp</h3><h4
               *ngFor="let service of provider.serviceByProviderList">Tên dịch vụ: {{service.name}}|
-              Giá: {{service.price}}</h2>
+              Giá: {{service.price}}</h4>
             </div>
             <div class="col-lg-4 col-md-4 m-t-20">
-              <h3 style="color: deeppink" class="m-b-0 font-light">Ảnh Phò</h3><h2 *ngFor="let image of provider.imageList"><img
-              src="{{image.name}}" alt=""></h2>
+              <h3 style="color: deeppink" class="m-b-0 font-light">Ảnh Phò</h3><h4
+              *ngFor="let image of provider.imageList"><img
+              src="{{image.name}}" alt=""></h4>
             </div>
           </div>
         </div>
