@@ -32,56 +32,216 @@
       <div class="inner_border">
         <div class="form_container">
           <h3>Partner Search</h3>
-          <form action="#" method="get">
+          <form #searchForm="ngForm" (ngSubmit)="searchProvider(searchForm)">
             <fieldset>
               <div class="search_row">
                 <div class="search_column_1">
-                  <label>I am a</label>
+                  <label>Gender</label>
                 </div>
                 <div class="search_column_2">
-                  <select class="gender">
-                    <option>Male</option>
-                  </select>
-                  <label>Seeking a</label>
-                  <select class="gender">
-                    <option>Female</option>
+                  <select class="gender" ngModel name="gender">
+                    <option
+                      value=""
+                      selected="selected"
+                    >--All--</option>
+                    <option value="Nam">Male</option>
+                    <option value="Nu">Female</option>
                   </select>
                 </div>
               </div>
               <div class="search_row">
                 <div class="search_column_1">
-                  <label>Looking for a</label>
+                  <label>Before Year</label>
                 </div>
                 <div class="search_column_2">
-                  <select class="date">
-                    <option>Date</option>
+                  <select class="date" ngModel name="beforeYear">
+                    <option value="">-Năm</option>
+                    <option value="2004">2004</option>
+                    <option value="2003">2003</option>
+                    <option value="2002">2002</option>
+                    <option value="2001">2001</option>
+                    <option value="2000">2000</option>
+                    <option value="1999">1999</option>
+                    <option value="1998">1998</option>
+                    <option value="1997">1997</option>
+                    <option value="1996">1996</option>
+                    <option
+                      value="1995"
+                      selected="selected"
+                    >
+                      1995
+                    </option>
+                    <option value="1994">1994</option>
+                    <option value="1993">1993</option>
+                    <option value="1992">1992</option>
+                    <option value="1991">1991</option>
+                    <option value="1990">1990</option>
+                    <option value="1989">1989</option>
+                    <option value="1988">1988</option>
+                    <option value="1987">1987</option>
+                    <option value="1986">1986</option>
+                    <option value="1985">1985</option>
+                    <option value="1984">1984</option>
+                    <option value="1983">1983</option>
+                    <option value="1982">1982</option>
                   </select>
                 </div>
               </div>
               <div class="search_row">
                 <div class="search_column_1">
-                  <label>I was born</label>
+                  <label>After Year</label>
                 </div>
                 <div class="search_column_2">
-                  <select class="dob">
-                    <option>Month</option>
-                  </select>
-                  <select class="dob">
-                    <option>Date</option>
-                  </select>
-                  <select class="dob">
-                    <option>Year</option>
+                  <select class="date" ngModel name="afterYear">
+                    <option value="">-Năm</option>
+                    <option value="2004">2004</option>
+                    <option value="2003">2003</option>
+                    <option value="2002">2002</option>
+                    <option
+                      value="2001"
+                      selected="selected"
+                    >
+                      2001
+                    </option>
+                    <option value="2000">2000</option>
+                    <option value="1999">1999</option>
+                    <option value="1998">1998</option>
+                    <option value="1997">1997</option>
+                    <option value="1996">1996</option>
+                    <option value="1995">1995</option>
+                    <option value="1994">1994</option>
+                    <option value="1993">1993</option>
+                    <option value="1992">1992</option>
+                    <option value="1991">1991</option>
+                    <option value="1990">1990</option>
+                    <option value="1989">1989</option>
+                    <option value="1988">1988</option>
+                    <option value="1987">1987</option>
+                    <option value="1986">1986</option>
+                    <option value="1985">1985</option>
+                    <option value="1984">1984</option>
+                    <option value="1983">1983</option>
+                    <option value="1982">1982</option>
                   </select>
                 </div>
               </div>
               <div class="search_row">
                 <div class="search_column_1">
-                  <label>By Profile ID</label>
+                  <label>City</label>
                 </div>
                 <div class="search_column_2">
-                  <input type="text" name="" value="" />
-                  <label class="check">With Photo</label>
-                  <input type="checkbox" name="" value="" class="checkbox"/>
+                  <select class="date" ngModel name="city">
+                    <option value="">- Tất cả -</option>
+                    <option value="Ha Noi">Hà Nội</option>
+                    <option value="HCM" selected="selected">
+                      Tp Hồ Chí Minh
+                    </option>
+                    <option value="Da Nang">Đà Nẵng</option>
+                    <option value="Hue">Huế</option>
+                    <option value="An Giang">An Giang</option>
+                    <option value="Ba Ria">Bà Rịa</option>
+                    <option value="Ba Ria Vung Tau">Bà Rịa - Vũng Tàu</option>
+                    <option value="Bac Giang">Bắc Giang</option>
+                    <option value="Bac Kan">Bắc Kạn</option>
+                    <option value="Bac Lieu">Bạc Liêu</option>
+                    <option value="Bac Ninh">Bắc Ninh</option>
+                    <option value="Ben Tre">Bến Tre</option>
+                    <option value="Bien Hoa">Biên Hòa</option>
+                    <option value="Binh Duong">Bình Dương</option>
+                    <option value="Binh Phuoc">Bình Phước</option>
+                    <option value="Binh Thuan">Bình Thuận</option>
+                    <option value="Binh Dinh">Bình Định</option>
+                    <option value="Buon Ma Thuat">Buôn Ma Thuột</option>
+                    <option value="Ca Mau">Cà Mau</option>
+                    <option value="Can Tho">Cần Thơ</option>
+                    <option value="Cao Bang">Cao Bằng</option>
+                    <option value="Cao Lanh">Cao Lãnh</option>
+                    <option value="Gia Lai">Gia Lai</option>
+                    <option value="Gia Nghia">Gia Nghĩa</option>
+                    <option value="Ha Giang">Hà Giang</option>
+                    <option value="Ha Long">Hạ Long</option>
+                    <option value="Ha Nam">Hà Nam</option>
+                    <option value="Ha Tinh">Hà Tĩnh</option>
+                    <option value="Hai Duong">Hải Dương</option>
+                    <option value="Hai Phong">Hải Phòng</option>
+                    <option value="Hau Giang">Hậu Giang</option>
+                    <option value="Hoa Binh">Hòa Bình</option>
+                    <option value="Hung Yen">Hưng Yên</option>
+                    <option value="Khanh Hoa">Khánh Hòa</option>
+                    <option value="Kien Giang">Kiên Giang</option>
+                    <option value="Kon Tum">Kon Tum</option>
+                    <option value="Lai Chau">Lai Châu</option>
+                    <option value="Lam Dong">Lâm Đồng</option>
+                    <option value="Lang Son">Lạng Sơn</option>
+                    <option value="Lao Cai">Lào Cai</option>
+                    <option value="Long An">Long An</option>
+                    <option value="Long Xuyen">Long Xuyên</option>
+                    <option value="My Tho">Mỹ Tho</option>
+                    <option value="Nam Dinh">Nam Định</option>
+                    <option value="Nghe An">Nghệ An</option>
+                    <option value="Nha Trang">Nha Trang</option>
+                    <option value="Ninh Binh">Ninh Bình</option>
+                    <option value="Ninh Thuan">Ninh Thuận</option>
+                    <option value="Phan Rang">
+                      Phan Rang - Tháp Chàm
+                    </option>
+                    <option value="Phan Thiet">Phan Thiết</option>
+                    <option value="Phu Ly">Phủ Lý</option>
+                    <option value="Phu Tho">Phú Thọ</option>
+                    <option value="Phu Yen">Phú Yên</option>
+                    <option value="Pleiku">Pleiku</option>
+                    <option value="Quang Binh">Quảng Bình</option>
+                    <option value="Quang Nam">Quảng Nam</option>
+                    <option value="Quang Ngai">Quảng Ngãi</option>
+                    <option value="Quang Ninh">Quảng Ninh</option>
+                    <option value="Quang Tri">Quảng Trị</option>
+                    <option value="Quy Nhon">Quy Nhơn</option>
+                    <option value="Rach Gia">Rạch Giá</option>
+                    <option value="Soc trang">Sóc Trăng</option>
+                    <option value="Son La">Sơn La</option>
+                    <option value="Tam Ky">Tam Kỳ</option>
+                    <option value="Tan An">Tân An</option>
+                    <option value="Tay Ninh">Tây Ninh</option>
+                    <option value="Thai Binh">Thái Bình</option>
+                    <option value="Thai Nguyen">Thái Nguyên</option>
+                    <option value="Thanh Hoa">Thanh Hóa</option>
+                    <option value="Thu Dau">Thủ Dầu Một</option>
+                    <option value="Hue">Thừa Thiên Huế</option>
+                    <option value="Tien Giang">Tiền Giang</option>
+                    <option value="Tra Vinh">Trà Vinh</option>
+                    <option value="Tuy hoa">Tuy Hòa</option>
+                    <option value="Tuyen Quang">Tuyên Quang</option>
+                    <option value="Vi Thanh">Vị Thanh</option>
+                    <option value="Viet Tri">Việt Trì</option>
+                    <option value="Vinh">Vinh</option>
+                    <option value="Vinh Long">Vĩnh Long</option>
+                    <option value="Vinh Phuc">Vĩnh Phúc</option>
+                    <option value="Vinh Yen">Vĩnh Yên</option>
+                    <option value="Yen Bai">Yên Bái</option>
+                    <option value="Da Lat">Đà Lạt</option>
+                    <option value="Dak Lak">Đắk Lắk</option>
+                    <option value="Dak Nong">Đắk Nông</option>
+                    <option value="Dien Bien">Điện Biên</option>
+                    <option value="Dien bien phu">Điện Biên Phủ</option>
+                    <option value="Ha Dong">Hà Đông</option>
+                    <option value="Dong Hoi">Đồng Hới</option>
+                    <option value="Dong Nai">Đồng Nai</option>
+                    <option value="Dong Thap">Đồng Tháp</option>
+                  </select>
+                </div>
+              </div>
+              <div class="search_row">
+                <div class="search_column_1">
+                  <label>Country</label>
+                </div>
+                <div class="search_column_2">
+                  <select class="date" ngModel name="country">
+                    <option value="">- Tất cả -</option>
+                    <option value="My">American Tho</option>
+                    <option value="Viet Nam" selected="selected">
+                      Viet Nam
+                    </option>
+                  </select>
                 </div>
               </div>
               <div class="search_row last">
@@ -128,8 +288,8 @@
           </div>
         </div>
       </div>
-      <button class="button button_n" *ngIf="page > 0 && action ==''" (click)="nextPage(false)">previous</button>
-      <button class="button button_n" *ngIf="page < totalPage-1 && action == ''" (click)="nextPage(true)">next</button>
+      <button class="button" *ngIf="page > 0 && (action =='' || action == 'search')" (click)="nextPage(false)">previous</button>
+      <button class="button" *ngIf="page < totalPage-1 && (action == '' || action =='search')" (click)="nextPage(true)">next</button>
     </div>
   </div>
 </div>
