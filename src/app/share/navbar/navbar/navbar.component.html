@@ -1,5 +1,5 @@
 <div id="menu">
-  <ul>
+  <ul class="w-100" >
     <li class="first"><a class="current" routerLink="">home</a></li>
     <p *ngIf="name == null; then falseBlock else trueBlock"></p>
     <ng-template #falseBlock>
@@ -10,8 +10,10 @@
       <li *ngIf="role != 'ROLE_ADMIN' && role != 'ROLE_PROVIDER'"><a routerLink="/user/register">register provider</a></li>
       <li ><a href="projects.html">projects</a></li>
       <li ><a href="services.html">services</a></li>
+      <li *ngIf="roleAdmin"><a routerLink="/admin">List Users</a></li>
+
       <li><a routerLink="/user">{{name}}</a></li>
-      <a routerLink="/user"><img [src]="avatar" alt=""></a>
+      <li><a routerLink="/user"><img src="{{avatar}}" alt="avatar" class="img avatar"></a></li>
       <li><a routerLink="/home" (click)="logout()">Logout</a></li>
     </ng-template>
   </ul>

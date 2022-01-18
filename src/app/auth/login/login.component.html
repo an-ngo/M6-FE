@@ -1,16 +1,16 @@
-<div id="body_container">
-  <div id="container_1"><span class="logo"><a href="#"><img src="assets/images/logo.gif" alt=""/></a></span>
+
+<div id="body_1_container_1">
+  <div id="container_1_1"><span class="logo"><a href="#"><img src="assets/images/logo.gif" alt="" /></a></span>
     <div class="dating_tips">
       <img src="assets/images/fake-love.jpg" alt="">
     </div>
   </div>
-  <div id="right_container">
+  <div id="right_container_1">
     <div class="partner_box">
       <img src="assets/images/true-love-la-gi-1.jpg" alt="">
     </div>
-
-    <h6>Login Form:</h6>
-    <br/>
+    <br>
+    <h6 class="clear mt-5">Login Form:</h6>
     <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
       <table width="80%">
         <tr>
@@ -28,11 +28,9 @@
       </table>
     </form>
   </div>
-  <div><br/>
+  <div class="clear row"><br/>
+    <div class="col-3 offset-1 mt-4">
     <h6>Contact Information: </h6>
-    <img src="assets/images/photo-contact.jpg" alt="" width="152" height="100" class="project-img"/><br/>
-    <br/>
-    <br/>
     100 Lorem Ipsum Dolor Sit<br/>
     88-99 Sit Amet, Lorem<br/>
     USA<br/>
@@ -46,6 +44,11 @@
       <span><img src="assets/images/ico-email.png" alt="" width="20" height="16" hspace="2"/> Email:</span> <a href="#">info@mycompany.com</a><br/>
       <span><img src="assets/images/ico-twitter.png" alt="" width="20" height="16" hspace="3"/> <a href="#">Follow</a> on Twitter</span><br/>
     </p>
+    </div>
+    <div class="col-2 offset-3">
+      <img src="assets/images/photo-contact.jpg" alt="" width="152" height="100" class="project-img"/>
+    </div>
+
   </div>
 </div>
 <div class="clear"></div>
