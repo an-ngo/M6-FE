@@ -9,6 +9,8 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ProviderComponent implements OnInit {
   provider: any;
+  username = window.sessionStorage.getItem("username");
+  role = window.sessionStorage.getItem("role");
 
   constructor(private homeService: HomeService, private activatedRouter: ActivatedRoute) { }
 

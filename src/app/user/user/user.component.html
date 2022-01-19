@@ -1,2 +1,91 @@
-<p>user works!</p>
-<a routerLink="/user/register">registerprovider</a>
+<div id="body_container">
+
+  <div id="right_container">
+
+    </div>
+    <div style="padding:20px 15px 30px 15px; background-color: pink">
+      <h1>{{user.name}} <img src="{{user.avatar}}" alt=""></h1>
+      <h2>{{user.email}}</h2>
+      <h2>{{user.phone}}</h2>
+      <h2>{{user.gender}}</h2>
+
+      <div class="servicecolumnzone">
+         <div class="servicecolumn1">
+          <div>
+            <h5><button (click)="checkEditt()">Edit</button></h5>
+            <img src="assets/images/ico1.png" alt="" class="abouticon" />Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius,
+          </div>
+           <div *ngIf="checkEdit">
+             <form (ngSubmit)="edit()">
+                <table>
+                  <tr>
+                    <th>Name</th>
+                    <td><input type="text" name="name" [(ngModel)]="user.name"></td>
+                  </tr>
+                  <tr>
+                    <th>Gender</th>
+                    <td>
+                      <select name="gender" [(ngModel)]="user.gender">
+                        <option value="Nam">Male</option>
+                        <option value="Nu">Female</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Phone</th>
+                    <td><input type="text" name="phone" [(ngModel)]="user.phone"></td>
+                  </tr>
+                  <tr>
+                    <th>Avatar</th>
+                    <td><input type="file" (change)="selectAvatar($event)"></td>
+                    <td><img src="{{urlImage}}" width="50px" height="50px" alt=""></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td><input type="submit" value="Save"></td>
+                  </tr>
+                </table>
+             </form>
+           </div>
+
+
+          <div class="clear"></div>
+        </div>
+        <div class="servicecolumn2">
+          <div>
+            <h5>Service 2</h5>
+            <img src="assets/images/ico2.png" alt="" width="65" height="65" class="abouticon" />Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius, </div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <div class="servicecolumn1">
+          <div>
+            <h5>Service 3 </h5>
+            <img src="assets/images/ico3.png" alt="" width="65" height="65" class="abouticon" />Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius, </div>
+          <div class="clear"></div>
+        </div>
+        <div class="servicecolumn2">
+          <div>
+            <h5>Service 4 </h5>
+            <img src="assets/images/ico4.png" alt="" width="65" height="65" class="abouticon" />Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius, </div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <div class="servicecolumn1">
+          <div>
+            <h5>Service 5 </h5>
+            <img src="assets/images/ico5.png" alt="" width="65" height="65" class="abouticon" />Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius, </div>
+          <div class="clear"></div>
+        </div>
+        <div class="servicecolumn2">
+          <div>
+            <h5>Service 6 </h5>
+            <img src="assets/images/ico6.png" alt="" width="65" height="65" class="abouticon" />Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius, </div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div style="padding-top:10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius, risus neque venenatis arcu, a semper massa mi eget ipsum. Proin sed odio et ante adipiscing lobortis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius, risus neque venenatis arcu, a semper massa mi eget ipsum. Proin sed odio et ante adipiscing lobortis.</div>
+    </div>
+    <div class="clear"></div>
+  </div>
