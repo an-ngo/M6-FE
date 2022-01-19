@@ -30,6 +30,7 @@ export class ProviderComponent implements OnInit {
       }
     }
   }
+
   constructor(private homeService: HomeService, private activatedRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
