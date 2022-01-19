@@ -20,6 +20,7 @@ export class UserComponent implements OnInit {
   deleteName: any;
   orders: any[] = [];
   title: string = '';
+  page: number = 0;
 
   constructor(private userService: UserService, private storage: AngularFireStorage, private orderService: OrderService) {
   }
@@ -66,6 +67,8 @@ export class UserComponent implements OnInit {
 
   action: any = '';
   userOrders: any[]=[];
+  isShowFormListUserBook = true;
+  isShowFormBookProvider = true;
 
   checkBox(event: any) {
     this.action = event.target.value;
@@ -73,18 +76,22 @@ export class UserComponent implements OnInit {
     switch (this.action) {
       case "showListUserBook" :
         this.getAllUserBooks();
+        this.isShowFormListUserBook = true;
+        this.isShowFormBookProvider = false;
         break;
       case "showListBookProvider" :
         this.getAllProviderBook();
+        this.isShowFormListUserBook = false;
+        this.isShowFormBookProvider = true;
         break;
-      case "showBookPeopleByStatus" :
-        // @ts-ignore
-        this.getAllBookByStatus();   //minh book
+      case "pendding" :
+        this.getAllBookByStatus(this.action);   //minh book
         break;
       case "showPeopleBookThemselvesByStatus" :
         // @ts-ignore
         this.getAllStatusBook();    //ho book
         break;
+      default : this.page = 0
     }
 
   }
@@ -105,7 +112,9 @@ export class UserComponent implements OnInit {
 
 
   public getAllBookByStatus(status: any):void {
-
+    this.orderService.findAllByStatusAndUser(status).subscribe((data) =>{
+      this.orders = data;
+    })
   }
 
   public getAllStatusBook(status : any): void {
