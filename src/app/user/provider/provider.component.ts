@@ -30,11 +30,7 @@ export class ProviderComponent implements OnInit {
       }
     }
   }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> ce4810e5fa8b78d2fd1545670f955edae3200e4e
   constructor(private homeService: HomeService, private activatedRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
