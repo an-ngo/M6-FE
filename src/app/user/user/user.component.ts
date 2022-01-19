@@ -143,6 +143,8 @@ export class UserComponent implements OnInit {
       if (status === 'complete') {
         this.title = 'Show list of people I book "COMPLETE"'
       }
+      this.isShowFormBookProvider = false;
+      this.isShowFormListUserBook = false;
     })
   }
 }
