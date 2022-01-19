@@ -46,6 +46,4 @@ export class AdminComponent implements OnInit {
     }
     this.findAll(this.page);
   }
-
-
 }

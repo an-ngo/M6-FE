@@ -1,4 +1,14 @@
-<div class="container">
+<div id="body_1_container_1">
+  <div id="container_1_1"><span class="logo"><a href="#"><img src="assets/images/logo.gif" alt=""/></a></span>
+
+  </div>
+  <div id="right_container_1">
+    <div class="partner_box">
+      <img src="assets/images/true-love-la-gi-1.jpg" alt="">
+    </div>
+    <br>
+  </div>
+<div class="container-fluid clear">
   <div class="padding">
     <div class="col-md-12" id="card">
       <!-- Column -->
@@ -45,18 +55,37 @@
               <h3 style="color: deeppink" class="m-b-0 font-light">Online</h3><h4>{{provider.online}}</h4>
             </div>
             <div class="col-lg-4 col-md-4 m-t-20">
-              <h3 style="color: deeppink" class="m-b-0 font-light">Các dịch vụ cung cấp</h3><h4
-              *ngFor="let service of provider.serviceByProviderList">Tên dịch vụ: {{service.name}}|
-              Giá: {{service.price}}</h4>
+              <h3 style="color: deeppink" class="m-b-0 font-light">Các dịch vụ cung cấp</h3>
+              <table class="ml-5">
+                <tr *ngFor="let service of provider.serviceByProviderList" class="ml-5">
+                  <td class="col-2">
+                    <h4>{{service.name}}</h4>
+                  </td>
+                  <td class="col-2">
+                    <h4>Giá: {{service.price}}</h4>
+                  </td>
+
+                </tr>
+              </table>
+
             </div>
-            <div class="col-lg-4 col-md-4 m-t-20">
-              <h3 style="color: deeppink" class="m-b-0 font-light">Ảnh Phò</h3><h4
-              *ngFor="let image of provider.imageList"><img
-              src="{{image.name}}" alt=""></h4>
-            </div>
+
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+</div>
+<div class="container-fluid mt-5 clear">
+  <h4 class="text-center text-danger mb-4 mt-3">Picture</h4>
+  <owl-carousel-o [options]="customOptions">
+    <ng-template *ngFor="let image of provider.imageList" carouselSlide>
+      <div class="img__carousel" >
+        <img src="{{image.link_image}}" class="card-img-top" alt="anh">
+
+      </div>
+    </ng-template>
+  </owl-carousel-o>
 </div>

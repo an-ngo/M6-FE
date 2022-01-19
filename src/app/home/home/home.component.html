@@ -293,4 +293,24 @@
       <button class="button" *ngIf="page < totalPage-1 && (action == '' || action =='search')" (click)="nextPage(true)">next</button>
     </div>
   </div>
+
+</div>
+
+<div class="container-fluid clear">
+  <owl-carousel-o [options]="customOptions">
+    <ng-template *ngFor="let provider of allProviderOwl" carouselSlide>
+      <div class="card card__config" >
+        <img src="{{provider.avatar}}" class="card-img-top card-owl-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{provider.name}}</h5>
+          <h6 class="card-text">{{provider.gender}}</h6>
+          <p class="card-text">{{provider.yearOfBirth}}</p>
+          <p class="card-text">Ngày tham gia: {{provider.joinDate}}</p>
+          <p class="card-text">{{provider.description}}</p>
+          <p class="card-text">Lượt xem {{provider.viewCount}}</p>
+          <a href="#" class="btn btn-primary" routerLink="/provider/{{provider.id}}">Book ngay</a>
+        </div>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
 </div>
