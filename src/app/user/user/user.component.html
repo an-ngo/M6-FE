@@ -67,11 +67,35 @@
           <li class="b"><input type="radio" name="radio" value="showListBookProvider" (click)="checkBox($event)">Show
             List Book Provider
           </li>
-          <li class="c"><input type="radio" name="radio" value="pendding" (click)="checkBox($event)">Show
-            Book People By Status
+          <li class="c">
+            <button type="button" value="pending" (click)="getAllBookByStatus('pending')">Show List Book Provider
+              "PENDING"
+            </button>
           </li>
-          <li class="d"><input type="radio" name="radio" value="showPeopleBookThemselvesByStatus"
-                               (click)="checkBox($event)">Show People Book Themselves By Status
+          <li class="c">
+            <button type="button" value="received" (click)="getAllBookByStatus('received')">Show List Book Provider
+              "RECEIVED"
+            </button>
+          </li>
+          <li class="c">
+            <button type="button" value="complete" (click)="getAllBookByStatus('complete')">Show List Book Provider
+              "COMPLETE"
+            </button>
+          </li>
+<!--          -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+          <li class="c">
+            <button type="button" value="pending" (click)="getAllStatusBook('pending')">Show list of people I book "PENDING
+            </button>
+          </li>
+
+          <li class="c">
+            <button type="button" value="pending" (click)="getAllStatusBook('received')">Show list of people I book "RECEIVED"
+            </button>
+          </li>
+
+          <li class="c">
+            <button type="button" value="pending" (click)="getAllBookByStatus('pending')">Show list of people I book "COMPLETE"
+            </button>
           </li>
         </ul>
       </div>
@@ -80,6 +104,9 @@
       <div class="contain" style="text-align: center">
         <h3>{{title}}</h3>
         <div class="clear"></div>
+
+<!--        Hiển thị list order mình book người ta-->
+
         <table style="margin: auto" border="1" *ngIf="orders.length > 0 && isShowFormListUserBook">
           <tr>
             <th>Name</th>
@@ -97,6 +124,9 @@
             <td><a routerLink="/order/order-info/{{order.id}}">Details</a></td>
           </tr>
         </table>
+
+<!--        hiển thị list order người ta cho mình -->
+
         <table style="margin: auto" border="1" *ngIf="userOrders.length > 0 && isShowFormBookProvider">
           <tr>
             <th>Name</th>
@@ -107,6 +137,47 @@
             <th>Detail</th>
           </tr>
           <tr *ngFor="let order of userOrders">
+            <td>{{order.user.name}}</td>
+            <td>{{order.user.gender}}</td>
+            <td>{{order.date}}</td>
+            <td><img src="{{order.user.avatar}}" width="40px" height="40px" alt=""></td>
+            <td><a routerLink="/order/order-info/{{order.id}}">Details</a></td>
+          </tr>
+        </table>
+
+<!--        hiển thị list order người ta book mình theo trạng thái-->
+
+        <table style="margin: auto" border="1"
+               *ngIf="userOrders.length > 0 && isShowFormBookProvider && isShowFormListUserBook">
+          <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Date book</th>
+            <th>Status</th>
+            <th>Avatar</th>
+            <th>Detail</th>
+          </tr>
+          <tr *ngFor="let order of ordersUser">
+            <td>{{order.userProvider.name}}</td>
+            <td>{{order.userProvider.gender}}</td>
+            <td>{{order.date}}</td>
+            <td><img src="{{order.userProvider.avatar}}" width="40px" height="40px" alt=""></td>
+            <td><a routerLink="/order/order-info/{{order.id}}">Details</a></td>
+          </tr>
+        </table>
+
+
+        <table style="margin: auto" border="1"
+               *ngIf="userOrders1.length > 0 && isShowFormBookProvider && isShowFormListUserBook">
+          <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Date book</th>
+            <th>Status</th>
+            <th>Avatar</th>
+            <th>Detail</th>
+          </tr>
+          <tr *ngFor="let order of userOrders1">
             <td>{{order.user.name}}</td>
             <td>{{order.user.gender}}</td>
             <td>{{order.date}}</td>

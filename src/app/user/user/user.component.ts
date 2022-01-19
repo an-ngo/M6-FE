@@ -21,6 +21,8 @@ export class UserComponent implements OnInit {
   orders: any[] = [];
   title: string = '';
   page: number = 0;
+  action1: any = '';
+  ordersUser: any[] = [];
 
   constructor(private userService: UserService, private storage: AngularFireStorage, private orderService: OrderService) {
   }
@@ -66,9 +68,11 @@ export class UserComponent implements OnInit {
   }
 
   action: any = '';
-  userOrders: any[]=[];
+  userOrders: any[] = [];
   isShowFormListUserBook = true;
   isShowFormBookProvider = true;
+
+  status = ["pending", "received", "complete"]
 
   checkBox(event: any) {
     this.action = event.target.value;
@@ -84,16 +88,11 @@ export class UserComponent implements OnInit {
         this.isShowFormListUserBook = false;
         this.isShowFormBookProvider = true;
         break;
-      case "pendding" :
-        this.getAllBookByStatus(this.action);   //minh book
-        break;
-      case "showPeopleBookThemselvesByStatus" :
-        // @ts-ignore
-        this.getAllStatusBook();    //ho book
-        break;
-      default : this.page = 0
     }
+  }
 
+  public checkOption(stt: any) {
+    this.getAllBookByStatus(stt);
   }
 
   public getAllUserBooks(): void {
@@ -111,13 +110,39 @@ export class UserComponent implements OnInit {
   }
 
 
-  public getAllBookByStatus(status: any):void {
-    this.orderService.findAllByStatusAndUser(status).subscribe((data) =>{
-      this.orders = data;
+  public getAllBookByStatus(status: any): void {
+    this.orderService.findAllByStatusAndUser(status).subscribe((data) => {
+      this.ordersUser = data;
+      console.log(this.orders);
+      if (status === 'pending') {
+        this.title = 'Show List Book Provider "PENDING"'
+      }
+      if (status === 'received') {
+        this.title = 'Show List Book Provider "RECEIVED"'
+      }
+      if (status === 'complete') {
+        this.title = 'Show List Book Provider "COMPLETE"'
+      }
+      this.isShowFormBookProvider = false;
+      this.isShowFormListUserBook = false;
     })
   }
 
-  public getAllStatusBook(status : any): void {
+  userOrders1: any[] = [];
 
+  public getAllStatusBook(status: any): void {
+    this.orderService.findAllByStatusAndUserProvider(status).subscribe((data) => {
+      this.userOrders1 = data;
+      console.log(data);
+      if (status === 'pending') {
+        this.title = 'Show list of people I book "PENDING"'
+      }
+      if (status === 'received') {
+        this.title = 'Show list of people I book "RECEIVED"'
+      }
+      if (status === 'complete') {
+        this.title = 'Show list of people I book "COMPLETE"'
+      }
+    })
   }
 }
