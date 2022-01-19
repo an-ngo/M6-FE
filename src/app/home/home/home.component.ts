@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HomeService} from "../../service/home/home.service";
+import {OwlOptions} from "ngx-owl-carousel-o";
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,29 @@ import {HomeService} from "../../service/home/home.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  customOptions: OwlOptions = {
+    loop:true,
+    margin:10,
+    nav:true,
+    dots:true,
+    autoplay:true,
+    autoplayTimeout:2000,
+    stagePadding:50,
+    responsive:{
+      0:{
+        items:1
+      },
+      600:{
+        items:3
+      },
+      1000:{
+        items:5
+      }
+    }
+  }
+
+  allProviderOwl: any;
   title_top: string = 'Recently added Profile';
   providers: any[] = [];
   totalPage: any;
@@ -16,13 +40,22 @@ export class HomeComponent implements OnInit {
   constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
-    this.findAllProvider(this.page);
+    Promise.all([this.findAllProviderOwl(), this.findAllProvider(this.page)]).then((values) => {
+      console.log(values);
+    });
   }
   public findAllProvider(page: any): void {
     this.homeService.findAllProviders(page).subscribe((data) => {
       this.providers = data.content;
       this.totalPage = data.totalPages;
     });
+  }
+
+  public findAllProviderOwl(): void{
+    this.homeService.findAllProvidersOwl().subscribe((data)=>{
+      this.allProviderOwl = data;
+      console.log(data);
+    })
   }
   public getTop6ProviderHot(): void {
     this.homeService.getTop6ProviderHot().subscribe((data) => {

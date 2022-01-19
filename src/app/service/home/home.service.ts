@@ -10,6 +10,11 @@ export class HomeService {
     private url = environment.URL_API;
   constructor(private http: HttpClient) { }
 
+  public findAllProvidersOwl(): Observable<any>{
+    return this.http.get(`${this.url}/users/listall`);
+
+  }
+
   public findAllProviders(page: any): Observable<any>{
     return this.http.get(`${this.url}/users/list?page=${page}`);
   }

@@ -9,6 +9,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {environment} from "../environments/environment";
+import {RouterModule, ROUTES} from "@angular/router";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import {environment} from "../environments/environment";
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
+    RouterModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
