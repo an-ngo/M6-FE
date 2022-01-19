@@ -12,7 +12,7 @@
       <div class="servicecolumnzone">
          <div class="servicecolumn1">
           <div>
-            <h5><button (click)="checkEditt()">Edit</button></h5>
+            <h5><button (click)="checkEditt()">Edit</button> <button (click)="checkBack()">Back</button></h5>
             <img src="assets/images/ico1.png" alt="" class="abouticon" />Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius,
           </div>
            <div *ngIf="checkEdit">
@@ -26,7 +26,7 @@
                     <th>Gender</th>
                     <td>
                       <select name="gender" [(ngModel)]="user.gender">
-                        <option value="Nam">Male</option>
+                        <option selected="selected" value="Nam">Male</option>
                         <option value="Nu">Female</option>
                       </select>
                     </td>
@@ -56,6 +56,12 @@
             <h5>Service 2</h5>
             <img src="assets/images/ico2.png" alt="" width="65" height="65" class="abouticon" />Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius, </div>
           <div class="clear"></div>
+          <ul>
+            <li class="a"><input type="radio"  name="radio"  value="showListUserBook" (click)="checkBox($event)">Show List User Book</li>
+            <li class="b"><input type="radio"  name="radio"  value="showListBookProvider" (click)="checkBox($event)">Show List Book Provider</li>
+            <li class="c"><input type="radio"  name="radio"  value="showBookPeopleByStatus" (click)="checkBox($event)">Show Book People By Status</li>
+            <li class="d"><input type="radio"  name="radio"  value="showPeopleBookThemselvesByStatus" (click)="checkBox($event)">Show People Book Themselves By Status</li>
+          </ul>
         </div>
         <div class="clear"></div>
         <div class="servicecolumn1">
@@ -63,6 +69,24 @@
             <h5>Service 3 </h5>
             <img src="assets/images/ico3.png" alt="" width="65" height="65" class="abouticon" />Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius, </div>
           <div class="clear"></div>
+          <table border="1" *ngIf="orders.length > 0">
+            <tr>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Date book</th>
+              <th>Status</th>
+              <th>Avatar</th>
+              <th>Detail</th>
+            </tr>
+            <tr *ngFor="let order of orders">
+              <td>{{order.userProvider.name}}</td>
+              <td>{{order.userProvider.gender}}</td>
+              <td>{{order.date}}</td>
+              <td><img src="{{order.userProvider.avatar}}" width="40px" height="40px" alt=""></td>
+              <td><a routerLink="/order/order-info/{{user.id}}">Details</a></td>
+            </tr>
+          </table>
+
         </div>
         <div class="servicecolumn2">
           <div>

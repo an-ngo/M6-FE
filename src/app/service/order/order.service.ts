@@ -45,7 +45,26 @@ export class OrderService {
   public createOrder(formOrder: any): Observable<any>{
     return this.http.post(`${this.url}/orders`, formOrder, this.httpOptions);
   }
+  // list order mình book người ta
+  public findAllByUser(): Observable<any>{
+    return this.http.get(`${this.url}/orders/user-book`, this.httpOptions);
+  }
 
+// list order người ta book mình
+  public findAllByProvider():Observable<any>{
+    return this.http.get(`${this.url}/orders/book-provider`, this.httpOptions);
+  }
+
+  // list order mình book người ta theo trạng thái
+  public findAllByStatusAndUser(status: any): Observable<any>{
+    return this.http.get(`${this.url}/orders/user/${status}`, this.httpOptions);
+  }
+
+  // list order người ta book mình theo trạng thái
+  public findAllByStatusAndUserProvider(status: any): Observable<any>{
+    return this.http.get(`${this.url}/orders/provider/${status}`, this.httpOptions);
+
+  }
 }
 
 

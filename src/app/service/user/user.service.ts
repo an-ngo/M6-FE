@@ -29,4 +29,5 @@ export class UserService {
   public findUserByToken(): Observable<any>{
     return this.http.get(`${this.url}/users/info`, this.httpOptions);
   }
+
 }
