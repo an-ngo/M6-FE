@@ -46,6 +46,11 @@ export class OrderService {
     return this.http.post(`${this.url}/orders`, formOrder, this.httpOptions);
   }
 
+  public sendCommentOrFeedback(id: any, orderForm: any){
+    return this.http.put(`${this.url}/orders/${id}`,orderForm);
+  }
+
+
 }
 
 
