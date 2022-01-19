@@ -10,7 +10,6 @@ import {OwlOptions} from "ngx-owl-carousel-o";
 })
 export class ProviderComponent implements OnInit {
   provider: any;
-<<<<<<< HEAD
   customOptions: OwlOptions = {
     loop:true,
     margin:10,
@@ -31,11 +30,6 @@ export class ProviderComponent implements OnInit {
       }
     }
   }
-=======
-  username = window.sessionStorage.getItem("username");
-  role = window.sessionStorage.getItem("role");
->>>>>>> 5f02d8fa2c3e56e7bd83f47a40771c6223baf13a
-
   constructor(private homeService: HomeService, private activatedRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -47,7 +41,4 @@ export class ProviderComponent implements OnInit {
       });
     });
   }
-
-
-
 }
