@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../service/user/user.service";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {OrderService} from "../../service/order/order.service";
 
 @Component({
   selector: 'app-user',
@@ -14,7 +15,17 @@ export class UserComponent implements OnInit {
   urlImage: any;
   selectImage: any;
   ref: any;
-  constructor(private userService: UserService, private storage: AngularFireStorage) { }
+  deleteId: any;
+  element: any;
+  deleteName: any;
+  orders: any[] = [];
+  title: string = '';
+  page: number = 0;
+  action1: any = '';
+  ordersUser: any[] = [];
+
+  constructor(private userService: UserService, private storage: AngularFireStorage, private orderService: OrderService) {
+  }
 
   ngOnInit(): void {
     this.userService.findUserByToken().subscribe((data) => {
@@ -35,11 +46,16 @@ export class UserComponent implements OnInit {
     this.checkEdit = true;
   }
 
+  checkBack() {
+    this.checkEdit = false;
+  }
+
   selectAvatar(event: any) {
     this.selectImage = event.target.files[0];
     console.log(this.selectImage);
     this.onload();
   }
+
   public onload(): void {
     const id = Math.random().toString(36).substring(2);
     this.ref = this.storage.ref(id);
@@ -48,6 +64,87 @@ export class UserComponent implements OnInit {
     }).then((url: string) => {
       this.urlImage = url;
       console.log(this.urlImage);
+    })
+  }
+
+  action: any = '';
+  userOrders: any[] = [];
+  isShowFormListUserBook = true;
+  isShowFormBookProvider = true;
+
+  status = ["pending", "received", "complete"]
+
+  checkBox(event: any) {
+    this.action = event.target.value;
+    console.log(this.action)
+    switch (this.action) {
+      case "showListUserBook" :
+        this.getAllUserBooks();
+        this.isShowFormListUserBook = true;
+        this.isShowFormBookProvider = false;
+        break;
+      case "showListBookProvider" :
+        this.getAllProviderBook();
+        this.isShowFormListUserBook = false;
+        this.isShowFormBookProvider = true;
+        break;
+    }
+  }
+
+  public checkOption(stt: any) {
+    this.getAllBookByStatus(stt);
+  }
+
+  public getAllUserBooks(): void {
+    this.orderService.findAllByUser().subscribe((data) => {
+      this.orders = data;
+    });
+    this.title = 'List user book'
+  }
+
+  public getAllProviderBook(): void {
+    this.orderService.findAllByProvider().subscribe((data) => {
+      this.userOrders = data
+    });
+    this.title = 'List provider book'
+  }
+
+
+  public getAllBookByStatus(status: any): void {
+    this.orderService.findAllByStatusAndUser(status).subscribe((data) => {
+      this.ordersUser = data;
+      console.log(this.orders);
+      if (status === 'pending') {
+        this.title = 'Show List Book Provider "PENDING"'
+      }
+      if (status === 'received') {
+        this.title = 'Show List Book Provider "RECEIVED"'
+      }
+      if (status === 'complete') {
+        this.title = 'Show List Book Provider "COMPLETE"'
+      }
+      this.isShowFormBookProvider = false;
+      this.isShowFormListUserBook = false;
+    })
+  }
+
+  userOrders1: any[] = [];
+
+  public getAllStatusBook(status: any): void {
+    this.orderService.findAllByStatusAndUserProvider(status).subscribe((data) => {
+      this.userOrders1 = data;
+      console.log(data);
+      if (status === 'pending') {
+        this.title = 'Show list of people I book "PENDING"'
+      }
+      if (status === 'received') {
+        this.title = 'Show list of people I book "RECEIVED"'
+      }
+      if (status === 'complete') {
+        this.title = 'Show list of people I book "COMPLETE"'
+      }
+      this.isShowFormBookProvider = false;
+      this.isShowFormListUserBook = false;
     })
   }
 }
