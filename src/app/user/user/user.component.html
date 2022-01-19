@@ -94,7 +94,7 @@
           </li>
 
           <li class="c">
-            <button type="button" value="pending" (click)="getAllBookByStatus('pending')">Show list of people I book "COMPLETE"
+            <button type="button" value="pending" (click)="getAllBookByStatus('complete')">Show list of people I book "COMPLETE"
             </button>
           </li>
         </ul>
@@ -112,7 +112,6 @@
             <th>Name</th>
             <th>Gender</th>
             <th>Date book</th>
-            <th>Status</th>
             <th>Avatar</th>
             <th>Detail</th>
           </tr>
@@ -125,64 +124,61 @@
           </tr>
         </table>
 
-<!--        hiển thị list order người ta cho mình -->
+<!--       list order người ta book mình -->
 
         <table style="margin: auto" border="1" *ngIf="userOrders.length > 0 && isShowFormBookProvider">
           <tr>
             <th>Name</th>
             <th>Gender</th>
             <th>Date book</th>
-            <th>Status</th>
             <th>Avatar</th>
             <th>Detail</th>
           </tr>
-          <tr *ngFor="let order of userOrders">
-            <td>{{order.user.name}}</td>
-            <td>{{order.user.gender}}</td>
-            <td>{{order.date}}</td>
-            <td><img src="{{order.user.avatar}}" width="40px" height="40px" alt=""></td>
-            <td><a routerLink="/order/order-info/{{order.id}}">Details</a></td>
+          <tr *ngFor="let order1 of userOrders">
+            <td>{{order1.user.name}}</td>
+            <td>{{order1.user.gender}}</td>
+            <td>{{order1.date}}</td>
+            <td><img src="{{order1.user.avatar}}" width="40px" height="40px" alt=""></td>
+            <td><a routerLink="/order/order-info/{{order1.id}}">Details</a></td>
           </tr>
         </table>
 
-<!--        hiển thị list order người ta book mình theo trạng thái-->
+<!--// list order mình book người ta theo trạng thái-->
 
         <table style="margin: auto" border="1"
-               *ngIf="userOrders.length > 0 && isShowFormBookProvider && isShowFormListUserBook">
+               *ngIf="ordersUser.length > 0 && isShowForm1 == true">
           <tr>
             <th>Name</th>
             <th>Gender</th>
             <th>Date book</th>
-            <th>Status</th>
             <th>Avatar</th>
             <th>Detail</th>
           </tr>
-          <tr *ngFor="let order of ordersUser">
-            <td>{{order.userProvider.name}}</td>
-            <td>{{order.userProvider.gender}}</td>
-            <td>{{order.date}}</td>
-            <td><img src="{{order.userProvider.avatar}}" width="40px" height="40px" alt=""></td>
-            <td><a routerLink="/order/order-info/{{order.id}}">Details</a></td>
+          <tr *ngFor="let order2 of ordersUser">
+            <td>{{order2.userProvider.name}}</td>
+            <td>{{order2.userProvider.gender}}</td>
+            <td>{{order2.date}}</td>
+            <td><img src="{{order2.userProvider.avatar}}" width="40px" height="40px" alt=""></td>
+            <td><a routerLink="/order/order-info/{{order2.id}}">Details</a></td>
           </tr>
         </table>
 
 
         <table style="margin: auto" border="1"
-               *ngIf="userOrders1.length > 0 && isShowFormBookProvider && isShowFormListUserBook">
+               *ngIf="userOrders1.length > 0 && isShowForm2 == true">
           <tr>
             <th>Name</th>
             <th>Gender</th>
             <th>Date book</th>
-            <th>Status</th>
             <th>Avatar</th>
             <th>Detail</th>
           </tr>
-          <tr *ngFor="let order of userOrders1">
-            <td>{{order.user.name}}</td>
-            <td>{{order.user.gender}}</td>
-            <td>{{order.date}}</td>
-            <td><img src="{{order.user.avatar}}" width="40px" height="40px" alt=""></td>
-            <td><a routerLink="/order/order-info/{{order.id}}">Details</a></td>
+          <tr *ngFor="let order3 of userOrders1">
+            <td>{{order3.user.name}}</td>
+            <td>{{order3.user.gender}}</td>
+            <td>{{order3.date}}</td>
+            <td><img src="{{order3.user.avatar}}" width="40px" height="40px" alt=""></td>
+            <td><a routerLink="/order/order-info/{{order3.id}}">Details</a></td>
           </tr>
         </table>
       </div>

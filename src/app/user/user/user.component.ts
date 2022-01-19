@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Provider} from '@angular/core';
 import {UserService} from "../../service/user/user.service";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {OrderService} from "../../service/order/order.service";
+
 
 @Component({
   selector: 'app-user',
@@ -21,8 +22,9 @@ export class UserComponent implements OnInit {
   orders: any[] = [];
   title: string = '';
   page: number = 0;
-  action1: any = '';
-  ordersUser: any[] = [];
+  ordersUser: any[]=[]
+  userOrders1: any[] = [];
+
 
   constructor(private userService: UserService, private storage: AngularFireStorage, private orderService: OrderService) {
   }
@@ -71,6 +73,8 @@ export class UserComponent implements OnInit {
   userOrders: any[] = [];
   isShowFormListUserBook = true;
   isShowFormBookProvider = true;
+  isShowForm1: boolean = true;
+  isShowForm2: boolean = true;
 
   status = ["pending", "received", "complete"]
 
@@ -82,18 +86,21 @@ export class UserComponent implements OnInit {
         this.getAllUserBooks();
         this.isShowFormListUserBook = true;
         this.isShowFormBookProvider = false;
+        this.isShowForm1 = false;
         break;
       case "showListBookProvider" :
         this.getAllProviderBook();
         this.isShowFormListUserBook = false;
         this.isShowFormBookProvider = true;
+        this.isShowForm1 = false;
         break;
     }
   }
 
-  public checkOption(stt: any) {
-    this.getAllBookByStatus(stt);
-  }
+  // public checkOption(stt: any) {
+  //   this.getAllBookByStatus(stt);
+  // }
+
 
   public getAllUserBooks(): void {
     this.orderService.findAllByUser().subscribe((data) => {
@@ -112,23 +119,29 @@ export class UserComponent implements OnInit {
 
   public getAllBookByStatus(status: any): void {
     this.orderService.findAllByStatusAndUser(status).subscribe((data) => {
-      this.ordersUser = data;
-      console.log(this.orders);
       if (status === 'pending') {
+        this.ordersUser = data;
+        console.log(this.ordersUser);
         this.title = 'Show List Book Provider "PENDING"'
       }
       if (status === 'received') {
+        this.ordersUser = data;
+        console.log(this.ordersUser);
         this.title = 'Show List Book Provider "RECEIVED"'
       }
       if (status === 'complete') {
+        this.ordersUser = data;
+        console.log(this.ordersUser);
         this.title = 'Show List Book Provider "COMPLETE"'
       }
       this.isShowFormBookProvider = false;
       this.isShowFormListUserBook = false;
+      this.isShowForm1 = true;
+      this.isShowForm2 = false;
     })
   }
 
-  userOrders1: any[] = [];
+
 
   public getAllStatusBook(status: any): void {
     this.orderService.findAllByStatusAndUserProvider(status).subscribe((data) => {
@@ -143,6 +156,10 @@ export class UserComponent implements OnInit {
       if (status === 'complete') {
         this.title = 'Show list of people I book "COMPLETE"'
       }
+      this.isShowFormBookProvider = false;
+      this.isShowFormListUserBook = false;
+      this.isShowForm1= false;
+      this.isShowForm2 = true;
     })
   }
 }
