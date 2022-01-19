@@ -65,6 +65,7 @@ export class UserComponent implements OnInit {
   }
 
   action: any = '';
+  userOrders: any[]=[];
 
   checkBox(event: any) {
     this.action = event.target.value;
@@ -97,7 +98,7 @@ export class UserComponent implements OnInit {
 
   public getAllProviderBook(): void {
     this.orderService.findAllByProvider().subscribe((data) => {
-      this.orders = data
+      this.userOrders = data
     });
     this.title = 'List provider book'
   }
