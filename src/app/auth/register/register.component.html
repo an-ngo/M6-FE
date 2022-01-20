@@ -9,10 +9,13 @@
       <img src="assets/images/true-love-la-gi-1.jpg" alt="">
     </div>
     <br>
+
     <h3 *ngIf="message != ''">{{message}}</h3>
     <h6 class="clear mt-5">Đăng ký</h6>
+
     <br/>
     <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" novalidate>
+      <h3 *ngIf="message != ''">{{message}}</h3>
       <table width="80%">
         <tr>
           <td width="145" align="left" valign="top" class="body"><strong>Tên :</strong></td>
@@ -78,7 +81,7 @@
         </tr>
         <tr>
           <td></td>
-          <td><input type="submit" [disabled]="!registerForm.valid" name="submit" class="button" value="Login"/></td>
+          <td><input type="submit" [disabled]="!registerForm.valid" name="submit" class="button" value="Đăng Ký"/></td>
         </tr>
       </table>
     </form>

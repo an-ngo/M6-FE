@@ -8,9 +8,21 @@
     <h2>{{user.email}}</h2>
     <h2>{{user.phone}}</h2>
     <h2>{{user.gender}}</h2>
+    <button (click)="soraTable()">Nhắn tin</button>
+    <div *ngIf="checkMessage == true">
+      <table>
+        <tr>
+          <th>tên phòng chat</th>
+          <th>Xóa</th>
+        </tr>
+        <tr *ngFor="let room of rooms">
+          <td><a routerLink="/message/{{room.id}}">{{room.name}}</a></td>
+          <td><a href="">Delete</a></td>
+        </tr>
+      </table>
+    </div>
     <div *ngIf="role == 'ROLE_PROVIDER'">
       <h2>CCDV: {{user.isStatusProvider}}</h2>
-
       <h3>{{title_status}}</h3>
 
       <hr>

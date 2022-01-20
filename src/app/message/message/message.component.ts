@@ -20,14 +20,12 @@ export class MessageComponent implements OnInit {
   constructor(private messageService: MessageService, private roomService: RoomService, private userService: UserService, private activatedRouter: ActivatedRoute) {
 
   }
-
-
   ngOnInit(): void {
     this.activatedRouter.paramMap.subscribe((paraMap) => {
       const roomId = paraMap.get('roomId');
       this.roomService.findById(roomId).subscribe((data) => {
         this.room = data;
-        this.eventSource = new EventSource(`${environment.URL_API}/messages/subscribe?roomId=${this.room.id}`);
+        // this.eventSource = new EventSource(`${environment.URL_API}/messages/subscribe?roomId=${roomId}`);
         this.messageService.getMessageByRoom(this.room).subscribe((data) => {
           this.messages = data;
         });
@@ -39,6 +37,11 @@ export class MessageComponent implements OnInit {
   }
 
   public saveMessage(messageForm: any): void {
+    let el = document.getElementById("sendMess");
+    // @ts-ignore
+    el.appendChild(document.createTextNode(this.currentUser.name+' '+messageForm.value.message));
+    // @ts-ignore
+    el.appendChild(document.createElement('br'));
     messageForm.value.user = this.currentUser;
     messageForm.value.room = this.room;
     this.messageService.saveMessage(messageForm.value, this.room.id).subscribe();
@@ -47,13 +50,15 @@ export class MessageComponent implements OnInit {
     this.event();
   }
   public event(): void {
+    this.eventSource = new EventSource(`${environment.URL_API}/messages/subscribe?roomId=${this.room.id}`);
     // @ts-ignore
-    this.eventSource.addEventListener("sendmess", (data) => {
+    this.eventSource.onmessage = (event) => {
+      this.message = JSON.parse(event.data);
+      let el = document.getElementById("sendMess");
       // @ts-ignore
-      console.log(JSON.parse(data.data));
+      el.appendChild(document.createTextNode(this.message.user.name+' '+this.message.message));
       // @ts-ignore
-      this.message = JSON.parse(data.data);
-      this.messages.push(this.message);
-    });
+      el.appendChild(document.createElement('br'));
+    }
   }
 }
