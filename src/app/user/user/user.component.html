@@ -8,7 +8,7 @@
     <h2>{{user.email}}</h2>
     <h2>{{user.phone}}</h2>
     <h2>{{user.gender}}</h2>
-    <div *ngIf="['ROLE_PROVIDER'].indexOf(role)!==1">
+    <div *ngIf="role == 'ROLE_PROVIDER'">
       <h2>CCDV: {{user.isStatusProvider}}</h2>
 
       <h3>{{title_status}}</h3>

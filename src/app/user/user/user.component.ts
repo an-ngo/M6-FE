@@ -3,6 +3,7 @@ import {UserService} from "../../service/user/user.service";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {OrderService} from "../../service/order/order.service";
 import {ServiceService} from "../../service/service/service.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -26,10 +27,10 @@ export class UserComponent implements OnInit {
   ordersUser: any[]=[]
   userOrders1: any[] = [];
   statusProvider : any = ''
-  role: any;
   title_status: string = '';
+  role = window.sessionStorage.getItem("role");
 
-  constructor(private serviceService: ServiceService, private userService: UserService, private storage: AngularFireStorage, private orderService: OrderService) {
+  constructor(private router: Router,private serviceService: ServiceService, private userService: UserService, private storage: AngularFireStorage, private orderService: OrderService) {
   }
 
   ngOnInit(): void {
@@ -171,7 +172,6 @@ export class UserComponent implements OnInit {
 
   public changeStatusProvider(status: any): void {
     this.userService.changStatus(status).subscribe((data) => {
-    console.log(data)
     this.status = data;
       if (status === 'active'){
         this.title_status = 'Thay đổi trạng thái CCDV -> hoạt động'
@@ -182,7 +182,10 @@ export class UserComponent implements OnInit {
       if (status === 'disable'){
         this.title_status = 'Thay đổi trạng thái CCDV -> ngừng hoạt động'
       }
-    })
+    });
+    this.router.navigateByUrl('/user').then(() => {
+      window.location.reload();
+    });
   }
 }
 
