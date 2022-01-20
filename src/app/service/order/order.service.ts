@@ -65,6 +65,9 @@ export class OrderService {
     return this.http.get(`${this.url}/orders/provider/${status}`, this.httpOptions);
 
   }
+  public editOrder(id: any, order: any){
+    return this.http.put(`${this.url}/orders/${id}`, order);
+  }
 }
 
 

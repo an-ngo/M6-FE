@@ -20,6 +20,12 @@ const routes: Routes = [
   {
     path: '', redirectTo: '/home', pathMatch: 'full'
   },
+  {
+    path: 'message', loadChildren: () => import('./message/message.module').then(modules => modules.MessageModule)
+  },
+  {
+    path: 'room', loadChildren: () => import('./room/room.module').then(modules => modules.RoomModule)
+  }
 ];
 
 @NgModule({

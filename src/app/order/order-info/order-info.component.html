@@ -66,10 +66,10 @@
           </tr>
           <tr *ngIf="order.userProvider.username == username && order.statusOrder == 'PENDING'">
             <td>
-              <button (click)="confirm(true)">Xác Nhận</button>
+              <button (click)="confirm(true, order.user.name+' + '+order.userProvider.name)">Xác Nhận</button>
             </td>
             <td>
-              <button (click)="confirm(false)">Hủy</button>
+              <button (click)="confirm(false, 'hủy')">Hủy</button>
             </td>
           </tr>
           <tr *ngIf="order.userProvider.username == username && order.statusOrder == 'RECEIVED'">
@@ -78,6 +78,7 @@
             </td>
           </tr>
         </table>
+        <a *ngIf="order.statusOrder != 'PENDING' && order.room.id != null" routerLink="/message/{{order.room.id}}">Nhắn tin ngay</a>
       </div>
     </div>
   </div>
