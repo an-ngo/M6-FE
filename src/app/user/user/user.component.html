@@ -3,21 +3,27 @@
   <div id="right_container">
 
   </div>
-  <div style="padding:20px 15px 30px 15px; background-color: pink">
-    <h1>{{user.name}} <img src="{{user.avatar}}" alt=""></h1>
-    <h2>{{user.email}}</h2>
-    <h2>{{user.phone}}</h2>
-    <h2>{{user.gender}}</h2>
+  <div style="padding:20px 15px 30px 15px; background-color: pink;">
+    <div class="info">
+      <h1>{{user.name}} <img src="{{user.avatar}}" alt=""></h1>
+      <h2>{{user.email}}</h2>
+      <h2>{{user.phone}}</h2>
+      <h2>{{user.gender}}</h2>
+    </div>
+
     <div *ngIf="role == 'ROLE_PROVIDER'">
-      <h2>CCDV: {{user.isStatusProvider}}</h2>
+      <h2 style="text-align: center">CCDV: {{user.isStatusProvider}}</h2>
 
       <h3>{{title_status}}</h3>
 
       <hr>
-    <h4>Thay đổi trạng thái CCDV</h4>
-      <button value="active" (click)="changeStatusProvider('active')">Activate</button>&nbsp;
-      <button value="activate" (click)="changeStatusProvider('busy')">BUSY</button>&nbsp;
-      <button value="activate" (click)="changeStatusProvider('disable')">DISABLE</button>
+      <div class="button">
+        <h4>Thay đổi trạng thái CCDV</h4>
+        <button value="active" class="btn btn-success" (click)="changeStatusProvider('active')">Activate</button>&nbsp;
+        <button value="activate" class="btn btn-warning" (click)="changeStatusProvider('busy')">BUSY</button>&nbsp;
+        <button value="activate" class="btn btn-danger" (click)="changeStatusProvider('disable')">DISABLE</button>
+      </div>
+
       <hr>
       <h4>Thông tin dịch vụ cung cấp</h4>
       <div class="bd-example">
@@ -35,18 +41,24 @@
             <th scope="row">{{serv.id}}</th>
             <td>{{serv.name}}</td>
             <td>{{serv.price}}</td>
-            <td><button (click)="checkEditSerVices(serv.id)">Sửa</button></td>
-            <td><button (click)="delete(serv.id)">Xóa</button></td>
+            <td>
+              <button (click)="checkEditSerVices(serv.id)">Sửa</button>
+            </td>
+            <td>
+              <button (click)="delete(serv.id)">Xóa</button>
+            </td>
           </tr>
           </tbody>
         </table>
       </div>
       <div class="container" *ngIf="checkEditService">
         <form [formGroup]="serviceForm" (ngSubmit)="editServices()">
-          <input type="text" class="form-control" placeholder="Thay đổi tên dịch vụ" aria-label="Username" formControlName="name">
+          <input type="text" class="form-control" placeholder="Thay đổi tên dịch vụ" aria-label="Username"
+                 formControlName="name">
           <div class="input-group mb-3">
             <span class="input-group-text">$</span>
-            <input placeholder="Thay đổi giá dịch vụ" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" formControlName="price">
+            <input placeholder="Thay đổi giá dịch vụ" type="text" class="form-control"
+                   aria-label="Amount (to the nearest dollar)" formControlName="price">
             <span class="input-group-text">.00</span>
           </div>
           <button>Lưu Lại</button>
@@ -56,15 +68,15 @@
     </div>
 
     <div class="servicecolumnzone">
-    <div class="clear"></div>
+      <div class="clear"></div>
       <div class="servicecolumn1">
         <div>
           <h5>
-            <button (click)="checkEditt()">Edit</button>
-            <button (click)="checkBack()">Back</button>
+            <button class="btn btn-warning" (click)="checkEditt()">Sửa thông tin các nhân</button>&nbsp;
+            <button class="btn btn-info" (click)="checkBack()">Thôi! Không sửa nữa</button>
           </h5>
-          <img src="assets/images/ico1.png" alt="" class="abouticon"/>Lorem ipsum dolor sit amet, consectetuer
-          adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius,
+          <!--          <img src="assets/images/ico1.png" alt="" class="abouticon"/>Lorem ipsum dolor sit amet, consectetuer-->
+          <!--          adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius,-->
         </div>
         <div *ngIf="checkEdit">
           <form (ngSubmit)="edit()">
@@ -105,7 +117,7 @@
       </div>
       <div class="servicecolumn2">
         <div>
-          <h5>Hiển thị danh sách dịch vụ</h5>
+          <div class="p-3 mb-3 bg-warning text-dark">Hiển thị danh sách dịch vụ</div>
         </div>
         <div class="clear"></div>
         <ul>
@@ -130,19 +142,23 @@
               "COMPLETE"
             </button>
           </li>
-<!--          -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+          <!--          -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
           <li class="c">
-            <button type="button" value="pending" (click)="getAllStatusBook('pending')">Show list of people I book "PENDING
+            <button type="button" value="pending" (click)="getAllStatusBook('pending')">Show list of people I book
+              "PENDING
             </button>
           </li>
 
           <li class="c">
-            <button type="button" value="received" (click)="getAllStatusBook('received')">Show list of people I book "RECEIVED"
+            <button type="button" value="received" (click)="getAllStatusBook('received')">Show list of people I book
+              "RECEIVED"
             </button>
           </li>
 
           <li class="c">
-            <button type="button" value="complete" (click)="getAllBookByStatus('complete')">Show list of people I book "COMPLETE"</button>
+            <button type="button" value="complete" (click)="getAllBookByStatus('complete')">Show list of people I book
+              "COMPLETE"
+            </button>
           </li>
         </ul>
       </div>
@@ -152,7 +168,7 @@
         <h3>{{title}}</h3>
         <div class="clear"></div>
 
-<!--        Hiển thị list order mình book người ta-->
+        <!--        Hiển thị list order mình book người ta-->
 
         <table style="margin: auto" border="1" *ngIf="orders.length > 0 && isShowFormListUserBook">
           <tr>
@@ -171,7 +187,7 @@
           </tr>
         </table>
 
-<!--       list order người ta book mình -->
+        <!--       list order người ta book mình -->
 
         <table style="margin: auto" border="1" *ngIf="userOrders.length > 0 && isShowFormBookProvider">
           <tr>
@@ -190,7 +206,7 @@
           </tr>
         </table>
 
-<!--// list order mình book người ta theo trạng thái-->
+        <!--// list order mình book người ta theo trạng thái-->
 
         <table style="margin: auto" border="1"
 
