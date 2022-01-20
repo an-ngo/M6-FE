@@ -1,13 +1,16 @@
-<div *ngIf="messages.length > 0">
-  <table>
-    <h2>{{room.name}}</h2>
-    <tr *ngFor="let mes of messages">
-      <td><img width="30px" height="30px"  src="{{mes.user.avatar}}" alt=""></td>
-      <th>{{mes.user.name}}:</th>
-      <td>{{mes.message}}</td>
-    </tr>
-  </table>
-</div>
+<!--<div *ngIf="messages.length > 0">-->
+<!--  <table>-->
+<!--    <h2>{{room.name}}</h2>-->
+<!--    <tr *ngFor="let mes of messages">-->
+<!--      <td><img width="30px" height="30px"  src="{{mes.user.avatar}}" alt=""></td>-->
+<!--      <th>{{mes.user.name}}:</th>-->
+<!--      <td>{{mes.message}}</td>-->
+<!--    </tr>-->
+<!--  </table>-->
+  <div *ngIf="messages.length > 0">
+    <p *ngFor="let mes of messages">{{mes.user.name}} {{mes.message}}</p><br>
+  </div>
+  <p id="sendMess"></p>
   <form #messageForm="ngForm" (ngSubmit)="saveMessage(messageForm)">
     <input type="text" [(ngModel)]="mes" name="message">
     <input type="submit" value="send">

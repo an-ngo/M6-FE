@@ -4,6 +4,7 @@ import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {OrderService} from "../../service/order/order.service";
 import {ServiceService} from "../../service/service/service.service";
 import {Router} from "@angular/router";
+import {RoomService} from "../../service/room/room.service";
 
 
 @Component({
@@ -29,19 +30,22 @@ export class UserComponent implements OnInit {
   statusProvider : any = ''
   title_status: string = '';
   role = window.sessionStorage.getItem("role");
+  rooms: any;
+  checkMessage = false;
 
-  constructor(private router: Router,private serviceService: ServiceService, private userService: UserService, private storage: AngularFireStorage, private orderService: OrderService) {
+  constructor(private roomService: RoomService, private router: Router,private serviceService: ServiceService, private userService: UserService, private storage: AngularFireStorage, private orderService: OrderService) {
   }
 
   ngOnInit(): void {
     this.userService.findUserByToken().subscribe((data) => {
       this.user = data;
       this.urlImage = data.avatar;
-      console.log(this.user);
+      this.roomService.findAllByUserId(this.user.id).subscribe((data) => {
+        this.rooms = data;
+        console.log(this.rooms);
+      });
     });
   }
-
-
 
   edit(): void {
     this.user.avatar = this.urlImage;
@@ -186,6 +190,10 @@ export class UserComponent implements OnInit {
     this.router.navigateByUrl('/user').then(() => {
       window.location.reload();
     });
+  }
+
+  soraTable() {
+    this.checkMessage = true;
   }
 }
 
