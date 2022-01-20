@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Route, Router} from "@angular/router";
 import {OrderService} from "../../service/order/order.service";
 import {documentId} from "@angular/fire/firestore";
 import {RoomService} from "../../service/room/room.service";
@@ -18,7 +18,9 @@ export class OrderInfoComponent implements OnInit {
   feedback:any;
 
 
-  constructor(private activatedRouter: ActivatedRoute,
+  constructor(
+    private route: Router,
+    private activatedRouter: ActivatedRoute,
               private orderService: OrderService, private roomService: RoomService) {
     this.username = window.sessionStorage.getItem("username");
     console.log(this.username);
@@ -52,6 +54,9 @@ export class OrderInfoComponent implements OnInit {
     }
     else {
       this.orderService.deleteOrder(this.order.id).subscribe();
+      this.route.navigateByUrl('/user').then(() => {
+        window.location.reload();
+      });
     }
   }
 
