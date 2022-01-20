@@ -17,4 +17,7 @@ export class RoomService {
   public findById(id: any): Observable<any>{
     return this.http.get(`${this.url}/rooms/${id}`);
   }
+  public findAllByUserId(id: any): Observable<any>{
+    return this.http.get(`${this.url}/rooms/user/${id}`);
+  }
 }

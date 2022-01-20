@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
   public register(registerForm: any): void {
     registerForm.value.avatar = this.urlImage;
     this.userService.register(registerForm.value).subscribe((data) => {
-      this.message = data;
+      this.message = "Đăng Ký Thành Công";
     });
   }
   public selectFile(event: any){

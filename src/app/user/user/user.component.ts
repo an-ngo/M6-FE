@@ -7,7 +7,7 @@ import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {first} from "rxjs";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Service} from "../../model/Service";
-
+import {RoomService} from "../../service/room/room.service";
 
 @Component({
   selector: 'app-user',
@@ -35,21 +35,28 @@ export class UserComponent implements OnInit {
   services: any[] = [];
   checkEditService = false;
   id: any;
+  rooms: any;
+  checkMessage = false;
 
-  constructor(private activateRoute: ActivatedRoute,private router: Router, private serviceService: ServiceService, private userService: UserService, private storage: AngularFireStorage, private orderService: OrderService) {
+  constructor(private roomService: RoomService,private activateRoute: ActivatedRoute,private router: Router, private serviceService: ServiceService, private userService: UserService, private storage: AngularFireStorage, private orderService: OrderService) {
     this.activateRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = paramMap.get('id');
       this.getDetail(this.id);
     })
   }
 
+
+
+
   ngOnInit(): void {
     this.userService.findUserByToken().subscribe((data) => {
       this.user = data;
       this.urlImage = data.avatar;
-      console.log(this.user);
+      this.roomService.findAllByUserId(this.user.id).subscribe((data) => {
+        this.rooms = data;
+        console.log(this.rooms);
+      });
     });
-
     this.userService.findAllSerVice().subscribe((service) => {
       this.services = service;
       console.log(service);
@@ -57,7 +64,6 @@ export class UserComponent implements OnInit {
     })
 
   }
-
 
   edit(): void {
     this.user.avatar = this.urlImage;
@@ -99,9 +105,6 @@ export class UserComponent implements OnInit {
   isShowForm2: boolean = true;
   status: any = {};
 
-  // status = ["pending", "received", "complete"]
-
-
   checkBox(event: any) {
     this.action = event.target.value;
     console.log(this.action)
@@ -120,10 +123,6 @@ export class UserComponent implements OnInit {
         break;
     }
   }
-
-  // public checkOption(stt: any) {
-  //   this.getAllBookByStatus(stt);
-  // }
 
 
   public getAllUserBooks(): void {
@@ -203,6 +202,11 @@ export class UserComponent implements OnInit {
     });
   }
 
+  soraTable() {
+    this.checkMessage = true;
+  }
+
+
   findAllServices(): any {
     return this.services;
   }
@@ -243,7 +247,7 @@ export class UserComponent implements OnInit {
     });
   }
 
-  private getDetail(id: number) {
+  private getDetail(id:any) {
     return this.userService.findById(id).subscribe(service => {
       this.service = service;
       this.serviceForm = new FormGroup({
