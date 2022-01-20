@@ -18,9 +18,45 @@
       <button value="active" (click)="changeStatusProvider('active')">Activate</button>&nbsp;
       <button value="activate" (click)="changeStatusProvider('busy')">BUSY</button>&nbsp;
       <button value="activate" (click)="changeStatusProvider('disable')">DISABLE</button>
+      <hr>
+      <h4>Thông tin dịch vụ cung cấp</h4>
+      <div class="bd-example">
+        <table class="table table-success table-striped">
+          <thead>
+          <tr>
+            <th scope="col">#Id</th>
+            <th scope="col">Tên dịch vụ</th>
+            <th scope="col">Giá dịch vụ</th>
+            <th scope="col" colspan="2">Tùy Chọn</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let serv of services">
+            <th scope="row">{{serv.id}}</th>
+            <td>{{serv.name}}</td>
+            <td>{{serv.price}}</td>
+            <td><button (click)="checkEditSerVices(serv.id)">Sửa</button></td>
+            <td><button (click)="delete(serv.id)">Xóa</button></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="container" *ngIf="checkEditService">
+        <form [formGroup]="serviceForm" (ngSubmit)="editServices()">
+          <input type="text" class="form-control" placeholder="Thay đổi tên dịch vụ" aria-label="Username" formControlName="name">
+          <div class="input-group mb-3">
+            <span class="input-group-text">$</span>
+            <input placeholder="Thay đổi giá dịch vụ" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" formControlName="price">
+            <span class="input-group-text">.00</span>
+          </div>
+          <button>Lưu Lại</button>
+        </form>
+      </div>
+
     </div>
 
     <div class="servicecolumnzone">
+    <div class="clear"></div>
       <div class="servicecolumn1">
         <div>
           <h5>
@@ -69,7 +105,7 @@
       </div>
       <div class="servicecolumn2">
         <div>
-          <h5>Service 2</h5>
+          <h5>Hiển thị danh sách dịch vụ</h5>
         </div>
         <div class="clear"></div>
         <ul>

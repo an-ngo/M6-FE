@@ -7,12 +7,14 @@ import { ProviderComponent } from './provider/provider.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RegisterComponent} from "./register/register.component";
 import {CarouselModule} from "ngx-owl-carousel-o";
+import { EditServiceComponent } from './edit-service/edit-service.component';
 
 @NgModule({
   declarations: [
     UserComponent,
     ProviderComponent,
-    RegisterComponent
+    RegisterComponent,
+    EditServiceComponent
   ],
   imports: [
     CommonModule,

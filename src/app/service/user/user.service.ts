@@ -3,6 +3,7 @@ import {environment} from "../../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import * as http from "http";
+import {Service} from "../../model/Service";
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +34,21 @@ export class UserService {
   public changStatus(status: any): Observable<any>{
     return this.http.put(`${this.url}/user-provider/${status}`,status, this.httpOptions);
   }
+
+  public findAllSerVice(): Observable<any>{
+    return this.http.get(`${this.url}/serviceByProvider`, this.httpOptions);
+  }
+
+  public deleteService(id: any): Observable<any>{
+    return this.http.delete(`${this.url}/serviceByProvider/${id}`, this.httpOptions);
+  }
+
+  public editService(id: any, service: Service): Observable<Service>{
+    return this.http.put(`${this.url}/serviceByProvider/${id}`, service);
+  }
+
+  public findById(id: number):Observable<Service>{
+    return this.http.get(`${this.url}/serviceByProvider/${id}`)
+  }
+
 }
