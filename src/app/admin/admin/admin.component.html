@@ -3,7 +3,8 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-6 text-center mb-5">
-          <h2 class="heading-section">Danh sách toàn bộ người dùng</h2>
+
+          <h2 class="heading-section">Danh sách người dùng</h2>
         </div>
       </div>
       <div class="row">
@@ -13,9 +14,9 @@
               <tr>
                 <th>&nbsp;</th>
                 <th>Email</th>
-                <th>Username</th>
-                <th>Status</th>
-                <th><a class="list_order" routerLink="/admin/order" >Danh sách Orders</a></th>
+                <th>Tên Đăng Nhập</th>
+                <th>Trạng thái</th>
+                <th><a class="list_order" routerLink="/admin/order" >Danh sách đặt hàng</a></th>
               </tr>
               </thead>
               <tbody>
@@ -30,13 +31,13 @@
                   <a routerLink="/user/{{user.id}}" ><img src="{{user.avatar}}" alt="" class="img"></a>
                   <div class="pl-3 email">
                     <span>{{user.email}}</span>
-                    <span>Join Date: {{user.joinDate}}</span>
+                    <span>Ngày tham gia: {{user.joinDate}}</span>
                   </div>
                 </td>
                 <td>{{user.username}}</td>
-                <td *ngIf="user.isStatusProvider=='ACTIVE'" class="status"><span class="active">Active</span></td>
-                <td *ngIf="user.isStatusProvider=='BUSY'" class="status"><span class="waiting">BUSY</span></td>
-                <td *ngIf="user.isStatusProvider=='DISABLE'" class="status"><span class="disable_">Disable</span></td>
+                <td *ngIf="user.isStatusProvider=='ACTIVE'" class="status"><span class="active">Đang Hoạt Động</span></td>
+                <td *ngIf="user.isStatusProvider=='BUSY'" class="status"><span class="waiting">Đang Bận</span></td>
+                <td *ngIf="user.isStatusProvider=='DISABLE'" class="status"><span class="disable_">Đã tắt</span></td>
 
                 <td>
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -47,8 +48,8 @@
 
               </tbody>
             </table>
-          <button class="button" *ngIf="page > 0 && action ==''" (click)="nextPage(false)">previous</button>
-          <button class="button" *ngIf="page < totalPage-1 && action == ''" (click)="nextPage(true)">next</button>
+          <button class="button" *ngIf="page > 0 && action ==''" (click)="nextPage(false)">Trước</button>
+          <button class="button" *ngIf="page < totalPage-1 && action == ''" (click)="nextPage(true)">Sau</button>
           </div>
         </div>
       </div>

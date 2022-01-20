@@ -1,25 +1,19 @@
 <div id="body_container">
-
-  <div id="right_container">
-
-  </div>
   <div style="padding:20px 15px 30px 15px; background-color: pink;">
     <div class="info">
-      <h1>{{user.name}} <img src="{{user.avatar}}" alt=""></h1>
-      <h2>{{user.email}}</h2>
+      <h1>NAME: {{user.name}} </h1>
+      <img src="{{user.avatar}}" width="500px">
+      <h2>EMAIL: {{user.email}}</h2>
       <h2>{{user.phone}}</h2>
       <h2>{{user.gender}}</h2>
     </div>
 
     <div *ngIf="role == 'ROLE_PROVIDER'">
+
       <h2 style="text-align: center">CCDV: {{user.isStatusProvider}}</h2>
 
       <div style="padding:20px 15px 30px 15px; background-color: pink">
-        <h1>{{user.name}} <img src="{{user.avatar}}" alt=""></h1>
-        <h2>{{user.email}}</h2>
-        <h2>{{user.phone}}</h2>
-        <h2>{{user.gender}}</h2>
-        <button (click)="soraTable()">Nhắn tin</button>
+        <button class="btn btn-outline-primary" style="margin: auto" (click)="soraTable()">Nhắn tin</button>
         <div *ngIf="checkMessage == true">
           <table>
             <tr>
@@ -32,207 +26,205 @@
             </tr>
           </table>
         </div>
-        <div *ngIf="role == 'ROLE_PROVIDER'">
-          <h2>CCDV: {{user.isStatusProvider}}</h2>
-          <h3>{{title_status}}</h3>
 
-          <hr>
-          <div class="button">
-            <h4>Thay đổi trạng thái CCDV</h4>
-            <button value="active" class="btn btn-success" (click)="changeStatusProvider('active')">Activate</button>&nbsp;
-            <button value="activate" class="btn btn-warning" (click)="changeStatusProvider('busy')">BUSY</button>&nbsp;
-            <button value="activate" class="btn btn-danger" (click)="changeStatusProvider('disable')">DISABLE</button>
-          </div>
-
-          <hr>
-          <h4>Thông tin dịch vụ cung cấp</h4>
-          <div class="bd-example">
-            <table class="table table-success table-striped">
-              <thead>
-              <tr>
-                <th scope="col">#Id</th>
-                <th scope="col">Tên dịch vụ</th>
-                <th scope="col">Giá dịch vụ</th>
-                <th scope="col" colspan="2">Tùy Chọn</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let serv of services">
-                <th scope="row">{{serv.id}}</th>
-                <td>{{serv.name}}</td>
-                <td>{{serv.price}}</td>
-                <td>
-                  <button (click)="checkEditSerVices(serv.id)">Sửa</button>
-                </td>
-                <td>
-                  <button (click)="delete(serv.id)">Xóa</button>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="container" *ngIf="checkEditService">
-            <form [formGroup]="serviceForm" (ngSubmit)="editServices()">
-              <input type="text" class="form-control" placeholder="Thay đổi tên dịch vụ" aria-label="Username"
-                     formControlName="name">
-              <div class="input-group mb-3">
-                <span class="input-group-text">$</span>
-                <input placeholder="Thay đổi giá dịch vụ" type="text" class="form-control"
-                       aria-label="Amount (to the nearest dollar)" formControlName="price">
-                <span class="input-group-text">.00</span>
-              </div>
-              <button>Lưu Lại</button>
-            </form>
-          </div>
-
+        <hr>
+        <div class="button">
+          <h4>Thay đổi trạng thái CCDV</h4>
+          <button value="active" class="btn btn-success" (click)="changeStatusProvider('active')">Activate</button>&nbsp;
+          <button value="activate" class="btn btn-warning" (click)="changeStatusProvider('busy')">BUSY</button>&nbsp;
+          <button value="activate" class="btn btn-danger" (click)="changeStatusProvider('disable')">DISABLE</button>
         </div>
 
-        <div class="servicecolumnzone">
-          <div class="clear"></div>
-          <div class="servicecolumn1">
-            <div>
-              <h5>
-                <button class="btn btn-warning" (click)="checkEditt()">Sửa thông tin các nhân</button>&nbsp;
-                <button class="btn btn-info" (click)="checkBack()">Thôi! Không sửa nữa</button>
-              </h5>
-              <!--          <img src="assets/images/ico1.png" alt="" class="abouticon"/>Lorem ipsum dolor sit amet, consectetuer-->
-              <!--          adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius,-->
+        <hr>
+        <h4>Thông tin dịch vụ cung cấp</h4>
+        <div class="bd-example">
+          <table class="table table-success table-striped">
+            <thead>
+            <!--            <tr>-->
+            <!--              <th>Tên</th>-->
+            <!--              <td><input type="text" name="name" [(ngModel)]="user.name"></td>-->
+            <!--            </tr>-->
+            <tr>
+              <th scope="col">#Id</th>
+              <th scope="col">Tên dịch vụ</th>
+              <th scope="col">Giá dịch vụ</th>
+              <th scope="col" colspan="2">Tùy Chọn</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let serv of services">
+              <th scope="row">{{serv.id}}</th>
+              <td>{{serv.name}}</td>
+              <td>{{serv.price}}</td>
+              <td>
+                <button (click)="checkEditSerVices(serv.id)">Sửa</button>
+              </td>
+              <td>
+                <button (click)="delete(serv.id)">Xóa</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="container" *ngIf="checkEditService">
+          <form [formGroup]="serviceForm" (ngSubmit)="editServices()">
+            <input type="text" class="form-control" placeholder="Thay đổi tên dịch vụ" aria-label="Username"
+                   formControlName="name">
+            <div class="input-group mb-3">
+              <span class="input-group-text">$</span>
+              <input placeholder="Thay đổi giá dịch vụ" type="text" class="form-control"
+                     aria-label="Amount (to the nearest dollar)" formControlName="price">
+              <span class="input-group-text">.00</span>
             </div>
-            <div *ngIf="checkEdit">
-              <form (ngSubmit)="edit()">
-                <table>
-                  <tr>
-                    <th>Name</th>
-                    <td><input type="text" name="name" [(ngModel)]="user.name"></td>
-                  </tr>
-                  <tr>
-                    <th>Gender</th>
-                    <td>
-                      <select name="gender" [(ngModel)]="user.gender">
-                        <option selected="selected" value="Nam">Male</option>
-                        <option value="Nu">Female</option>
-                      </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>Phone</th>
-                    <td><input type="text" name="phone" [(ngModel)]="user.phone"></td>
-                  </tr>
-                  <tr>
-                    <th>Avatar</th>
-                    <td><input type="file" (change)="selectAvatar($event)"></td>
-                    <td><img src="{{urlImage}}" width="50px" height="50px" alt=""></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td><input type="submit" value="Save"></td>
-                  </tr>
-                </table>
-              </form>
+            <button>Lưu Lại</button>
+          </form>
+        </div>
 
-            </div>
+      </div>
 
-
-            <div class="clear"></div>
+      <div class="servicecolumnzone">
+        <div class="clear"></div>
+        <div class="servicecolumn1">
+          <div>
+            <h5>
+              <button class="btn btn-warning" (click)="checkEditt()">Sửa thông tin các nhân</button>&nbsp;
+              <button class="btn btn-info" (click)="checkBack()">Thôi! Không sửa nữa</button>
+            </h5>
+            <!--          <img src="assets/images/ico1.png" alt="" class="abouticon"/>Lorem ipsum dolor sit amet, consectetuer-->
+            <!--          adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius,-->
           </div>
-          <div class="servicecolumn2">
-            <div>
-              <div class="p-3 mb-3 bg-warning text-dark">Hiển thị danh sách dịch vụ</div>
-            </div>
-            <div class="clear"></div>
-            <ul>
-              <li class="a"><input type="radio" name="radio" value="showListUserBook" (click)="checkBox($event)">Show
-                List
-                User Book
-              </li>
-              <li class="b"><input type="radio" name="radio" value="showListBookProvider" (click)="checkBox($event)">Show
-                List Book Provider
-              </li>
-              <li class="c">
-                <button type="button" value="pending" (click)="getAllBookByStatus('pending')">Show List Book Provider
-                  "PENDING"
-                </button>
-              </li>
-              <li class="c">
-                <button type="button" value="received" (click)="getAllBookByStatus('received')">Show List Book Provider
-                  "RECEIVED"
-                </button>
-              </li>
-              <li class="c">
-                <button type="button" value="complete" (click)="getAllBookByStatus('complete')">Show List Book Provider
-                  "COMPLETE"
-                </button>
-              </li>
-              <!--          -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
-              <li class="c">
-                <button type="button" value="pending" (click)="getAllStatusBook('pending')">Show list of people I book
-                  "PENDING
-                </button>
-              </li>
+          <div *ngIf="checkEdit">
+            <form (ngSubmit)="edit()">
+              <table>
+                <tr>
+                  <th>Name</th>
+                  <td><input type="text" name="name" [(ngModel)]="user.name"></td>
+                </tr>
+                <tr>
+                  <th>Gender</th>
+                  <td>
+                    <select name="gender" [(ngModel)]="user.gender">
+                      <option selected="selected" value="Nam">Male</option>
+                      <option value="Nu">Female</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Phone</th>
+                  <td><input type="text" name="phone" [(ngModel)]="user.phone"></td>
+                </tr>
+                <tr>
+                  <th>Avatar</th>
+                  <td><input type="file" (change)="selectAvatar($event)"></td>
+                  <td><img src="{{urlImage}}" width="50px" height="50px" alt=""></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><input type="submit" value="Save"></td>
+                </tr>
+              </table>
+            </form>
 
-              <li class="c">
-                <button type="button" value="received" (click)="getAllStatusBook('received')">Show list of people I book
-                  "RECEIVED"
-                </button>
-              </li>
+          </div>
 
-              <li class="c">
-                <button type="button" value="complete" (click)="getAllBookByStatus('complete')">Show list of people I
-                  book
-                  "COMPLETE"
-                </button>
-              </li>
-            </ul>
+
+          <div class="clear"></div>
+        </div>
+        <div class="servicecolumn2">
+          <div>
+            <div class="p-3 mb-3 bg-warning text-dark">Hiển thị danh sách dịch vụ</div>
           </div>
           <div class="clear"></div>
-          <!--      <div class="servicecolumn1">-->
-          <div class="contain" style="text-align: center">
-            <h3>{{title}}</h3>
-            <div class="clear"></div>
+          <ul>
+            <li class="a"><input type="radio" name="radio" value="showListUserBook" (click)="checkBox($event)">Show
+              List
+              User Book
+            </li>
+            <li class="b"><input type="radio" name="radio" value="showListBookProvider" (click)="checkBox($event)">Show
+              List Book Provider
+            </li>
+            <li class="c">
+              <button type="button" value="pending" (click)="getAllBookByStatus('pending')">Show List Book Provider
+                "PENDING"
+              </button>
+            </li>
+            <li class="c">
+              <button type="button" value="received" (click)="getAllBookByStatus('received')">Show List Book Provider
+                "RECEIVED"
+              </button>
+            </li>
+            <li class="c">
+              <button type="button" value="complete" (click)="getAllBookByStatus('complete')">Show List Book Provider
+                "COMPLETE"
+              </button>
+            </li>
+            <!--          -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+            <li class="c">
+              <button type="button" value="pending" (click)="getAllStatusBook('pending')">Show list of people I book
+                "PENDING
+              </button>
+            </li>
 
-            <!--        Hiển thị list order mình book người ta-->
+            <li class="c">
+              <button type="button" value="received" (click)="getAllStatusBook('received')">Show list of people I book
+                "RECEIVED"
+              </button>
+            </li>
 
-            <table style="margin: auto" border="1" *ngIf="orders.length > 0 && isShowFormListUserBook">
-              <tr>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>Date book</th>
-                <th>Avatar</th>
-                <th>Detail</th>
-              </tr>
-              <tr *ngFor="let order of orders">
-                <td>{{order.userProvider.name}}</td>
-                <td>{{order.userProvider.gender}}</td>
-                <td>{{order.date}}</td>
-                <td><img src="{{order.userProvider.avatar}}" width="40px" height="40px" alt=""></td>
-                <td><a routerLink="/order/order-info/{{order.id}}">Details</a></td>
-              </tr>
-            </table>
+            <li class="c">
+              <button type="button" value="complete" (click)="getAllBookByStatus('complete')">Show list of people I
+                book
+                "COMPLETE"
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="contain" style="text-align: center">
+          <div class="clear"></div>
 
-            <!--       list order người ta book mình -->
+          <!--        Hiển thị list order mình book người ta-->
+          <h3>{{title}}</h3>
+          <table style="margin: auto" border="1" *ngIf="orders.length > 0 && isShowFormListUserBook">
 
-            <table style="margin: auto" border="1" *ngIf="userOrders.length > 0 && isShowFormBookProvider">
-              <tr>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>Date book</th>
-                <th>Avatar</th>
-                <th>Detail</th>
-              </tr>
-              <tr *ngFor="let order1 of userOrders">
-                <td>{{order1.user.name}}</td>
-                <td>{{order1.user.gender}}</td>
-                <td>{{order1.date}}</td>
-                <td><img src="{{order1.user.avatar}}" width="40px" height="40px" alt=""></td>
-                <td><a routerLink="/order/order-info/{{order1.id}}">Details</a></td>
-              </tr>
-            </table>
 
-            <!--// list order mình book người ta theo trạng thái-->
+            <tr>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Date book</th>
+              <th>Avatar</th>
+              <th>Detail</th>
+            </tr>
+            <tr *ngFor="let order of orders">
+              <td>{{order.userProvider.name}}</td>
+              <td>{{order.userProvider.gender}}</td>
+              <td>{{order.date}}</td>
+              <td><img src="{{order.userProvider.avatar}}" width="40px" height="40px" alt=""></td>
+              <td><a routerLink="/order/order-info/{{order.id}}">Details</a></td>
+            </tr>
+          </table>
 
-            <table style="margin: auto" border="1"
+          <!--       list order người ta book mình -->
 
-                   *ngIf="ordersUser.length > 0 && isShowForm1 == true">
+          <table style="margin: auto" border="1" *ngIf="userOrders.length > 0 && isShowFormBookProvider">
+            <tr>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Date book</th>
+              <th>Avatar</th>
+              <th>Detail</th>
+            </tr>
+            <tr *ngFor="let order1 of userOrders">
+              <td>{{order1.user.name}}</td>
+              <td>{{order1.user.gender}}</td>
+              <td>{{order1.date}}</td>
+              <td><img src="{{order1.user.avatar}}" width="40px" height="40px" alt=""></td>
+              <td><a routerLink="/order/order-info/{{order1.id}}">Details</a></td>
+            </tr>
+          </table>
+          <div class="container" >
+            <table style="text-align: center; margin: auto" border="2"
+              *ngIf="ordersUser.length > 0 && isShowForm1 == true">
               <tr>
                 <th>Name</th>
                 <th>Gender</th>
@@ -250,7 +242,7 @@
             </table>
 
 
-            <table style="margin: auto" border="1"
+            <table style="margin: auto" border="2" style="text-align: center; margin: auto"
                    *ngIf="userOrders1.length > 0 && isShowForm2 == true">
               <tr>
                 <th>Name</th>

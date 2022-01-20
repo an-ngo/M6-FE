@@ -1,20 +1,20 @@
 <div id="menu">
   <ul class="w-100" >
-    <li class="first"><a class="current" routerLink="">home</a></li>
+    <li class="first"><a class="current" routerLink="">Home</a></li>
     <p *ngIf="name == null; then falseBlock else trueBlock"></p>
     <ng-template #falseBlock>
-      <li><a routerLink="/app/register">register</a></li>
-      <li><a routerLink="/app/login">login</a></li>
+      <li><a routerLink="/app/register">Đăng kí</a></li>
+      <li><a routerLink="/app/login">Đăng nhập</a></li>
     </ng-template>
     <ng-template #trueBlock>
-      <li *ngIf="role != 'ROLE_ADMIN' && role != 'ROLE_PROVIDER'"><a routerLink="/user/register/provider">register provider</a></li>
-      <li ><a href="projects.html">projects</a></li>
-      <li ><a href="services.html">services</a></li>
-      <li *ngIf="roleAdmin"><a routerLink="/admin">List Users</a></li>
+      <li *ngIf="role != 'ROLE_ADMIN' && role != 'ROLE_PROVIDER'"><a routerLink="/user/register/provider">Đăng ký nhà cung cấp</a></li>
+      <li ><a href="projects.html">Dự án</a></li>
+      <li ><a href="services.html">Dịch vụ</a></li>
+      <li *ngIf="roleAdmin"><a routerLink="/admin">Danh sách người dùng</a></li>
 
       <li><a routerLink="/user">{{name}}</a></li>
       <li><a routerLink="/user"><img src="{{avatar}}" alt="avatar" class="img avatar"></a></li>
-      <li><a routerLink="/home" (click)="logout()">Logout</a></li>
+      <li><a routerLink="/home" (click)="logout()">Đăng xuất</a></li>
     </ng-template>
   </ul>
 </div>

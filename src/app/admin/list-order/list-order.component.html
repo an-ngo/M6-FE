@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-6 text-center mb-5">
-          <h2 class="heading-section">List All Orders</h2>
+          <h2 class="heading-section">DANH SÁCH ĐẶT HÀNG</h2>
         </div>
       </div>
       <div class="row">
@@ -12,10 +12,10 @@
             <thead>
             <tr>
               <th>&nbsp;</th>
-              <th>User</th>
-              <th>Provider</th>
-              <th>Status</th>
-              <th><a class="list_order"  routerLink="/admin">List Users</a></th>
+              <th>Người dùng</th>
+              <th>Các nhà cung cấp</th>
+              <th>Trạng thái</th>
+              <th><a class="list_order"  routerLink="/admin">Danh sách người dùng</a></th>
             </tr>
             </thead>
             <tbody>
@@ -33,9 +33,9 @@
                   <span>Email: {{order.user.email}}</span>
                 </div>
               </td>
-              <td *ngIf="order.statusOrder=='COMPLETE'" class="status"><span class="active">COMPLETE</span></td>
-              <td *ngIf="order.statusOrder=='RECEIVED'" class="status"><span class="waiting">RECEIVED</span></td>
-              <td *ngIf="order.statusOrder=='PENDING'" class="status"><span class="disable_">PENDING</span></td>
+              <td *ngIf="order.statusOrder=='COMPLETE'" class="status"><span class="active">Hoàn Thành</span></td>
+              <td *ngIf="order.statusOrder=='RECEIVED'" class="status"><span class="waiting">Nhận</span></td>
+              <td *ngIf="order.statusOrder=='PENDING'" class="status"><span class="disable_">Chờ phê duyệt</span></td>
               <td class="d-flex align-items-center">
                 <a routerLink="/user/{{order.userProvider.id}}" ><img src="{{order.userProvider.avatar}}" alt="" class="img"></a>
                 <div class="pl-3 email">
@@ -54,8 +54,8 @@
 
             </tbody>
           </table>
-          <button class="button" *ngIf="page > 0 && action ==''" (click)="nextPage(false)">previous</button>
-          <button class="button" *ngIf="page < totalPage-1 && action == ''" (click)="nextPage(true)">next</button>
+          <button class="button" *ngIf="page > 0 && action ==''" (click)="nextPage(false)">Trước</button>
+          <button class="button" *ngIf="page < totalPage-1 && action == ''" (click)="nextPage(true)">Sau</button>
         </div>
       </div>
     </div>
