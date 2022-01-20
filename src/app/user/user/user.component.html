@@ -101,11 +101,12 @@
           </li>
 
           <li class="c">
-            <button type="button" value="pending" (click)="getAllStatusBook('received')">Show list of people I book "RECEIVED"
+            <button type="button" value="received" (click)="getAllStatusBook('received')">Show list of people I book "RECEIVED"
             </button>
           </li>
 
           <li class="c">
+
             <button type="button" value="pending" (click)="getAllBookByStatus('complete')">Show list of people I book "COMPLETE"
             </button>
           </li>
@@ -158,6 +159,7 @@
 <!--// list order mình book người ta theo trạng thái-->
 
         <table style="margin: auto" border="1"
+
                *ngIf="ordersUser.length > 0 && isShowForm1 == true">
           <tr>
             <th>Name</th>

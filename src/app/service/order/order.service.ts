@@ -55,6 +55,8 @@ export class OrderService {
     return this.http.get(`${this.url}/orders/book-provider`, this.httpOptions);
   }
 
+
+
   // list order mình book người ta theo trạng thái
   public findAllByStatusAndUser(status: any): Observable<any>{
     return this.http.get(`${this.url}/orders/user/${status}`, this.httpOptions);
@@ -65,6 +67,11 @@ export class OrderService {
     return this.http.get(`${this.url}/orders/provider/${status}`, this.httpOptions);
 
   }
+
+  public sendCommentOrFeedback(id: any, orderForm: any){
+    return this.http.put(`${this.url}/orders/${id}`,orderForm);
+  }
+
 }
 
 
