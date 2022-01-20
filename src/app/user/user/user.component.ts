@@ -3,9 +3,11 @@ import {UserService} from "../../service/user/user.service";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {OrderService} from "../../service/order/order.service";
 import {ServiceService} from "../../service/service/service.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {first} from "rxjs";
+import {FormControl, FormGroup} from "@angular/forms";
+import {Service} from "../../model/Service";
 import {RoomService} from "../../service/room/room.service";
-
 
 @Component({
   selector: 'app-user',
@@ -25,16 +27,26 @@ export class UserComponent implements OnInit {
   orders: any[] = [];
   title: string = '';
   page: number = 0;
-  ordersUser: any[]=[]
+  ordersUser: any[] = []
   userOrders1: any[] = [];
-  statusProvider : any = ''
+  statusProvider: any = ''
   title_status: string = '';
   role = window.sessionStorage.getItem("role");
+  services: any[] = [];
+  checkEditService = false;
+  id: any;
   rooms: any;
   checkMessage = false;
 
-  constructor(private roomService: RoomService, private router: Router,private serviceService: ServiceService, private userService: UserService, private storage: AngularFireStorage, private orderService: OrderService) {
+  constructor(private roomService: RoomService,private activateRoute: ActivatedRoute,private router: Router, private serviceService: ServiceService, private userService: UserService, private storage: AngularFireStorage, private orderService: OrderService) {
+    this.activateRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = paramMap.get('id');
+      this.getDetail(this.id);
+    })
   }
+
+
+
 
   ngOnInit(): void {
     this.userService.findUserByToken().subscribe((data) => {
@@ -45,13 +57,19 @@ export class UserComponent implements OnInit {
         console.log(this.rooms);
       });
     });
+    this.userService.findAllSerVice().subscribe((service) => {
+      this.services = service;
+      console.log(service);
+      console.log(this.services[0])
+    })
+
   }
 
   edit(): void {
     this.user.avatar = this.urlImage;
     console.log(this.user);
     this.checkEdit = false
-    alert('success');
+    alert('Sửa thành công!!');
   }
 
   checkEditt() {
@@ -86,8 +104,6 @@ export class UserComponent implements OnInit {
   isShowForm1: boolean = true;
   isShowForm2: boolean = true;
   status: any = {};
-  // status = ["pending", "received", "complete"]
-
 
   checkBox(event: any) {
     this.action = event.target.value;
@@ -107,11 +123,6 @@ export class UserComponent implements OnInit {
         break;
     }
   }
-
-  // public checkOption(stt: any) {
-  //   this.getAllBookByStatus(stt);
-  // }
-
 
 
   public getAllUserBooks(): void {
@@ -154,7 +165,6 @@ export class UserComponent implements OnInit {
   }
 
 
-
   public getAllStatusBook(status: any): void {
     this.orderService.findAllByStatusAndUserProvider(status).subscribe((data) => {
       this.userOrders1 = data;
@@ -169,21 +179,21 @@ export class UserComponent implements OnInit {
         this.title = 'Show list of people I book "COMPLETE"'
       }
 
-      this.isShowForm1= false;
+      this.isShowForm1 = false;
       this.isShowForm2 = true;
     })
   }
 
   public changeStatusProvider(status: any): void {
     this.userService.changStatus(status).subscribe((data) => {
-    this.status = data;
-      if (status === 'active'){
+      this.status = data;
+      if (status === 'active') {
         this.title_status = 'Thay đổi trạng thái CCDV -> hoạt động'
       }
-      if (status === 'busy'){
+      if (status === 'busy') {
         this.title_status = 'Thay đổi trạng thái CCDV -> thành bận'
       }
-      if (status === 'disable'){
+      if (status === 'disable') {
         this.title_status = 'Thay đổi trạng thái CCDV -> ngừng hoạt động'
       }
     });
@@ -195,5 +205,56 @@ export class UserComponent implements OnInit {
   soraTable() {
     this.checkMessage = true;
   }
-}
 
+
+  findAllServices(): any {
+    return this.services;
+  }
+
+  delete(id: any) {
+    // const service = this.services.find(x => x.id === id);
+    if (confirm('Are you sure you want to delete it?')) {
+      this.userService.deleteService(id)
+        .pipe(first())
+        .subscribe(() => this.services = this.services.filter(x => x.id !== id))
+    }
+  }
+
+  checkEditSerVices(id: any) {
+    this.id = id;
+    this.checkEditService = true;
+  }
+
+  serviceForm: FormGroup = new FormGroup({
+    name: new FormControl(),
+    price: new FormControl()
+  })
+  service: Service = {};
+
+
+  editServices() {
+    const services = this.serviceForm.value;
+    console.log(services);
+    console.log(this.id)
+    this.userService.editService(this.id, services).subscribe(() => {
+      this.serviceForm.reset();
+      alert('Sửa thành công!');
+      this.router.navigateByUrl('/user').then(() => {
+        window.location.reload();
+      });
+    }, error => {
+      alert('Sửa thất bại!');
+    });
+  }
+
+  private getDetail(id:any) {
+    return this.userService.findById(id).subscribe(service => {
+      this.service = service;
+      this.serviceForm = new FormGroup({
+        id: new FormControl(service.id),
+        name: new FormControl(service.name),
+        price: new FormControl(service.price),
+      });
+    });
+  }
+}
