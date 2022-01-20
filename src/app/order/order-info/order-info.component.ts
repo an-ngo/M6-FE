@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {OrderService} from "../../service/order/order.service";
 import {documentId} from "@angular/fire/firestore";
+import {RoomService} from "../../service/room/room.service";
 
 @Component({
   selector: 'app-order-info',
@@ -18,7 +19,7 @@ export class OrderInfoComponent implements OnInit {
 
 
   constructor(private activatedRouter: ActivatedRoute,
-              private orderService: OrderService) {
+              private orderService: OrderService, private roomService: RoomService) {
     this.username = window.sessionStorage.getItem("username");
     console.log(this.username);
   }
@@ -36,11 +37,18 @@ export class OrderInfoComponent implements OnInit {
     this.status = this.order.userProvider.username == this.username && this.order.statusOrder == 'RECEIVED';
   }
 
-  public confirm(check: any): void {
+  public confirm(check: any, name: any): void {
     if (check){
       this.orderService.confirmOrder(this.order.id).subscribe((data) => {
         this.order = data;
-      })
+        const roomChat = {"name": name};
+        this.roomService.create(roomChat).subscribe((data) => {
+          this.order.room = data;
+          this.orderService.editOrder(this.order.id, this.order).subscribe((data) => {
+            console.log(data);
+          });
+        });
+      });
     }
     else {
       this.orderService.deleteOrder(this.order.id).subscribe();

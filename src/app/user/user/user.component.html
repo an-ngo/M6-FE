@@ -8,6 +8,17 @@
     <h2>{{user.email}}</h2>
     <h2>{{user.phone}}</h2>
     <h2>{{user.gender}}</h2>
+    <div *ngIf="role == 'ROLE_PROVIDER'">
+      <h2>CCDV: {{user.isStatusProvider}}</h2>
+
+      <h3>{{title_status}}</h3>
+
+      <hr>
+    <h4>Bật/Tắt trạng thái CCDV</h4>
+      <button value="active" (click)="changeStatusProvider('active')">Activate</button>
+      <button value="activate" (click)="changeStatusProvider('busy')">BUSY</button>
+      <button value="activate" (click)="changeStatusProvider('disable')">DISABLE</button>
+    </div>
 
     <div class="servicecolumnzone">
       <div class="servicecolumn1">
@@ -50,6 +61,7 @@
               </tr>
             </table>
           </form>
+
         </div>
 
 
@@ -94,9 +106,7 @@
           </li>
 
           <li class="c">
-
-            <button type="button" value="pending" (click)="getAllBookByStatus('complete')">Show list of people I book "COMPLETE"
-            </button>
+            <button type="button" value="complete" (click)="getAllBookByStatus('complete')">Show list of people I book "COMPLETE"</button>
           </li>
         </ul>
       </div>
