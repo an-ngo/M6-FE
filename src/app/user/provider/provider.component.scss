@@ -21,3 +21,13 @@ td{
 }
 
 
+.card__img{
+  height: 250px;
+  width: auto;
+  aspect-ratio: 16-9;
+}
+img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
