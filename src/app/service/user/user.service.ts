@@ -30,4 +30,11 @@ export class UserService {
     return this.http.get(`${this.url}/users/info`, this.httpOptions);
   }
 
+  public changStatus(status: any): Observable<any>{
+    console.log(status);
+    console.log(this.httpOptions);
+    console.log(window.sessionStorage.getItem('token'));
+    return this.http.put(`${this.url}/user-provider/${status}`, this.httpOptions);
+  }
+
 }
