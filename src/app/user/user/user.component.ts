@@ -2,6 +2,7 @@ import {Component, OnInit, Provider} from '@angular/core';
 import {UserService} from "../../service/user/user.service";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {OrderService} from "../../service/order/order.service";
+import {ServiceService} from "../../service/service/service.service";
 
 
 @Component({
@@ -24,9 +25,11 @@ export class UserComponent implements OnInit {
   page: number = 0;
   ordersUser: any[]=[]
   userOrders1: any[] = [];
+  statusProvider : any = ''
+  role: any;
+  title_status: string = '';
 
-
-  constructor(private userService: UserService, private storage: AngularFireStorage, private orderService: OrderService) {
+  constructor(private serviceService: ServiceService, private userService: UserService, private storage: AngularFireStorage, private orderService: OrderService) {
   }
 
   ngOnInit(): void {
@@ -36,6 +39,8 @@ export class UserComponent implements OnInit {
       console.log(this.user);
     });
   }
+
+
 
   edit(): void {
     this.user.avatar = this.urlImage;
@@ -75,8 +80,9 @@ export class UserComponent implements OnInit {
   isShowFormBookProvider = true;
   isShowForm1: boolean = true;
   isShowForm2: boolean = true;
+  status: any = {};
+  // status = ["pending", "received", "complete"]
 
-  status = ["pending", "received", "complete"]
 
   checkBox(event: any) {
     this.action = event.target.value;
@@ -100,6 +106,7 @@ export class UserComponent implements OnInit {
   // public checkOption(stt: any) {
   //   this.getAllBookByStatus(stt);
   // }
+
 
 
   public getAllUserBooks(): void {
@@ -161,4 +168,21 @@ export class UserComponent implements OnInit {
       this.isShowForm2 = true;
     })
   }
+
+  public changeStatusProvider(status: any): void {
+    this.userService.changStatus(status).subscribe((data) => {
+    console.log(data)
+    this.status = data;
+      if (status === 'active'){
+        this.title_status = 'Thay đổi trạng thái CCDV -> hoạt động'
+      }
+      if (status === 'busy'){
+        this.title_status = 'Thay đổi trạng thái CCDV -> thành bận'
+      }
+      if (status === 'disable'){
+        this.title_status = 'Thay đổi trạng thái CCDV -> ngừng hoạt động'
+      }
+    })
+  }
 }
+
