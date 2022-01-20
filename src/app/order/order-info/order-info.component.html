@@ -39,7 +39,7 @@
 
           <tr>
             <th>Trạng thái order</th>
-            <td *ngIf="order.statusOrder=='RECEIVE'" class="status"><span class="active">RECEIVE</span></td>
+            <td *ngIf="order.statusOrder=='RECEIVED'" class="status"><span class="active">RECEIVED</span></td>
             <td *ngIf="order.statusOrder=='PENDING'" class="status"><span class="waiting">PENDING</span></td>
             <td *ngIf="order.statusOrder=='COMPLETE'" class="status"><span class="disable_">COMPLETE</span></td>
           </tr>
@@ -63,41 +63,43 @@
             <th>Tổng số tiền</th>
             <td>{{order.money}}</td>
           </tr>
-          <tr>
-            <th>Comment hệ thống</th>
-            <td>{{order.comment}}</td>
-          </tr>
+
           <tr *ngIf="order.userProvider.username == username && order.statusOrder == 'PENDING'">
             <td>
-              <button (click)="confirm(true)">Xác Nhận</button>
+              <button type="button" class="btn btn-outline-info" (click)="confirm(true)">Xác Nhận</button>
             </td>
             <td>
-              <button (click)="confirm(false)">Hủy</button>
-            </td>
-          </tr>
-          <tr *ngIf="status">
-            <td>
-              <button (click)="complete()">Order đã hoàn thành</button>
+              <button type="button" class="btn btn-outline-warning" (click)="confirm(false)">Hủy</button>
             </td>
           </tr>
-          <tr  *ngIf="username==order.userProvider.username" >
+          <tr *ngIf="this.order.userProvider.username == this.username && this.order.statusOrder == 'RECEIVED'">
             <td>
-              <button type="button" class="btn btn-outline-primary" (click)="sendCommentToUser(this)">Gửi nhận xét về khách hàng {{order.user.name}}</button>
+              <button type="button" class="btn btn-outline-success" (click)="complete()">Order đã hoàn thành</button>
             </td>
-            <td>
-              <textarea class="text_area not_zero" id="text_area">
+          </tr>
+          <tr *ngIf="username==order.userProvider.username && order.statusOrder =='COMPLETE'">
+            <form ngForm>
+
+              <td>
+                <button type="submit" class="btn btn-outline-primary" (click)="sendFeedbackToUser(feedback.value)">Gửi
+                  nhận xét về khách hàng {{order.user.name}}</button>
+              </td>
+              <td>
+                <textarea id="feedback"  [(ngModel)]="feedback" class="text_area not_zero" id="text_area">
 
               </textarea>
-            </td>
-          </tr>
-          <tr  *ngIf="username==order.user.username" >
-            <td>
-              <button type="button" class="btn btn-outline-success" (click)="sendCommentToProvider(this)" >Gửi nhận xét về {{order.userProvider.username}}</button>
-            </td>
-            <td>
-              <textarea class="text_area not_zero" id="text_area_">
+              </td>
+            </form>
 
-              </textarea>
+          </tr>
+          <tr *ngIf="username==order.user.username  && order.statusOrder =='COMPLETE'">
+            <td>
+              <button type="button" class="btn btn-outline-success" (click)="sendCommentToProvider()">Gửi nhận xét
+                về {{order.userProvider.username}}</button>
+            </td>
+            <td>
+              <textarea id="comment"  [(ngModel)]="comment" [value]="order.comment" class="text_area not_zero"
+                        id="text_area_"></textarea>
             </td>
           </tr>
           </tbody>

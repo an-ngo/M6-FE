@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {OrderService} from "../../service/order/order.service";
+import {documentId} from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-order-info',
@@ -12,6 +13,8 @@ export class OrderInfoComponent implements OnInit {
   username: any;
   status: boolean = false;
   id: any;
+  comment:any;
+  feedback:any;
 
 
   constructor(private activatedRouter: ActivatedRoute,
@@ -45,20 +48,28 @@ export class OrderInfoComponent implements OnInit {
   }
 
   public complete(){
-    this.orderService.completeOrder(this.order.id).subscribe();
+    this.orderService.completeOrder(this.order.id).subscribe((data)=>{
+      console.log(data);
+      // window.location.reload();
+    });
+
   }
 
 
 
-  sendCommentToUser(e: any) {
-    this.order.feedback = e.value;
+  sendFeedbackToUser(comment: string) {
+    this.order.comment = comment;
+    console.log(this.order)
     this.orderService.sendCommentOrFeedback(this.id,this.order).subscribe((data)=>{
       console.log(data);
+      // window.location.reload();
     })
   }
 
-  sendCommentToProvider(e: any) {
-    this.order.comment = e.value;
+  sendCommentToProvider() {
+    const e = document.getElementById("comment");
+    console.log(e)
+
     this.orderService.sendCommentOrFeedback(this.id,this.order).subscribe((data2)=>{
       console.log(data2);
     });
