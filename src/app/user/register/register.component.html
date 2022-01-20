@@ -9,12 +9,12 @@
       <img src="assets/images/true-love-la-gi-1.jpg" alt="">
     </div>
     <br>
-    <h6 class="clear mt-5">Register To Become Provider:</h6>
+    <h6 class="clear mt-5">Đăng ký trở thành nhà cung cấp:</h6>
 
     <form #createProviderForm="ngForm">
       <table width="80%">
         <tr>
-          <td width="145" align="left" valign="top" class="body"><strong>year of birth</strong></td>
+          <td width="145" align="left" valign="top" class="body"><strong>năm sinh:</strong></td>
           <td width="280" align="left" valign="top">
             <div class="search_column_2">
               <select class="date" ngModel name="yearOfBirth">
@@ -52,7 +52,7 @@
           </td>
         </tr>
         <tr>
-          <td align="left" valign="top" class="body"><strong>city</strong></td>
+          <td align="left" valign="top" class="body"><strong>Thành phố:</strong></td>
           <td align="left" valign="top">
             <div class="search_column_2">
               <select class="date" ngModel name="city">
@@ -157,12 +157,12 @@
           </td>
         </tr>
         <tr>
-          <td align="left" valign="top" class="body"><strong>country</strong></td>
+          <td align="left" valign="top" class="body"><strong>Quốc gia</strong></td>
           <td align="left" valign="top">
             <div class="search_column_2">
               <select class="date" ngModel name="country">
                 <option value="">- Tất cả -</option>
-                <option value="American Tho">American Tho</option>
+                <option value="American Tho">My</option>
                 <option value="Viet Nam" selected="selected">
                   Viet Nam
                 </option>
@@ -175,23 +175,23 @@
           <td>{{service}}</td>
         </tr>
         <tr>
-          <td width="145" align="left" valign="top" class="body" id="Company"><strong>services</strong></td>
+          <td width="145" align="left" valign="top" class="body" id="Company"><strong>Dịch vụ</strong></td>
           <td width="280" align="left" valign="top"><input type="text" size="40" #service></td>
           <td>
-            <button (click)="addService(service.value)">add</button>
+            <button (click)="addService(service.value)">Thêm vào</button>
           </td>
         </tr>
 
         <tr>
-          <td width="145" align="left" valign="top" class="body"><strong>height</strong></td>
+          <td width="145" align="left" valign="top" class="body"><strong>Chiều cao</strong></td>
           <td width="280" align="left" valign="top"><input type="text" size="40" ngModel name="height"></td>
         </tr>
         <tr>
-          <td width="145" align="left" valign="top" class="body"><strong>weight</strong></td>
+          <td width="145" align="left" valign="top" class="body"><strong>Cân nặng</strong></td>
           <td width="280" align="left" valign="top"><input type="text" size="40" ngModel name="weight"></td>
         </tr>
         <tr>
-          <td width="145" align="left" valign="top" class="body"><strong>hobby</strong></td>
+          <td width="145" align="left" valign="top" class="body"><strong>Sở thích</strong></td>
           <td width="280" align="left" valign="top">
             <div *ngFor="let hobby of hobbies">
               <input type="checkbox" (click)="selectHobby(hobby.id)"> {{hobby.name}}
@@ -199,11 +199,11 @@
           </td>
         </tr>
         <tr>
-          <td width="145" align="left" valign="top" class="body"><strong>description</strong></td>
+          <td width="145" align="left" valign="top" class="body"><strong>Mô tả</strong></td>
           <td width="280" align="left" valign="top"><input type="text" size="40" ngModel name="description"></td>
         </tr>
         <tr>
-          <td width="145" align="left" valign="top" class="body"><strong>conditions</strong></td>
+          <td width="145" align="left" valign="top" class="body"><strong>Các điều kiện</strong></td>
           <td width="280" align="left" valign="top"><input type="text" size="40" ngModel name="conditions"></td>
         </tr>
         <tr>
@@ -211,7 +211,7 @@
           <td width="280" align="left" valign="top"><input type="text" size="40" ngModel name="link_facebook"></td>
         </tr>
         <tr>
-          <td width="145" align="left" valign="top" class="body"><strong>images</strong></td>
+          <td width="145" align="left" valign="top" class="body"><strong>Ảnh</strong></td>
           <td width="280" align="left" valign="top"><input type="file" size="40" multiple (change)="getImages($event)"></td>
         </tr>
         <tr>

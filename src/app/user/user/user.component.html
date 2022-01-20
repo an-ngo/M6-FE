@@ -15,17 +15,17 @@
 
       <hr>
     <h4>Bật/Tắt trạng thái CCDV</h4>
-      <button value="active" (click)="changeStatusProvider('active')">Activate</button>
-      <button value="activate" (click)="changeStatusProvider('busy')">BUSY</button>
-      <button value="activate" (click)="changeStatusProvider('disable')">DISABLE</button>
+      <button value="active" (click)="changeStatusProvider('active')">Đang hoạt động</button>
+      <button value="activate" (click)="changeStatusProvider('busy')">Đang bận</button>
+      <button value="activate" (click)="changeStatusProvider('disable')">Đã tắt</button>
     </div>
 
     <div class="servicecolumnzone">
       <div class="servicecolumn1">
         <div>
           <h5>
-            <button (click)="checkEditt()">Edit</button>
-            <button (click)="checkBack()">Back</button>
+            <button (click)="checkEditt()">Sửa</button>
+            <button (click)="checkBack()">Thoát</button>
           </h5>
           <img src="assets/images/ico1.png" alt="" class="abouticon"/>Lorem ipsum dolor sit amet, consectetuer
           adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius,
@@ -34,11 +34,11 @@
           <form (ngSubmit)="edit()">
             <table>
               <tr>
-                <th>Name</th>
+                <th>Tên</th>
                 <td><input type="text" name="name" [(ngModel)]="user.name"></td>
               </tr>
               <tr>
-                <th>Gender</th>
+                <th>Giới Tính</th>
                 <td>
                   <select name="gender" [(ngModel)]="user.gender">
                     <option selected="selected" value="Nam">Male</option>
@@ -47,11 +47,11 @@
                 </td>
               </tr>
               <tr>
-                <th>Phone</th>
+                <th>Số Điện Thoại</th>
                 <td><input type="text" name="phone" [(ngModel)]="user.phone"></td>
               </tr>
               <tr>
-                <th>Avatar</th>
+                <th>Ảnh Đại diện</th>
                 <td><input type="file" (change)="selectAvatar($event)"></td>
                 <td><img src="{{urlImage}}" width="50px" height="50px" alt=""></td>
               </tr>
@@ -69,44 +69,39 @@
       </div>
       <div class="servicecolumn2">
         <div>
-          <h5>Service 2</h5>
+          <h5>Dịch vụ 2</h5>
         </div>
         <div class="clear"></div>
         <ul>
-          <li class="a"><input type="radio" name="radio" value="showListUserBook" (click)="checkBox($event)">Show List
-            User Book
+          <li class="a"><input type="radio" name="radio" value="showListUserBook" (click)="checkBox($event)">Hiển thị Sách của Người dùng
           </li>
-          <li class="b"><input type="radio" name="radio" value="showListBookProvider" (click)="checkBox($event)">Show
-            List Book Provider
+          <li class="b"><input type="radio" name="radio" value="showListBookProvider" (click)="checkBox($event)">Hiển thị danh sách nhà cung cấp
           </li>
           <li class="c">
-            <button type="button" value="pending" (click)="getAllBookByStatus('pending')">Show List Book Provider
-              "PENDING"
+            <button type="button" value="pending" (click)="getAllBookByStatus('pending')">Hiển thị danh sách nhà cung cấp "Chưa giải quyết"
             </button>
           </li>
           <li class="c">
-            <button type="button" value="received" (click)="getAllBookByStatus('received')">Show List Book Provider
-              "RECEIVED"
+            <button type="button" value="received" (click)="getAllBookByStatus('received')">Hiển thị Danh sách Nhà cung cấp Sách "ĐÃ NHẬN"
             </button>
           </li>
           <li class="c">
-            <button type="button" value="complete" (click)="getAllBookByStatus('complete')">Show List Book Provider
-              "COMPLETE"
+            <button type="button" value="complete" (click)="getAllBookByStatus('complete')">Hiển thị danh sách nhà cung cấp sách HOÀN THÀNH
             </button>
           </li>
 <!--          -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
           <li class="c">
-            <button type="button" value="pending" (click)="getAllStatusBook('pending')">Show list of people I book "PENDING
+            <button type="button" value="pending" (click)="getAllStatusBook('pending')">Hiển thị danh sách những người tôi đặt chỗ
+              "CHƯA GIẢI QUYẾT"</button>
+          </li>
+
+          <li class="c">
+            <button type="button" value="received" (click)="getAllStatusBook('received')">Hiển thị danh sách những người tôi đặt chỗ "ĐÃ ĐƯỢC NHẬN"
             </button>
           </li>
 
           <li class="c">
-            <button type="button" value="received" (click)="getAllStatusBook('received')">Show list of people I book "RECEIVED"
-            </button>
-          </li>
-
-          <li class="c">
-            <button type="button" value="complete" (click)="getAllBookByStatus('complete')">Show list of people I book "COMPLETE"</button>
+            <button type="button" value="complete" (click)="getAllBookByStatus('complete')">Hiển thị danh sách những người tôi đặt chỗ "HOÀN THÀNH"</button>
           </li>
         </ul>
       </div>
@@ -120,18 +115,18 @@
 
         <table style="margin: auto" border="1" *ngIf="orders.length > 0 && isShowFormListUserBook">
           <tr>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>Date book</th>
-            <th>Avatar</th>
-            <th>Detail</th>
+            <th>Tên</th>
+            <th>Giới tính</th>
+            <th>Ngày đặt</th>
+            <th>Ảnh Đại diện</th>
+            <th>Chi tiết</th>
           </tr>
           <tr *ngFor="let order of orders">
             <td>{{order.userProvider.name}}</td>
             <td>{{order.userProvider.gender}}</td>
             <td>{{order.date}}</td>
             <td><img src="{{order.userProvider.avatar}}" width="40px" height="40px" alt=""></td>
-            <td><a routerLink="/order/order-info/{{order.id}}">Details</a></td>
+            <td><a routerLink="/order/order-info/{{order.id}}">Chi tiết</a></td>
           </tr>
         </table>
 
@@ -139,18 +134,18 @@
 
         <table style="margin: auto" border="1" *ngIf="userOrders.length > 0 && isShowFormBookProvider">
           <tr>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>Date book</th>
-            <th>Avatar</th>
-            <th>Detail</th>
+            <th>Tên</th>
+            <th>Giới tính</th>
+            <th>Ngày đặt</th>
+            <th>Ảnh đại diện</th>
+            <th>Chi tiết</th>
           </tr>
           <tr *ngFor="let order1 of userOrders">
             <td>{{order1.user.name}}</td>
             <td>{{order1.user.gender}}</td>
             <td>{{order1.date}}</td>
             <td><img src="{{order1.user.avatar}}" width="40px" height="40px" alt=""></td>
-            <td><a routerLink="/order/order-info/{{order1.id}}">Details</a></td>
+            <td><a routerLink="/order/order-info/{{order1.id}}">Chi tiết</a></td>
           </tr>
         </table>
 
@@ -160,18 +155,18 @@
 
                *ngIf="ordersUser.length > 0 && isShowForm1 == true">
           <tr>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>Date book</th>
-            <th>Avatar</th>
-            <th>Detail</th>
+            <th>Tên</th>
+            <th>Giới tính</th>
+            <th>Ngày đặt</th>
+            <th>Ảnh đại diện</th>
+            <th>chi tiết</th>
           </tr>
           <tr *ngFor="let order2 of ordersUser">
             <td>{{order2.userProvider.name}}</td>
             <td>{{order2.userProvider.gender}}</td>
             <td>{{order2.date}}</td>
             <td><img src="{{order2.userProvider.avatar}}" width="40px" height="40px" alt=""></td>
-            <td><a routerLink="/order/order-info/{{order2.id}}">Details</a></td>
+            <td><a routerLink="/order/order-info/{{order2.id}}">Chi tiết</a></td>
           </tr>
         </table>
 
@@ -179,18 +174,18 @@
         <table style="margin: auto" border="1"
                *ngIf="userOrders1.length > 0 && isShowForm2 == true">
           <tr>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>Date book</th>
-            <th>Avatar</th>
-            <th>Detail</th>
+            <th>Tên</th>
+            <th>Giới tính</th>
+            <th>Ngày đặt </th>
+            <th>Ảnh đại diện</th>
+            <th>Chi tiết</th>
           </tr>
           <tr *ngFor="let order3 of userOrders1">
             <td>{{order3.user.name}}</td>
             <td>{{order3.user.gender}}</td>
             <td>{{order3.date}}</td>
             <td><img src="{{order3.user.avatar}}" width="40px" height="40px" alt=""></td>
-            <td><a routerLink="/order/order-info/{{order3.id}}">Details</a></td>
+            <td><a routerLink="/order/order-info/{{order3.id}}">Chi tiết</a></td>
           </tr>
         </table>
       </div>

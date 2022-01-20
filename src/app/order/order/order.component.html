@@ -9,8 +9,8 @@
       <img src="assets/images/true-love-la-gi-1.jpg" alt="">
     </div>
     <br>
-    <h5 *ngIf="order != null" class="clear">Success <a routerLink="/order/order-info/{{order.id}}">see details</a></h5>
-    <h6 class="clear"><strong>Book provider</strong></h6>
+    <h5 *ngIf="order != null" class="clear">Success <a routerLink="/order/order-info/{{order.id}}">xem chi tiết</a></h5>
+    <h6 class="clear"><strong>Nhà cung cấp</strong></h6>
     <form #orderForm="ngForm" (ngSubmit)="createOrder(orderForm)">
       <table width="80%">
         <tr>
@@ -20,22 +20,22 @@
         </tr>
         <tr>
           <td></td>
-          <td><p *ngIf="!place?.valid && (!place?.dirty || place?.touched)" style="color: red">Place Invalidate</p></td>
+          <td><p *ngIf="!place?.valid && (!place?.dirty || place?.touched)" style="color: red">Địa điểm không hợp lệ</p></td>
         </tr>
         <tr>
-          <td align="left" valign="top" class="body"><strong>date:</strong></td>
+          <td align="left" valign="top" class="body"><strong>Ngày:</strong></td>
           <td align="left" valign="top"><input ngModel name="date" type="date" size="40"/></td>
         </tr>
 
 
         <tr>
-          <td align="left" valign="top" class="body"><strong>duration:</strong></td>
+          <td align="left" valign="top" class="body"><strong>khoảng thời gian:</strong></td>
           <td align="left" valign="top"><input ngModel name="duration" type="number" size="40"/></td>
         </tr>
 
 
         <tr>
-          <td align="left" valign="top" class="body"><strong>select service:</strong></td>
+          <td align="left" valign="top" class="body"><strong>Chọn dịch vụ:</strong></td>
           <td>
             <div *ngFor="let service of provider.serviceByProviderList"><input type="checkbox"
                                                                                (click)="selectService(service.name)">{{service.name}}

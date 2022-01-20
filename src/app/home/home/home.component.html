@@ -1,13 +1,13 @@
 <div id="body_1_container_1">
   <div id="container_1_1"><span class="logo"><a href="#"><img src="assets/images/logo.gif" alt="" /></a></span>
     <div class="dating_tips">
-      <h2>Dating Tips</h2>
+      <h2 style="font-size: 30px">TOP</h2>
       <ul>
-        <li class="a"><input type="radio"  name="radio"  value="top6ProviderHot" (click)="checkBox($event)">Top 6 Provider Hot</li>
-        <li class="b"><input type="radio"  name="radio"  value="top12CountTime" (click)="checkBox($event)">Top 12 Order</li>
-        <li class="c"><input type="radio"  name="radio"  value="top12JoinDate" (click)="checkBox($event)">Top 12 New Provider</li>
-        <li class="d"><input type="radio"  name="radio"  value="top6ViewPage" (click)="checkBox($event)">Top 6 View Page</li>
-        <li class="e"><input type="radio"  name="radio"  value="" (click)="checkBox($event)">All Provider</li>
+        <li class="a"><input type="radio"  name="radio"  value="top6ProviderHot" (click)="checkBox($event)">6 Nhà Cung Cấp Hàng Đầu </li>
+        <li class="b"><input type="radio"  name="radio"  value="top12CountTime" (click)="checkBox($event)">12 Đơn Hàng Đặt Nhiều Nhất</li>
+        <li class="c"><input type="radio"  name="radio"  value="top12JoinDate" (click)="checkBox($event)">Nhà Cung Cấp mới</li>
+        <li class="d"><input type="radio"  name="radio"  value="top6ViewPage" (click)="checkBox($event)">6 trang xem hàng đầu</li>
+        <li class="e"><input type="radio"  name="radio"  value="" (click)="checkBox($event)">Tất cả nhà cung cấp</li>
       </ul>
     </div>
   </div>
@@ -31,27 +31,27 @@
     <div class="partner_search">
       <div class="inner_border">
         <div class="form_container_1">
-          <h3>Partner Search</h3>
+          <h3>Tìm kiếm Đối Tượng</h3>
           <form #searchForm="ngForm" (ngSubmit)="searchProvider(searchForm)">
             <fieldset>
               <div class="search_row">
                 <div class="search_column_1">
-                  <label>Gender</label>
+                  <label>Giới Tính</label>
                 </div>
                 <div class="search_column_2">
                   <select class="gender" ngModel name="gender">
                     <option
                       value=""
                       selected="selected"
-                    >--All--</option>
-                    <option value="Nam">Male</option>
-                    <option value="Nu">Female</option>
+                    >--Tất cả--</option>
+                    <option value="Nam">Nam</option>
+                    <option value="Nu">Nữ</option>
                   </select>
                 </div>
               </div>
               <div class="search_row">
                 <div class="search_column_1">
-                  <label>Before Year</label>
+                  <label>Năm Sinh</label>
                 </div>
                 <div class="search_column_2">
                   <select class="date" ngModel name="beforeYear">
@@ -89,7 +89,7 @@
               </div>
               <div class="search_row">
                 <div class="search_column_1">
-                  <label>After Year</label>
+                  <label>năm sinh >= 2004</label>
                 </div>
                 <div class="search_column_2">
                   <select class="date" ngModel name="afterYear">
@@ -127,7 +127,7 @@
               </div>
               <div class="search_row">
                 <div class="search_column_1">
-                  <label>City</label>
+                  <label>Thành PHố !</label>
                 </div>
                 <div class="search_column_2">
                   <select class="date" ngModel name="city">
@@ -232,12 +232,12 @@
               </div>
               <div class="search_row">
                 <div class="search_column_1">
-                  <label>Country</label>
+                  <label>Quốc Gia !</label>
                 </div>
                 <div class="search_column_2">
                   <select class="date" ngModel name="country">
                     <option value="">- Tất cả -</option>
-                    <option value="My">American Tho</option>
+                    <option value="My">Mỹ</option>
                     <option value="Viet Nam" selected="selected">
                       Viet Nam
                     </option>
@@ -267,19 +267,19 @@
                 <div class="pro_top_curve">
                   <div class="pro_detail_content">
                     <div class="row_1">
-                      <p class="left">Name :</p>
+                      <p class="left">Tên :</p>
                       <p class="right">{{provider.name}}</p>
                     </div>
                     <div class="row_1">
-                      <p class="left">Year of Birth :</p>
+                      <p class="left">Năm sinh :</p>
                       <p class="right">{{provider.yearOfBirth}}</p>
                     </div>
                     <div class="row_1">
-                      <p class="left">Location :</p>
+                      <p class="left">Địa Điểm :</p>
                       <p class="right">{{provider.city}}</p>
                     </div>
                     <div class="row_1">
-                      <p class="left">View :</p>
+                      <p class="left">lượt xem :</p>
                       <p class="right">{{provider.viewCount}}</p>
                     </div>
                   </div>
@@ -308,7 +308,7 @@
           <p class="card-text">Ngày tham gia: {{provider.joinDate}}</p>
           <p class="card-text">{{provider.description}}</p>
           <p class="card-text">Lượt xem {{provider.viewCount}}</p>
-          <a href="#" class="btn btn-primary" routerLink="/provider/{{provider.id}}">Book ngay</a>
+          <a href="#" class="btn btn-primary" routerLink="/provider/{{provider.id}}">Đặt ngay</a>
         </div>
       </div>
     </ng-template>

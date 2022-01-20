@@ -10,69 +10,66 @@
     </div>
     <br>
     <h3 *ngIf="message != ''">{{message}}</h3>
-    <h6 class="clear mt-5">Register</h6>
+    <h6 class="clear mt-5">Đăng ký</h6>
     <br/>
     <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" novalidate>
       <table width="80%">
         <tr>
-          <td width="145" align="left" valign="top" class="body"><strong>name</strong></td>
+          <td width="145" align="left" valign="top" class="body"><strong>Tên :</strong></td>
           <td width="280" align="left" valign="top"><input ngModel name="name" type="text" size="40" #name="ngModel"
                                                            minlength="3" maxlength="15" required></td>
         </tr>
         <tr>
           <td></td>
-          <td><p *ngIf="!name.valid && (!name.dirty || name.touched)" style="color: red">Name need to be more than 3
-            characters</p></td>
+          <td><p *ngIf="!name.valid && (!name.dirty || name.touched)" style="color: red">Điền 3 ký tự trở lên!</p></td>
         </tr>
 
         <tr>
-          <td align="left" valign="top" class="body"><strong>username</strong></td>
+          <td align="left" valign="top" class="body"><strong>Tên Đăng Nhập :</strong></td>
           <td width="280" align="left" valign="top"><input ngModel name="username" type="text" size="40"
                                                            #username="ngModel"
                                                            minlength="3" maxlength="15" required></td>
         </tr>
         <tr>
           <td></td>
-          <td><p *ngIf="!username.valid && (!username.dirty || username.touched)" style="color: red">Username need to be
-            more than 3
-            characters</p></td>
+          <td><p *ngIf="!username.valid && (!username.dirty || username.touched)" style="color: red">
+            Điền 3 ký tự trở lên!
+           </p></td>
         </tr>
 
         <tr>
-          <td align="left" valign="top" class="body"><strong>email</strong></td>
+          <td align="left" valign="top" class="body"><strong>Email :</strong></td>
           <td align="left" valign="top"><input type="email" ngModel
                                                name="email" size="40" email="true" #email="ngModel" minlength="6"
                                                maxlength="30" required></td>
         </tr>
         <tr>
           <td></td>
-          <td><p *ngIf="!email.valid && (email.dirty || email.touched)" style="color: red">Email Invalidate!
+          <td><p *ngIf="!email.valid && (email.dirty || email.touched)" style="color: red">Email Không Hợp Lệ!!
           </p></td>
         </tr>
         <tr>
-          <td align="left" valign="top" class="body"><strong>phone</strong></td>
+          <td align="left" valign="top" class="body"><strong>Số Điện Thoại :</strong></td>
           <td align="left" valign="top"><input ngModel name="phone" type="text" size="40" #phone="ngModel"
                                                minlength="10"/></td>
         </tr>
         <tr>
           <td></td>
-          <td><p *ngIf="!phone.valid && (phone.dirty || phone.touched)" style="color: red">Phone need to be more than 10
-            characters and is numbers
+          <td><p *ngIf="!phone.valid && (phone.dirty || phone.touched)" style="color: red">Cần phải nhập đủ 10 số !
           </p></td>
         </tr>
         <tr>
-          <td align="left" valign="top" class="body"><strong>password</strong></td>
+          <td align="left" valign="top" class="body"><strong>Mật khẩu :</strong></td>
           <td align="left" valign="top"><input ngModel name="password" type="password" size="40" #password="ngModel"
                                                minlength="6" maxlength="10"/></td>
         </tr>
         <tr>
           <td></td>
-          <td><p *ngIf="!password.valid && (password.dirty || password.touched)" style="color: red">Password need to br
-            more than 6 characters!!
+          <td><p *ngIf="!password.valid && (password.dirty || password.touched)" style="color: red">Mật khẩu phải >= 6 kí tự !
           </p></td>
         </tr>
         <tr>
-          <td align="left" valign="top" class="body"><strong>avatar</strong></td>
+          <td align="left" valign="top" class="body"><strong>Ảnh</strong></td>
           <td align="left" valign="top"><input type="file" size="40" (change)="selectFile($event)"/></td>
         </tr>
         <tr>
