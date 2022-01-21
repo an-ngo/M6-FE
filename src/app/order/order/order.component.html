@@ -14,13 +14,14 @@
     <form #orderForm="ngForm" (ngSubmit)="createOrder(orderForm)">
       <table width="80%">
         <tr>
-          <td width="145" align="left" valign="top" class="body"><strong>place:</strong></td>
+          <td width="145" align="left" valign="top" class="body"><strong>Địa điểm hẹn:</strong></td>
           <td width="280" align="left" valign="top"><input ngModel name="place" type="text" size="40" #place="ngModel"
                                                            minlength="2" maxlength="20" required/></td>
         </tr>
         <tr>
           <td></td>
-          <td><p *ngIf="!place?.valid && (!place?.dirty || place?.touched)" style="color: red">Địa điểm không hợp lệ</p></td>
+          <td><p *ngIf="!place?.valid && (!place?.dirty || place?.touched)" style="color: red">Địa điểm không hợp lệ</p>
+          </td>
         </tr>
         <tr>
           <td align="left" valign="top" class="body"><strong>Ngày:</strong></td>

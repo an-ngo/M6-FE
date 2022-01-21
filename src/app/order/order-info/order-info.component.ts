@@ -49,6 +49,9 @@ export class OrderInfoComponent implements OnInit {
           this.orderService.editOrder(this.order.id, this.order).subscribe((data) => {
             console.log(data);
           });
+          this.route.navigateByUrl('/home').then(() => {
+            window.location.reload();
+          });
         });
       });
     }
