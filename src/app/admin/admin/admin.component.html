@@ -1,1 +1,57 @@
-<p>admin works!</p>
+<div class="div__">
+  <section class="ftco-section " style="background-color: #f3f6e1">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center mb-5">
+
+          <h2 class="heading-section">Danh sách người dùng</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+            <table class="table table-responsive-xl">
+              <thead>
+              <tr>
+                <th>&nbsp;</th>
+                <th>Email</th>
+                <th>Tên Đăng Nhập</th>
+                <th>Trạng thái</th>
+                <th><a class="list_order" routerLink="/admin/order" >Danh sách đặt hàng</a></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="alert" role="alert" *ngFor="let user of users; index as i">
+                <td>
+                  <label class="checkbox-wrap checkbox-primary">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+                </td>
+                <td class="d-flex align-items-center">
+                  <a routerLink="/user/{{user.id}}" ><img src="{{user.avatar}}" alt="" class="img"></a>
+                  <div class="pl-3 email">
+                    <span>{{user.email}}</span>
+                    <span>Ngày tham gia: {{user.joinDate}}</span>
+                  </div>
+                </td>
+                <td>{{user.username}}</td>
+                <td *ngIf="user.isStatusProvider=='ACTIVE'" class="status"><span class="active">Đang Hoạt Động</span></td>
+                <td *ngIf="user.isStatusProvider=='BUSY'" class="status"><span class="waiting">Đang Bận</span></td>
+                <td *ngIf="user.isStatusProvider=='DISABLE'" class="status"><span class="disable_">Đã tắt</span></td>
+
+                <td>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span ><i class="fa fa-close"></i></span>
+                  </button>
+                </td>
+              </tr>
+
+              </tbody>
+            </table>
+          <button class="button" *ngIf="page > 0 && action ==''" (click)="nextPage(false)">Trước</button>
+          <button class="button" *ngIf="page < totalPage-1 && action == ''" (click)="nextPage(true)">Sau</button>
+          </div>
+        </div>
+      </div>
+  </section>
+</div>

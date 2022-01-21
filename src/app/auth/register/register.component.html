@@ -1,1 +1,116 @@
-<p>register works!</p>
+<div id="body_1_container_1">
+  <div id="container_1_1"><span class="logo"><a href="#"><img src="assets/images/logo.gif" alt=""/></a></span>
+    <div class="dating_tips">
+      <img src="assets/images/fake-love.jpg" alt="">
+    </div>
+  </div>
+  <div id="right_container_1">
+    <div class="partner_box">
+      <img src="assets/images/true-love-la-gi-1.jpg" alt="">
+    </div>
+    <br>
+
+    <h3 *ngIf="message != ''">{{message}}</h3>
+    <h6 class="clear mt-5">Đăng ký</h6>
+
+    <br/>
+    <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" novalidate>
+      <h3 *ngIf="message != ''">{{message}}</h3>
+      <table width="80%">
+        <tr>
+          <td width="145" align="left" valign="top" class="body"><strong>Tên :</strong></td>
+          <td width="280" align="left" valign="top"><input ngModel name="name" type="text" size="40" #name="ngModel"
+                                                           minlength="3" maxlength="15" required></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><p *ngIf="!name.valid && (!name.dirty || name.touched)" style="color: red">Điền 3 ký tự trở lên!</p></td>
+        </tr>
+
+        <tr>
+          <td align="left" valign="top" class="body"><strong>Tên Đăng Nhập :</strong></td>
+          <td width="280" align="left" valign="top"><input ngModel name="username" type="text" size="40"
+                                                           #username="ngModel"
+                                                           minlength="3" maxlength="15" required></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><p *ngIf="!username.valid && (!username.dirty || username.touched)" style="color: red">
+            Điền 3 ký tự trở lên!
+           </p></td>
+        </tr>
+
+        <tr>
+          <td align="left" valign="top" class="body"><strong>Email :</strong></td>
+          <td align="left" valign="top"><input type="email" ngModel
+                                               name="email" size="40" email="true" #email="ngModel" minlength="6"
+                                               maxlength="30" required></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><p *ngIf="!email.valid && (email.dirty || email.touched)" style="color: red">Email Không Hợp Lệ!!
+          </p></td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" class="body"><strong>Số Điện Thoại :</strong></td>
+          <td align="left" valign="top"><input ngModel name="phone" type="text" size="40" #phone="ngModel"
+                                               minlength="10"/></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><p *ngIf="!phone.valid && (phone.dirty || phone.touched)" style="color: red">Cần phải nhập đủ 10 số !
+          </p></td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" class="body"><strong>Mật khẩu :</strong></td>
+          <td align="left" valign="top"><input ngModel name="password" type="password" size="40" #password="ngModel"
+                                               minlength="6" maxlength="10"/></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><p *ngIf="!password.valid && (password.dirty || password.touched)" style="color: red">Mật khẩu phải >= 6 kí tự !
+          </p></td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" class="body"><strong>Ảnh</strong></td>
+          <td align="left" valign="top"><input type="file" size="40" (change)="selectFile($event)"/></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td *ngIf="urlImage != ''"><img width="50px" height="50px" src="{{urlImage}}" alt=""></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" [disabled]="!registerForm.valid" name="submit" class="button" value="Đăng Ký"/></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div><br/>
+    <div class="clear row"><br/>
+      <div class="col-3 offset-2 mt-4">
+        <h6>Contact Information: </h6>
+        100 Lorem Ipsum Dolor Sit<br/>
+        88-99 Sit Amet, Lorem<br/>
+        USA<br/>
+        <br/>
+        <p><span><img src="assets/images/ico-phone.png" alt="" width="20" height="16" hspace="2"/> Phone:</span> (888)
+          123
+          456 789<br/>
+          <span><img src="assets/images/ico-fax.png" alt="" width="20" height="16" hspace="2"/> Fax:</span> (888) 987
+          654
+          321<br/>
+          <span><img src="assets/images/ico-website.png" alt="" width="20" height="16" hspace="2"/> Website:</span> <a
+            href="#">www.mycompany.com</a><br/>
+          <span><img src="assets/images/ico-email.png" alt="" width="20" height="16" hspace="2"/> Email:</span> <a
+            href="#">info@mycompany.com</a><br/>
+          <span><img src="assets/images/ico-twitter.png" alt="" width="20" height="16" hspace="3"/> <a
+            href="#">Follow</a> on Twitter</span><br/>
+        </p>
+      </div>
+      <div class="col-2 offset-4">
+        <img src="assets/images/photo-contact.jpg" alt="" width="152" height="100" class="project-img"/>
+      </div>
+    </div>
+  </div>
+</div>

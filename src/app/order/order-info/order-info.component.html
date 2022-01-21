@@ -1,0 +1,112 @@
+<div class="container order_info__">
+  <div class="row">
+
+    <div class="col-12" style="margin-top: 30px; align-items: center">
+      <div style="margin: 50px;" class="">
+        <h1 class="text-center">Chi tiết Order của khách hàng {{order.user.name}}</h1>
+
+        <table style="margin-left:  130px">
+          <h2>Thông tin khách hàng</h2>
+          <tr>
+            <th>Tên</th>
+            <td>{{order.user.name}}</td>
+          </tr>
+          <tr>
+            <th>Năm sinh</th>
+            <td>{{order.user.yearOfBirth}}</td>
+          </tr>
+          <tr>
+            <th>Giới tính</th>
+            <td>{{order.user.gender}}</td>
+          </tr>
+          <tr>
+            <th>Avatar</th>
+            <th><img width="100" height="100" src="{{order.user.avatar}}" alt=""></th>
+          </tr>
+        </table>
+
+        <table style="" class="table table-responsive-xl">
+          <h2>Thông tin order</h2>
+          <tbody>
+          <tr>
+            <th>Ngày book</th>
+            <td>{{order.date}}</td>
+          </tr>
+          <tr>
+            <th>Số giờ book</th>
+            <td>{{order.duration}}</td>
+          </tr>
+
+          <tr>
+            <th>Trạng thái order</th>
+            <td *ngIf="order.statusOrder=='RECEIVED'" class="status"><span class="active">RECEIVED</span></td>
+            <td *ngIf="order.statusOrder=='PENDING'" class="status"><span class="waiting">PENDING</span></td>
+            <td *ngIf="order.statusOrder=='COMPLETE'" class="status"><span class="disable_">COMPLETE</span></td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td>{{order.userProvider.name}}</td>
+          </tr>
+          <tr>
+            <th>Nơi hẹn</th>
+            <td>{{order.place}}</td>
+          </tr>
+          <tr *ngIf="order.startTime != null">
+            <th>Đã xác nhận lúc</th>
+            <td>{{order.startTime}}</td>
+          </tr>
+          <tr>
+            <th>Các dịch vụ</th>
+            <td *ngFor="let service of order.serviceByProviderList">{{service.name}}</td>
+          </tr>
+          <tr>
+            <th>Tổng số tiền</th>
+            <td>{{order.money}}</td>
+          </tr>
+
+          <tr *ngIf="order.userProvider.username == username && order.statusOrder == 'PENDING'">
+            <td>
+
+              <button type="button" class="btn btn-outline-info"  (click)="confirm(true, order.user.name+' + '+order.userProvider.name)">Xác Nhận</button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline-warning" (click)="confirm(false, 'hủy')">Hủy</button>
+            </td>
+          </tr>
+          <tr *ngIf="this.order.userProvider.username == this.username && this.order.statusOrder == 'RECEIVED'">
+            <td>
+              <button type="button" class="btn btn-outline-success" (click)="complete()">Order đã hoàn thành</button>
+            </td>
+          </tr>
+          <tr *ngIf="username==order.userProvider.username && order.statusOrder =='COMPLETE'">
+            <form ngForm>
+
+              <td>
+                <button type="submit" class="btn btn-outline-primary" (click)="sendFeedbackToUser(feedback.value)">Gửi
+                  nhận xét về khách hàng {{order.user.name}}</button>
+              </td>
+              <td>
+                <textarea id="feedback"  [(ngModel)]="feedback" class="text_area not_zero" id="text_area">
+
+              </textarea>
+              </td>
+            </form>
+
+          </tr>
+          <tr *ngIf="username==order.user.username  && order.statusOrder =='COMPLETE'">
+            <td>
+              <button type="button" class="btn btn-outline-success" (click)="sendCommentToProvider()">Gửi nhận xét
+                về {{order.userProvider.username}}</button>
+            </td>
+            <td>
+              <textarea id="comment"  [(ngModel)]="comment" [value]="order.comment" class="text_area not_zero"
+                        id="text_area_"></textarea>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <a *ngIf="order.statusOrder != 'PENDING' && order.room.id != null" routerLink="/message/{{order.room.id}}">Nhắn tin ngay</a>
+      </div>
+    </div>
+  </div>
+</div>

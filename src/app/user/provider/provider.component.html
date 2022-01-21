@@ -1,1 +1,88 @@
-<p>provider works!</p>
+<div id="body_1_container_1">
+  <div id="container_1_1"><span class="logo"><a href="#"><img src="assets/images/logo.gif" alt=""/></a></span>
+
+  </div>
+  <div id="right_container_1">
+    <div class="partner_box">
+      <img src="assets/images/true-love-la-gi-1.jpg" alt="">
+    </div>
+    <br>
+  </div>
+<div class="container-fluid clear">
+  <div class="padding">
+    <div class="col-md-12" id="card">
+      <!-- Column -->
+      <div class="card"><img class="card-img-top">
+        <div class="card-body little-profile text-center">
+          <div><img class="pro-img" src="{{provider.avatar}}" alt="user"></div>
+          <h3 class="m-b-0">{{provider.name}}</h3>
+          <p>{{provider.description}}</p>
+          <a href="javascript:void(0)" routerLink="/order/{{provider.id}}"
+             class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded"
+             data-abc="true">Book now</a>
+          <div class="row text-center m-t-20">
+            <div class="col-lg-4 col-md-4 m-t-20">
+              <h3 style="color: deeppink" class="m-b-0 font-light">Tổng lượt xem trang</h3>
+              <h4>{{provider.viewCount}}</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 m-t-20">
+              <h3 style="color: deeppink" class="m-b-0 font-light">Giới tính</h3><h4>{{provider.gender}}</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 m-t-20">
+              <h3 style="color: deeppink" class="m-b-0 font-light">Năm Sinh</h3><h4>{{provider.yearOfBirth}}</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 m-t-20">
+              <h3 style="color: deeppink" class="m-b-0 font-light">Email</h3><h4>{{provider.email}}</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 m-t-20">
+              <h3 style="color: deeppink" class="m-b-0 font-light">Thành phố</h3><h4>{{provider.city}}</h4>
+            </div>
+
+            <div class="col-lg-4 col-md-4 m-t-20">
+              <h3 style="color: deeppink" class="m-b-0 font-light">Ngày tham gia</h3><h4>{{provider.joinDate}}</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 m-t-20">
+              <h3 style="color: deeppink" class="m-b-0 font-light">Chiều cao</h3><h4>{{provider.height}}</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 m-t-20">
+              <h3 style="color: deeppink" class="m-b-0 font-light">Sở thích</h3><h4
+              *ngFor="let hobby of provider.hobbyList">{{hobby.name}}</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 m-t-20">
+              <h3 style="color: deeppink" class="m-b-0 font-light">Trạng thái</h3><h4>{{provider.isStatusProvider}}</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 m-t-20">
+              <h3 style="color: deeppink" class="m-b-0 font-light">Online</h3><h4>{{provider.online}}</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 m-t-20">
+              <h3 style="color: deeppink" class="m-b-0 font-light">Các dịch vụ cung cấp</h3>
+              <table class="ml-5">
+                <tr *ngFor="let service of provider.serviceByProviderList" class="ml-5">
+                  <td class="col-2">
+                    <h4>{{service.name}}</h4>
+                  </td>
+                  <td class="col-2">
+                    <h4>Giá: {{service.price}}</h4>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<div class="container-fluid mt-5 clear">
+  <h4 class="text-center text-danger mb-4 mt-3">Picture</h4>
+  <owl-carousel-o [options]="customOptions">
+    <ng-template *ngFor="let image of provider.imageList" carouselSlide>
+      <div class="img__carousel" >
+        <img src="{{image.link_image}}" class="card-img-top card__img" alt="anh">
+
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</div>
